@@ -1,0 +1,10 @@
+elt_medallion:
+  outputs:
+    dev:
+      catalog: <your-catalog>
+      host: https://<your-databricks-host>/
+      http_path: /sql/1.0/warehouses/<your-warehouse-id>
+      # schema: default
+      threads: 6
+      token: <put your token here>
+      type: databricks

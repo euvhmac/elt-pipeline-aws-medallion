@@ -1,0 +1,47 @@
+﻿# Para adicionar ou remover um tenant, edite apenas `vars.tenants` em dbt_project.yml.
+# Este arquivo e processado pelo Jinja engine do dbt em tempo de compilacao.
+
+version: 2
+
+sources:
+{% for tenant in var('tenants') %}
+  - name: bronze__{{ tenant.id }}
+    database: "{{ target.catalog }}"
+    schema: bronze__{{ tenant.id }}
+    loaded_at_field: data_criacao
+    freshness:
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: dw_ccusto_contabil
+      - name: dw_conta_contabil
+      - name: dw_empresa
+      - name: dw_lancamento_origem
+      - name: dw_saldo_contabil
+      - name: dw_unidade
+      - name: dw_cliente
+      - name: dw_vendedor
+      - name: dw_tipocliente
+      - name: dw_cidade
+      - name: dw_rota
+      - name: dw_ramo
+      - name: dw_rede
+      - name: dw_projeto_sup
+      - name: dw_titulo_fin
+      - name: dw_danfe
+      - name: dw_classe
+      - name: dw_embalagem
+      - name: dw_familia
+      - name: dw_grupo
+      - name: dw_areageo
+      - name: dw_marca_item
+      - name: dw_origem
+      - name: dw_tipoitem
+      - name: dw_linha
+      - name: dw_item
+      - name: dw_devolucao
+      - name: dw_vendas
+      - name: dw_condpag
+      - name: dw_filial
+      - name: dw_danfite
+{% endfor %}

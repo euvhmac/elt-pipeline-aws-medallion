@@ -1,0 +1,554 @@
+cod_conta,Descricao_Conta,Tipo_Linha,Ordem_Exibicao,Fator_Sinal,id_nivel0,Nivel_0,id_nivel1,Nivel_1,id_nivel2,Nivel_2,Ranking
+181,Vendas de Aves Industrializadas,Detalhe,100010181,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,1,Vendas de Aves Industrializadas,3
+184,Vendas de Aves para Abate,Detalhe,100010184,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,2,Vendas de Aves para Abate,4
+403,Revenda de Materia Prima,Detalhe,100010403,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,3,Revenda de Materia Prima,5
+978,Venda de Farinha e Oleo,Detalhe,100010978,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,4,Venda de Farinha e Oleo,6
+1021,Vendas de Sucatas,Detalhe,100011021,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,5,Vendas de Sucatas,7
+1062,Remessa Bonificacao,Detalhe,100011062,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,6,Remessa Bonificacao,8
+1080,Remessa Amostra Gratis,Detalhe,100011080,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,7,Remessa Amostra Gratis,9
+1288,Revenda de Mercadoria,Detalhe,100011288,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,8,Revenda de Mercadoria,10
+1490,Vendas Fabrica de Racoes,Detalhe,100011490,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,9,Vendas Fabrica de Racoes,11
+1562,Venda Pao de Queijo,Detalhe,100011562,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,10,Venda Pao de Queijo,12
+1563,Venda Pescado,Detalhe,100011563,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,11,Venda Pescado,13
+1575,Revenda de Aves Industrializadas,Detalhe,100011575,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,12,Revenda de Aves Industrializadas,14
+1589,Venda de Frango Vivo Integracao,Detalhe,100011589,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,13,Venda de Frango Vivo Integracao,15
+1640,Revenda de Mercadorias e Insumos,Detalhe,100011640,1,1,RECEITA OPERACIONAL BRUTA,1,Vendas Mercado Interno,14,Revenda de Mercadorias e Insumos,16
+191,ICMS sobre Vendas,Detalhe,100040191,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,15,ICMS sobre Vendas,17
+192,PIS sobre Vendas,Detalhe,100040192,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,16,PIS sobre Vendas,18
+193,COFINS sobre Vendas,Detalhe,100040193,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,17,COFINS sobre Vendas,19
+1183,INSS Desoneracao,Detalhe,100041183,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,18,INSS Desoneracao,20
+1366,ISSQN,Detalhe,100041366,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,19,ISSQN,21
+1643,ICMS sobre Revendas,Detalhe,100041643,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,20,ICMS sobre Revendas,22
+1644,PIS sobre Revendas,Detalhe,100041644,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,21,PIS sobre Revendas,23
+1645,COFINS sobre Revendas,Detalhe,100041645,-1,2,DEDUCOES DA RECEITA BRUTA,2,Impostos sobre Vendas,22,COFINS sobre Revendas,24
+196,Descontos Sobre Vendas,Detalhe,100050196,-1,2,DEDUCOES DA RECEITA BRUTA,3,Descontos Concedidos sobreVendas,23,Descontos Sobre Vendas,25
+1489,Desconto Incondicional sobre Vendas,Detalhe,100051489,-1,2,DEDUCOES DA RECEITA BRUTA,3,Descontos Concedidos sobreVendas,24,Desconto Incondicional sobre Vendas,26
+195,Devolucao de Vendas,Detalhe,100060195,-1,2,DEDUCOES DA RECEITA BRUTA,4,Devolucoes de Vendas,25,Devolucao de Vendas,27
+1570,Devolucao de Vendas de Pescado,Detalhe,100061570,-1,2,DEDUCOES DA RECEITA BRUTA,4,Devolucoes de Vendas,26,Devolucao de Vendas de Pescado,28
+1573,Devolucao de Vendas de Pao de Queijo,Detalhe,100061570,-1,2,DEDUCOES DA RECEITA BRUTA,4,Devolucoes de Vendas,27,Devolucao de Vendas de Pao de Queijo,29
+,(=)RECEITA OPERACIONAL LIQUIDA,Subtotal,10007,1,3,RECEITA OPERACIONAL LIQUIDA,,,,,30
+201,CPV - Aves Industrializadas,Detalhe,100090201,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,28,CPV - Aves Industrializadas,31
+202,Aves Para Abate,Detalhe,100090202,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,29,Aves Para Abate,32
+204,CPV - Sub Produtos FFO,Detalhe,100090204,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,30,CPV - Sub Produtos FFO,33
+1314,Pao de queijo,Detalhe,100091314,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,31,Pao de queijo,34
+1337,Revenda de Produtos,Detalhe,100091337,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,32,Revenda de Produtos,35
+1341,Revenda de insumos,Detalhe,100091341,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,33,Revenda de insumos,36
+1386,Ajuste CPV,Detalhe,100091386,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,34,Ajuste CPV,37
+1450,Pao de queijo,Detalhe,100091450,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,35,Pao de queijo,38
+1453,CMV - Mercadorias,Detalhe,100091453,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,36,CMV - Mercadorias,39
+1564,Pescado,Detalhe,100091564,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,37,Pescado,40
+1572,Ave Natalina,Detalhe,100091572,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,38,Ave Natalina,41
+1591,Frango Vivo Integracao,Detalhe,100091591,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,39,Frango Vivo Integracao,42
+1641,CMV de Mercadorias e Insumos,Detalhe,100091641,-1,4,CUSTO PROD/MERC VENDIDOS,5,Custo das Vendas,40,CMV de Mercadorias e Insumos,43
+209,Racoes,Detalhe,100280209,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,41,Racoes,44
+211,Pintos de 1 Dia,Detalhe,100280211,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,42,Pintos de 1 Dia,45
+212,Frangos Vivos Integracao,Detalhe,100280212,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,43,Frangos Vivos Integracao,46
+214,Materia Prima,Detalhe,100280214,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,44,Materia Prima,47
+215,"Vacinas, Medicamentos e Desinfetantes",Detalhe,100280215,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,45,"Vacinas, Medicamentos e Desinfetantes",48
+217,Salarios e Ordenados,Detalhe,100280217,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,46,Salarios e Ordenados,49
+218,Provisao de Ferias,Detalhe,100280218,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,47,Provisao de Ferias,50
+219,Indenizacoes e Aviso Previo,Detalhe,100280219,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,48,Indenizacoes e Aviso Previo,51
+220,Alimentacao do Trabalhador,Detalhe,100280220,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,49,Alimentacao do Trabalhador,52
+221,Despesa com Assistencia Medica/Odontologica/ExamesobreFarmacia,Detalhe,100280221,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,50,Despesa com Assistencia Medica/Odontologica/ExamesobreFarmacia,53
+223,INSS Empresa,Detalhe,100280223,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,51,INSS Empresa,54
+224,FGTS,Detalhe,100280224,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,52,FGTS,55
+225,Funrural,Detalhe,100280225,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,53,Funrural,56
+226,Material de Embalagem,Detalhe,100280226,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,54,Material de Embalagem,57
+228,Servicos Profissionais Contratados P. Juridica,Detalhe,100280228,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,55,Servicos Profissionais Contratados P. Juridica,58
+229,Servicos Profissionais Contratados P. Fisica,Detalhe,100280229,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,56,Servicos Profissionais Contratados P. Fisica,59
+230,Analises Laboratoriais,Detalhe,100280230,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,57,Analises Laboratoriais,60
+231,Uniformes e Equipamentos de Protecao,Detalhe,100280231,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,58,Uniformes e Equipamentos de Protecao,61
+232,Servico de Armazenagem,Detalhe,100280232,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,59,Servico de Armazenagem,62
+234,Honorarios Advocaticios,Detalhe,100280234,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,60,Honorarios Advocaticios,63
+236,Manutencao de Maquinas e Equipamentos,Detalhe,100280236,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,61,Manutencao de Maquinas e Equipamentos,64
+237,Manutencao e Conservacao de Benfeitorias,Detalhe,100280237,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,62,Manutencao e Conservacao de Benfeitorias,65
+239,Energia Eletrica,Detalhe,100280239,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,63,Energia Eletrica,66
+240,Agua e Saneamento,Detalhe,100280240,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,64,Agua e Saneamento,67
+241,"Comunicacoes (Telefone, Correio e Internet)",Detalhe,100280241,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,65,"Comunicacoes (Telefone, Correio e Internet)",68
+243,Depreciacoes,Detalhe,100280243,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,66,Depreciacoes,69
+245,Combustiveis e Lubrificantes,Detalhe,100280245,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,67,Combustiveis e Lubrificantes,70
+246,Pecas e Servicos para Manutencao de Veiculos,Detalhe,100280246,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,68,Pecas e Servicos para Manutencao de Veiculos,71
+247,Seguro de Veiculos,Detalhe,100280247,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,69,Seguro de Veiculos,72
+248,IPVA e Taxas,Detalhe,100280248,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,70,IPVA e Taxas,73
+376,Ajuste de Inventario,Detalhe,100280376,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,71,Ajuste de Inventario,74
+907,Transporte de Funcionarios,Detalhe,100280907,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,72,Transporte de Funcionarios,75
+908,Bens de Pequeno Valor,Detalhe,100280908,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,73,Bens de Pequeno Valor,76
+909,Seguro de Vida Funcionarios,Detalhe,100280909,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,74,Seguro de Vida Funcionarios,77
+910,Adicional Noturno,Detalhe,100280910,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,75,Adicional Noturno,78
+911,Dia em Dobro,Detalhe,100280911,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,76,Dia em Dobro,79
+912,Provisao 1/3 sobre Ferias,Detalhe,100280912,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,77,Provisao 1/3 sobre Ferias,80
+913,Descanso Semanal Remunerado,Detalhe,100280913,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,78,Descanso Semanal Remunerado,81
+914,Trienio,Detalhe,100280914,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,79,Trienio,82
+915,Adicional de Insalubridade,Detalhe,100280915,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,80,Adicional de Insalubridade,83
+916,Salario Quitacao Demissao,Detalhe,100280916,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,81,Salario Quitacao Demissao,84
+917,Decimo Terceiro Proporcional Demissao,Detalhe,100280917,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,82,Decimo Terceiro Proporcional Demissao,85
+918,Descanso Semanal Remunerado,Detalhe,100280918,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,83,Descanso Semanal Remunerado,86
+919,Adicional 1/3 de Ferias,Detalhe,100280919,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,84,Adicional 1/3 de Ferias,87
+920,Hora Extra 50%,Detalhe,100280920,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,85,Hora Extra 50%,88
+921,INSS Terceiros,Detalhe,100280921,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,86,INSS Terceiros,89
+922,INSS Acidente de Trabalho,Detalhe,100280922,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,87,INSS Acidente de Trabalho,90
+923,Hora Extra 70%,Detalhe,100280923,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,88,Hora Extra 70%,91
+924,Verbas Indenizatorias,Detalhe,100280924,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,89,Verbas Indenizatorias,92
+925,Salario Familia,Detalhe,100280925,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,90,Salario Familia,93
+926,Salario Maternidade,Detalhe,100280926,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,91,Salario Maternidade,94
+927,Diferenca Salarial,Detalhe,100280927,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,92,Diferenca Salarial,95
+928,Salario Quitacao Pedido de Demissao,Detalhe,100280928,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,93,Salario Quitacao Pedido de Demissao,96
+929,Decimo Terceiro Proporcional Ped. Demissao,Detalhe,100280929,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,94,Decimo Terceiro Proporcional Ped. Demissao,97
+930,Aviso Previo Indenizado,Detalhe,100280930,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,95,Aviso Previo Indenizado,98
+931,Desconto Danos Patrimoniais,Detalhe,100280931,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,96,Desconto Danos Patrimoniais,99
+932,Hora Extra 2ª Hora,Detalhe,100280932,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,97,Hora Extra 2ª Hora,100
+933,Salario Quitacao Pedido de Demissao,Detalhe,100280933,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,98,Salario Quitacao Pedido de Demissao,101
+934,Indenizacao Artigo 480 CLT,Detalhe,100280934,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,99,Indenizacao Artigo 480 CLT,102
+935,Indenizacao CCT,Detalhe,100280935,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,100,Indenizacao CCT,103
+936,Auxilio Seguro,Detalhe,100280936,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,101,Auxilio Seguro,104
+937,Hora Extra 100%,Detalhe,100280937,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,102,Hora Extra 100%,105
+938,Adiantamento Decimo Terceiro Salario,Detalhe,100280938,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,103,Adiantamento Decimo Terceiro Salario,106
+939,Insuficiencia Saldo,Detalhe,100280939,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,104,Insuficiencia Saldo,107
+940,Frangolandia,Detalhe,100280940,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,105,Frangolandia,108
+941,Indenizacao Artigo 479 - CLT,Detalhe,100280941,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,106,Indenizacao Artigo 479 - CLT,109
+942,1/12 de 13º Indenizado Aviso Previo,Detalhe,100280942,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,107,1/12 de 13º Indenizado Aviso Previo,110
+943,Desconto EPI CL 9 º CCT,Detalhe,100280943,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,108,Desconto EPI CL 9 º CCT,111
+944,Servicos em Consultoria de Agronomia,Detalhe,100280944,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,109,Servicos em Consultoria de Agronomia,112
+945,Repouso Remunerado,Detalhe,100280945,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,110,Repouso Remunerado,113
+946,Adicional de Periculosidade,Detalhe,100280946,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,111,Adicional de Periculosidade,114
+947,Outros Descontos,Detalhe,100280947,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,112,Outros Descontos,115
+948,Insuficiencia de Saldo,Detalhe,100280948,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,113,Insuficiencia de Saldo,116
+949,Hora Extra 60%,Detalhe,100280949,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,114,Hora Extra 60%,117
+950,Diferenca Salarial,Detalhe,100280950,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,115,Diferenca Salarial,118
+951,Indenizacao CCT REf. PLR,Detalhe,100280951,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,116,Indenizacao CCT REf. PLR,119
+952,Ferias Proporcionais,Detalhe,100280952,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,117,Ferias Proporcionais,120
+953,1/3 Ferias Proporcionais,Detalhe,100280953,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,118,1/3 Ferias Proporcionais,121
+954,Rateio CSC - CLT,Detalhe,100280954,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,119,Rateio CSC - CLT,122
+960,INSS sobre 13º Salario,Detalhe,100280960,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,120,INSS sobre 13º Salario,123
+992,Material de Expediente,Detalhe,100280992,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,121,Material de Expediente,124
+993,Despesas com Informatica,Detalhe,100280993,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,122,Despesas com Informatica,125
+994,Material para Avicultura,Detalhe,100280994,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,123,Material para Avicultura,126
+995,Residuos,Detalhe,100280995,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,124,Residuos,127
+996,Macro Ingrediente,Detalhe,100280996,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,125,Macro Ingrediente,128
+997,Frango Vivo (Compra),Detalhe,100280997,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,126,Frango Vivo (Compra),129
+1001,Transferencia de Custos,Detalhe,100281001,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,127,Transferencia de Custos,130
+1003,Variacao de Custos,Detalhe,100281003,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,128,Variacao de Custos,131
+1005,Lenha,Detalhe,100281005,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,129,Lenha,132
+1026,Pensao Alimenticia,Detalhe,100281026,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,130,Pensao Alimenticia,133
+1031,Estoque Inicial,Detalhe,100281031,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,131,Estoque Inicial,134
+1032,( - ) Devolucao sobre Compras,Detalhe,100281032,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,132,( - ) Devolucao sobre Compras,135
+1033,( - ) ICMS a Compensar,Detalhe,100281033,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,133,( - ) ICMS a Compensar,136
+1034,Estoque Final,Detalhe,100281034,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,134,Estoque Final,137
+1035,Compra de Ovos Fecundados,Detalhe,100281035,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,135,Compra de Ovos Fecundados,138
+1036,Prestacao de Servico de Incubacao,Detalhe,100281036,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,136,Prestacao de Servico de Incubacao,139
+1037,"Custo Terc, Indust. Racao",Detalhe,100281037,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,137,"Custo Terc, Indust. Racao",140
+1038,Prestacao de Servico da Osper,Detalhe,100281038,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,138,Prestacao de Servico da Osper,141
+1039,PPR CCT Sind. T. T. SJDR,Detalhe,100281039,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,139,PPR CCT Sind. T. T. SJDR,142
+1059,Custo Venda Ativo Imobilizado,Detalhe,100281059,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,140,Custo Venda Ativo Imobilizado,143
+1063,Gas - Amonia,Detalhe,100281063,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,141,Gas - Amonia,144
+1086,"Viagens, Estadias e Refeicao",Detalhe,100281086,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,142,"Viagens, Estadias e Refeicao",145
+1087,Curso e Treinamento,Detalhe,100281087,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,143,Curso e Treinamento,146
+1092,Fretes e Carretos,Detalhe,100281092,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,144,Fretes e Carretos,147
+1129,IRRF,Detalhe,100281129,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,145,IRRF,148
+1149,Servico de Corretagem,Detalhe,100281149,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,146,Servico de Corretagem,149
+1151,Seguro de Imoveis,Detalhe,100281151,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,147,Seguro de Imoveis,150
+1152,Aluguel,Detalhe,100281152,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,148,Aluguel,151
+1157,Pneus e Camaras,Detalhe,100281157,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,149,Pneus e Camaras,152
+1159,Material de Informatica,Detalhe,100281159,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,150,Material de Informatica,153
+1165,Provisao 13° Salarios,Detalhe,100281165,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,151,Provisao 13° Salarios,154
+1169,Taxa de GTA,Detalhe,100281169,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,152,Taxa de GTA,155
+1170,Manutencao em Veiculos,Detalhe,100281170,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,153,Manutencao em Veiculos,156
+1171,Mensalidades,Detalhe,100281171,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,154,Mensalidades,157
+1175,Multas de Transito,Detalhe,100281175,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,155,Multas de Transito,158
+1179,Servico de Consultoria e Assessoria,Detalhe,100281179,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,156,Servico de Consultoria e Assessoria,159
+1188,Material Intermediario,Detalhe,100281188,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,157,Material Intermediario,160
+1192,Conselho de Classe,Detalhe,100281192,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,158,Conselho de Classe,161
+1199,INSS Desoneracao,Detalhe,100281199,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,159,INSS Desoneracao,162
+1204,Linguica,Detalhe,100281204,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,160,Linguica,163
+1206,Vale Transporte,Detalhe,100281206,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,161,Vale Transporte,164
+1210,Acordo Trabalhista,Detalhe,100281210,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,162,Acordo Trabalhista,165
+1222,Custas Processuais,Detalhe,100281222,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,163,Custas Processuais,166
+1231,Premio,Detalhe,100281231,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,164,Premio,167
+1242,Aviso Previo Descontado na Rescisao,Detalhe,100281242,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,165,Aviso Previo Descontado na Rescisao,168
+1284,Ajuda Compensatoria,Detalhe,100281284,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,166,Ajuda Compensatoria,169
+1290,Servico de Industrializacao,Detalhe,100281290,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,167,Servico de Industrializacao,170
+1295,Ferias em Dobro,Detalhe,100281295,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,168,Ferias em Dobro,171
+1296,1/3 de Ferias em Dobro,Detalhe,100281296,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,169,1/3 de Ferias em Dobro,172
+1316,Bolsa Estagio,Detalhe,100281316,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,170,Bolsa Estagio,173
+1332,Amortizacoes,Detalhe,100281332,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,171,Amortizacoes,174
+1356,Reposicao de KM,Detalhe,100281356,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,172,Reposicao de KM,175
+1357,Transporte de Racao,Detalhe,100281357,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,173,Transporte de Racao,176
+1359,Produtos de Tratamento de Agua,Detalhe,100281359,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,174,Produtos de Tratamento de Agua,177
+1360,Transferencia Industrializados,Detalhe,100281360,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,175,Transferencia Industrializados,178
+1361,Frango Vivo (Transferencia),Detalhe,100281361,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,176,Frango Vivo (Transferencia),179
+1367,Remuneracao de Integrado,Detalhe,100281367,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,177,Remuneracao de Integrado,180
+1368,Servico de Apanha de Aves,Detalhe,100281368,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,178,Servico de Apanha de Aves,181
+1369,Rateio Producao Avicola,Detalhe,100281369,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,179,Rateio Producao Avicola,182
+1373,Variacao de Custo da Fabrica de Racao,Detalhe,100281373,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,180,Variacao de Custo da Fabrica de Racao,183
+1382,Ajuda de Custo,Detalhe,100281382,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,181,Ajuda de Custo,184
+1383,Desconto Rescisao TRCT,Detalhe,100281383,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,182,Desconto Rescisao TRCT,185
+1389,INSS Desoneracao,Detalhe,100281389,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,183,INSS Desoneracao,186
+1394,Lenha - Abatedouro,Detalhe,100281394,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,184,Lenha - Abatedouro,187
+1397,Seguros de Veiculos,Detalhe,100281397,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,185,Seguros de Veiculos,188
+1402,Perda por Roubo ou Deterioracao,Detalhe,100281402,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,186,Perda por Roubo ou Deterioracao,189
+1411,Combustiveis e Lubrificantes de Maquinas,Detalhe,100281411,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,187,Combustiveis e Lubrificantes de Maquinas,190
+1422,Taxas,Detalhe,100281422,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,188,Taxas,191
+1423,Multas Contratuais,Detalhe,100281423,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,189,Multas Contratuais,192
+1434,Produtos de Tratamento de Agua,Detalhe,100281434,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,190,Produtos de Tratamento de Agua,193
+1435,Perda por Roubo ou Deterioracao,Detalhe,100281435,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,191,Perda por Roubo ou Deterioracao,194
+1436,Remuneracao de Integrado,Detalhe,100281436,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,192,Remuneracao de Integrado,195
+1439,Provisao FGTS sobre Ferias e 1/3 de Ferias,Detalhe,100281439,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,193,Provisao FGTS sobre Ferias e 1/3 de Ferias,196
+1442,Provisao INSS sobre Ferias e 1/3 de Ferias,Detalhe,100281442,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,194,Provisao INSS sobre Ferias e 1/3 de Ferias,197
+1464,Vale Combustivel,Detalhe,100281464,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,195,Vale Combustivel,198
+1471,Plano Funerario,Detalhe,100281471,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,196,Plano Funerario,199
+1475,Pedagio e Avarias,Detalhe,100281475,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,197,Pedagio e Avarias,200
+1477,"Maquinas, Moveis e Utensilios",Detalhe,100281477,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,198,"Maquinas, Moveis e Utensilios",201
+1494,Multa FGTS,Detalhe,100281494,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,199,Multa FGTS,202
+1497,Provisao FGTS sobre 13° Salario,Detalhe,100281497,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,200,Provisao FGTS sobre 13° Salario,203
+1500,Material de Higienizacao e Limpeza,Detalhe,100281500,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,201,Material de Higienizacao e Limpeza,204
+1503,Material de Copa e Cozinha,Detalhe,100281503,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,202,Material de Copa e Cozinha,205
+1514,Manutencao Eletrica,Detalhe,100281514,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,203,Manutencao Eletrica,206
+1515,Manutencao Hidraulica,Detalhe,100281515,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,204,Manutencao Hidraulica,207
+1525,Contribuicao Sindical / Patronal / Conselho,Detalhe,100281525,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,205,Contribuicao Sindical / Patronal / Conselho,208
+1548,Transporte Frete Frango Vivo Comprado,Detalhe,100281548,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,206,Transporte Frete Frango Vivo Comprado,209
+1551,Frete Transferencia,Detalhe,100281551,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,207,Frete Transferencia,210
+1565,Amortizacao Direito de uso,Detalhe,100281565,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,208,Amortizacao Direito de uso,211
+1574,Descarte de Residuos,Detalhe,100281574,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,209,Descarte de Residuos,212
+1579,Lavagem de Veiculos,Detalhe,100281579,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,210,Lavagem de Veiculos,213
+1585,Provisao INSS sobre 13º Salario,Detalhe,100281585,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,211,Provisao INSS sobre 13º Salario,214
+1590,Servico de Setenciados - IPL's,Detalhe,100281590,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,212,Servico de Setenciados - IPL's,215
+1593,"Viagens, Estadias e Refeicao entre Empresas",Detalhe,100281593,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,213,"Viagens, Estadias e Refeicao entre Empresas",216
+1596,"Viagens, Estadias e Refeicao entre Empresas",Detalhe,100281596,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,214,"Viagens, Estadias e Refeicao entre Empresas",217
+1601,Rateio CSC - PJs,Detalhe,100281601,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,215,Rateio CSC - PJs,218
+1605,Transporte Frango Vivo Integrado,Detalhe,100281605,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,216,Transporte Frango Vivo Integrado,219
+1606,Transporte Frango Vivo Comprado,Detalhe,100281605,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,217,Transporte Frango Vivo Comprado,220
+1617,Gratificaco de Funcao,Detalhe,100281617,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,218,Gratificaco de Funcao,221
+1618,Assiduidade,Detalhe,100281618,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,219,Assiduidade,222
+1619,Cesta Basica,Detalhe,100281619,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,220,Cesta Basica,223
+1620,Frango Beneficio Funcionario,Detalhe,100281620,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,221,Frango Beneficio Funcionario,224
+1621,Kit Verdura/Caixa de Leite,Detalhe,100281621,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,222,Kit Verdura/Caixa de Leite,225
+1622,PRV,Detalhe,100281622,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,223,PRV,226
+1623,PPR,Detalhe,100281623,-1,4,CUSTO PROD/MERC VENDIDOS,6,Custo Geral de Producao,224,PPR,227
+,(=)LUCRO BRUTO,Subtotal,10010,1,5,LUCRO BRUTO,,,,,228
+252,Salarios e Ordenados,Detalhe,100120252,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,225,Salarios e Ordenados,229
+253,Provisao de Ferias,Detalhe,100120253,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,226,Provisao de Ferias,230
+254,Pro-Labore,Detalhe,100120254,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,227,Pro-Labore,231
+255,Indenizacoes e Aviso Previo,Detalhe,100120255,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,228,Indenizacoes e Aviso Previo,232
+256,Assistencia Medica,Detalhe,100120256,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,229,Assistencia Medica,233
+257,Uniformes e Equipamentos de Protecao,Detalhe,100120257,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,230,Uniformes e Equipamentos de Protecao,234
+258,Vale Transporte,Detalhe,100120258,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,231,Vale Transporte,235
+259,Cursos e Treinamentos,Detalhe,100120259,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,232,Cursos e Treinamentos,236
+261,INSS Empresa,Detalhe,100120261,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,233,INSS Empresa,237
+262,FGTS,Detalhe,100120262,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,234,FGTS,238
+264,Servicos Profissionais Contratados P. Juridica,Detalhe,100120264,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,235,Servicos Profissionais Contratados P. Juridica,239
+265,Servicos Profissionais Contratados P. Fisica,Detalhe,100120265,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,236,Servicos Profissionais Contratados P. Fisica,240
+266,Analises Laboratoriais,Detalhe,100120266,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,237,Analises Laboratoriais,241
+267,"Viagens, Estadias e Refeicao",Detalhe,100120267,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,238,"Viagens, Estadias e Refeicao",242
+268,Servicos em Consultoria de Agronomia,Detalhe,100120268,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,239,Servicos em Consultoria de Agronomia,243
+270,Manutencao e Conservacao de Benfeitorias,Detalhe,100120270,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,240,Manutencao e Conservacao de Benfeitorias,244
+271,Honorarios Advocaticios,Detalhe,100120271,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,241,Honorarios Advocaticios,245
+272,Material de Expediente,Detalhe,100120272,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,242,Material de Expediente,246
+273,Material de Informatica,Detalhe,100120273,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,243,Material de Informatica,247
+275,Depreciacoes,Detalhe,100120275,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,244,Depreciacoes,248
+277,Energia Eletrica,Detalhe,100120277,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,245,Energia Eletrica,249
+278,Agua e Saneamento,Detalhe,100120278,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,246,Agua e Saneamento,250
+279,"Comunicacoes (Telefone, Correio e Internet)",Detalhe,100120279,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,247,"Comunicacoes (Telefone, Correio e Internet)",251
+281,Impostos e Taxas,Detalhe,100120281,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,248,Impostos e Taxas,252
+282,Multas por InfracoesobreErros,Detalhe,100120282,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,249,Multas por InfracoesobreErros,253
+284,Combustiveis e Lubrificantes,Detalhe,100120284,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,250,Combustiveis e Lubrificantes,254
+285,Pecas e Servicos para Manutencao de Veiculos,Detalhe,100120285,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,251,Pecas e Servicos para Manutencao de Veiculos,255
+286,IPVA,Detalhe,100120286,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,252,IPVA,256
+287,Multas de Transito,Detalhe,100120287,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,253,Multas de Transito,257
+289,Leasing,Detalhe,100120289,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,254,Leasing,258
+290,Bens de Natureza Permanente,Detalhe,100120290,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,255,Bens de Natureza Permanente,259
+291,Assinaturas de Jornais e Revistas,Detalhe,100120291,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,256,Assinaturas de Jornais e Revistas,260
+292,Seguros,Detalhe,100120292,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,257,Seguros,261
+293,Acordo Judicial,Detalhe,100120293,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,258,Acordo Judicial,262
+295,Despesas nao Dedutiveis,Detalhe,100120295,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,259,Despesas nao Dedutiveis,263
+296,Multas Contratuais,Detalhe,100120296,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,260,Multas Contratuais,264
+297,Aluguel,Detalhe,100120297,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,261,Aluguel,265
+864,Bens de Pequeno Valor,Detalhe,100120864,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,262,Bens de Pequeno Valor,266
+865,Servico de Consultoria e Assessoria,Detalhe,100120865,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,263,Servico de Consultoria e Assessoria,267
+866,Medicina do Trabalho,Detalhe,100120866,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,264,Medicina do Trabalho,268
+867,Mensalidades,Detalhe,100120867,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,265,Mensalidades,269
+868,Despesas Legais,Detalhe,100120868,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,266,Despesas Legais,270
+869,"Maquinas, Moveis e Utensilios",Detalhe,100120869,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,267,"Maquinas, Moveis e Utensilios",271
+870,Acordo Trabalhista,Detalhe,100120870,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,268,Acordo Trabalhista,272
+871,Despesas Cartorio,Detalhe,100120871,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,269,Despesas Cartorio,273
+872,Trienio,Detalhe,100120872,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,270,Trienio,274
+873,Adicional Noturno,Detalhe,100120873,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,271,Adicional Noturno,275
+874,Hora Extra 50%,Detalhe,100120874,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,272,Hora Extra 50%,276
+875,DSR sobre Adicionais,Detalhe,100120875,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,273,DSR sobre Adicionais,277
+878,Provisao 1/3 sobre Ferias,Detalhe,100120878,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,274,Provisao 1/3 sobre Ferias,278
+879,Dia em Dobro,Detalhe,100120879,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,275,Dia em Dobro,279
+880,Salario Quitacao Demissao,Detalhe,100120880,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,276,Salario Quitacao Demissao,280
+881,Decimo Terceiro Proporcional Demissao,Detalhe,100120881,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,277,Decimo Terceiro Proporcional Demissao,281
+882,Transporte de Funcionarios,Detalhe,100120882,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,278,Transporte de Funcionarios,282
+883,Seguro de Vida Funcionarios,Detalhe,100120883,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,279,Seguro de Vida Funcionarios,283
+884,Hora Extra 70%,Detalhe,100120884,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,280,Hora Extra 70%,284
+886,Diferenca Salarial,Detalhe,100120886,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,281,Diferenca Salarial,285
+887,Despesas com Informatica,Detalhe,100120887,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,282,Despesas com Informatica,286
+888,Salario Familia,Detalhe,100120888,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,283,Salario Familia,287
+890,Salario Quitacao Pedido de Demissao,Detalhe,100120890,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,284,Salario Quitacao Pedido de Demissao,288
+891,Decimo Terceiro Prop. Ped. Demissao,Detalhe,100120891,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,285,Decimo Terceiro Prop. Ped. Demissao,289
+892,Pensao Alimenticia,Detalhe,100120892,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,286,Pensao Alimenticia,290
+893,Verbas Indenizatorias,Detalhe,100120893,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,287,Verbas Indenizatorias,291
+894,Aviso Previo Indenizado,Detalhe,100120894,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,288,Aviso Previo Indenizado,292
+895,Decimo Terceiro Salario,Detalhe,100120895,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,289,Decimo Terceiro Salario,293
+896,Hora Extra 1ª Hora,Detalhe,100120896,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,290,Hora Extra 1ª Hora,294
+897,Hora Extra 2ª Hora,Detalhe,100120897,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,291,Hora Extra 2ª Hora,295
+898,Indenizacao CCT,Detalhe,100120898,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,292,Indenizacao CCT,296
+899,Rateio CSC - CLT,Detalhe,100120899,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,293,Rateio CSC - CLT,297
+900,Salario Maternidade,Detalhe,100120900,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,294,Salario Maternidade,298
+901,Adicional de Insalubridade,Detalhe,100120901,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,295,Adicional de Insalubridade,299
+902,Acordo Trabalhista,Detalhe,100120902,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,296,Acordo Trabalhista,300
+955,INSS Terceiros,Detalhe,100120955,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,297,INSS Terceiros,301
+956,INSS Acidente de Trabalho,Detalhe,100120956,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,298,INSS Acidente de Trabalho,302
+961,INSS sobre 13º Salario,Detalhe,100120961,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,299,INSS sobre 13º Salario,303
+962,Sobre Aviso,Detalhe,100120962,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,300,Sobre Aviso,304
+963,Insuficiencia de Saldo,Detalhe,100120963,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,301,Insuficiencia de Saldo,305
+964,Adiantamento Decimo Terceiro Salario,Detalhe,100120964,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,302,Adiantamento Decimo Terceiro Salario,306
+965,Aviso Previo Descontado na Rescisao,Detalhe,100120965,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,303,Aviso Previo Descontado na Rescisao,307
+966,Custas Processuais,Detalhe,100120966,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,304,Custas Processuais,308
+967,Contribuicao Sindical / Patronal / Conselho,Detalhe,100120967,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,305,Contribuicao Sindical / Patronal / Conselho,309
+968,Impostos e Taxas Municipais,Detalhe,100120968,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,306,Impostos e Taxas Municipais,310
+969,Impostos e Taxas Estaduais,Detalhe,100120969,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,307,Impostos e Taxas Estaduais,311
+970,Impostos e Taxas Federais,Detalhe,100120970,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,308,Impostos e Taxas Federais,312
+971,ICMS Difal,Detalhe,100120971,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,309,ICMS Difal,313
+972,Taxas IMA / IEF,Detalhe,100120972,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,310,Taxas IMA / IEF,314
+973,INSS Desoneracao,Detalhe,100120973,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,311,INSS Desoneracao,315
+1042,Comissao,Detalhe,100121042,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,312,Comissao,316
+1081,Servico de Corretagem,Detalhe,100121081,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,313,Servico de Corretagem,317
+1082,INSS Produtor Rural,Detalhe,100121082,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,314,INSS Produtor Rural,318
+1083,Despesa com Assistencia Medica/Odontologica/ExamesobreFarmacia,Detalhe,100121083,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,315,Despesa com Assistencia Medica/Odontologica/ExamesobreFarmacia,319
+1084,Adicional Periculosidade,Detalhe,100121084,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,316,Adicional Periculosidade,320
+1085,1/12 de 13° Indenizado Aviso Previo,Detalhe,100121085,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,317,1/12 de 13° Indenizado Aviso Previo,321
+1089,Servico de Manutencao de Veiculo,Detalhe,100121089,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,318,Servico de Manutencao de Veiculo,322
+1093,Fretes e Carretos,Detalhe,100121093,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,319,Fretes e Carretos,323
+1147,Seguro de Veiculos,Detalhe,100121147,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,320,Seguro de Veiculos,324
+1148,Pneus e Camaras,Detalhe,100121148,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,321,Pneus e Camaras,325
+1153,Indenizacao Artigo 479 - CLT,Detalhe,100121153,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,322,Indenizacao Artigo 479 - CLT,326
+1160,Alimentacao do Trabalhador,Detalhe,100121160,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,323,Alimentacao do Trabalhador,327
+1164,Provisao 13° Salarios,Detalhe,100121164,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,324,Provisao 13° Salarios,328
+1180,Adicional de Periculosidade,Detalhe,100121180,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,325,Adicional de Periculosidade,329
+1193,Conselho de Classe,Detalhe,100121193,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,326,Conselho de Classe,330
+1200,INSS Desoneracao,Detalhe,100121200,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,327,INSS Desoneracao,331
+1232,Premio,Detalhe,100121232,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,328,Premio,332
+1234,Ferias Proporcionais,Detalhe,100121234,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,329,Ferias Proporcionais,333
+1235,1/3 Ferias Proporcionais,Detalhe,100121235,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,330,1/3 Ferias Proporcionais,334
+1250,PPR CCT Sind. T. T. SJDR,Detalhe,100121250,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,331,PPR CCT Sind. T. T. SJDR,335
+1268,Despesa com Pis,Detalhe,100121268,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,332,Despesa com Pis,336
+1269,Despesa com Cofins,Detalhe,100121269,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,333,Despesa com Cofins,337
+1283,Desconto EPI CL 9 º CCT,Detalhe,100121283,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,334,Desconto EPI CL 9 º CCT,338
+1297,Ferias em Dobro,Detalhe,100121297,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,335,Ferias em Dobro,339
+1298,1/3 Abono de Ferias em Dobro,Detalhe,100121298,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,336,1/3 Abono de Ferias em Dobro,340
+1307,IRRF,Detalhe,100121307,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,337,IRRF,341
+1315,Bolsa Estagio,Detalhe,100121315,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,338,Bolsa Estagio,342
+1317,Despesas com Contrato Bancario,Detalhe,100121317,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,339,Despesas com Contrato Bancario,343
+1358,Reposicao de KM,Detalhe,100121358,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,340,Reposicao de KM,344
+1380,Ajuda de Custo,Detalhe,100121380,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,341,Ajuda de Custo,345
+1388,Indenizacao Art 480 CLT,Detalhe,100121388,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,342,Indenizacao Art 480 CLT,346
+1426,Amortizacoes,Detalhe,100121426,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,343,Amortizacoes,347
+1440,Provisao FGTS sobre Ferias e 1/3 de Ferias,Detalhe,100121440,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,344,Provisao FGTS sobre Ferias e 1/3 de Ferias,348
+1443,Provisao INSS sobre Ferias e 1/3 de Ferias,Detalhe,100121443,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,345,Provisao INSS sobre Ferias e 1/3 de Ferias,349
+1462,Confraternizacao e Eventos,Detalhe,100121462,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,346,Confraternizacao e Eventos,350
+1465,Vale Combustivel,Detalhe,100121465,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,347,Vale Combustivel,351
+1472,Plano Funerario,Detalhe,100121472,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,348,Plano Funerario,352
+1474,Pedagio e Avarias,Detalhe,100121474,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,349,Pedagio e Avarias,353
+1478,"Maquinas, Moveis e Utensilios",Detalhe,100121478,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,350,"Maquinas, Moveis e Utensilios",354
+1495,Multa FGTS,Detalhe,100121495,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,351,Multa FGTS,355
+1498,Provisao FGTS sobre 13° Salario,Detalhe,100121498,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,352,Provisao FGTS sobre 13° Salario,356
+1501,Material de Higienizacao e Limpeza,Detalhe,100121501,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,353,Material de Higienizacao e Limpeza,357
+1504,Material de Copa e Cozinha,Detalhe,100121504,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,354,Material de Copa e Cozinha,358
+1516,Manutencao Eletrica,Detalhe,100121516,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,355,Manutencao Eletrica,359
+1517,Manutencao Hidraulica,Detalhe,100121517,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,356,Manutencao Hidraulica,360
+1527,Perda por Roubo ou Deterioracao,Detalhe,100121527,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,357,Perda por Roubo ou Deterioracao,361
+1539,Amortizacao Direito de uso,Detalhe,100121539,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,358,Amortizacao Direito de uso,362
+1552,Servico de Comunicacao e Divulgacao,Detalhe,100121552,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,359,Servico de Comunicacao e Divulgacao,363
+1580,Lavagem de Veiculos,Detalhe,100121580,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,360,Lavagem de Veiculos,364
+1586,Provisao INSS sobre 13º Salario,Detalhe,100121586,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,361,Provisao INSS sobre 13º Salario,365
+1592,Despesa com Cartao de Credito Corporativo,Detalhe,100121592,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,362,Despesa com Cartao de Credito Corporativo,366
+1594,"Viagens, Estadias e Refeicao entre Empresas",Detalhe,100121594,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,363,"Viagens, Estadias e Refeicao entre Empresas",367
+1602,Rateio CSC - PJs,Detalhe,100121602,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,364,Rateio CSC - PJs,368
+1624,Gratificaco de Funcao,Detalhe,100121624,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,365,Gratificaco de Funcao,369
+1625,Assiduidade,Detalhe,100121625,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,366,Assiduidade,370
+1626,Cesta Basica,Detalhe,100121626,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,367,Cesta Basica,371
+1627,Frango Beneficio Funcionario,Detalhe,100121627,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,368,Frango Beneficio Funcionario,372
+1628,Kit Verdura/Caixa de Leite,Detalhe,100121628,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,369,Kit Verdura/Caixa de Leite,373
+1629,PRV,Detalhe,100121629,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,370,PRV,374
+1630,PPR,Detalhe,100121630,-1,6,DESPESAS OPERACIONAIS,7,Despesas Administrativas,371,PPR,375
+301,Salarios e Ordenados,Detalhe,100130301,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,372,Salarios e Ordenados,376
+302,Provisao de Ferias,Detalhe,100130302,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,373,Provisao de Ferias,377
+303,Indenizacoes e Aviso Previo,Detalhe,100130303,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,374,Indenizacoes e Aviso Previo,378
+304,Comissao sobre Vendas,Detalhe,100130304,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,375,Comissao sobre Vendas,379
+305,Assistencia Medica e Odontologica,Detalhe,100130305,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,376,Assistencia Medica e Odontologica,380
+306,Uniformes e Equipamentos de Protecao,Detalhe,100130306,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,377,Uniformes e Equipamentos de Protecao,381
+307,Hora Extra 100%,Detalhe,100130307,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,378,Hora Extra 100%,382
+309,INSS Empresa,Detalhe,100130309,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,379,INSS Empresa,383
+310,FGTS,Detalhe,100130310,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,380,FGTS,384
+312,Servico de Propaganda e Publicidade,Detalhe,100130312,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,381,Servico de Propaganda e Publicidade,385
+313,"Viagens, Estadias e Refeicao",Detalhe,100130313,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,382,"Viagens, Estadias e Refeicao",386
+316,Depreciacoes,Detalhe,100130316,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,383,Depreciacoes,387
+318,Energia Eletrica,Detalhe,100130318,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,384,Energia Eletrica,388
+319,Agua e Saneamento,Detalhe,100130319,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,385,Agua e Saneamento,389
+320,"Comunicacoes (Telefone, Correio e Internet)",Detalhe,100130320,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,386,"Comunicacoes (Telefone, Correio e Internet)",390
+323,Combustiveis e Lubrificantes,Detalhe,100130323,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,387,Combustiveis e Lubrificantes,391
+324,Servico de Manutencao de Veiculos,Detalhe,100130324,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,388,Servico de Manutencao de Veiculos,392
+325,IPVA,Detalhe,100130325,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,389,IPVA,393
+326,Multas de Transito,Detalhe,100130326,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,390,Multas de Transito,394
+329,Provisao para Creditos de Liquidacao Duvidosa,Detalhe,100130329,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,391,Provisao para Creditos de Liquidacao Duvidosa,395
+356,Fretes e Entregas de Mercadorias,Detalhe,100130356,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,392,Fretes e Entregas de Mercadorias,396
+389,Doacoes e Bonificacoes,Detalhe,100130389,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,393,Doacoes e Bonificacoes,397
+975,Pneus e Camaras,Detalhe,100130975,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,394,Pneus e Camaras,398
+976,Pecas e Servicos para Manutencao de Veiculos,Detalhe,100130976,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,395,Pecas e Servicos para Manutencao de Veiculos,399
+977,Emplacamentos,Detalhe,100130977,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,396,Emplacamentos,400
+1158,Material de Propaganda e Publicidade,Detalhe,100131158,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,397,Material de Propaganda e Publicidade,401
+1172,Mensalidades,Detalhe,100131172,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,398,Mensalidades,402
+1173,Comissao de Vendas Ext Pessoa Fisica,Detalhe,100131173,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,399,Comissao de Vendas Ext Pessoa Fisica,403
+1174,Comissao de Vendas Ext Pessoa Juridica,Detalhe,100131174,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,400,Comissao de Vendas Ext Pessoa Juridica,404
+1176,Seguros de Veiculos,Detalhe,100131176,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,401,Seguros de Veiculos,405
+1182,PPR CCT Sind. T. T. SJDR,Detalhe,100131182,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,402,PPR CCT Sind. T. T. SJDR,406
+1191,Servico de Consultoria e Assessoria,Detalhe,100131191,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,403,Servico de Consultoria e Assessoria,407
+1211,Acordo Judicial,Detalhe,100131211,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,404,Acordo Judicial,408
+1212,Material de Expediente,Detalhe,100131212,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,405,Material de Expediente,409
+1215,Manutencao e Conservacao de Benfeitorias,Detalhe,100131215,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,406,Manutencao e Conservacao de Benfeitorias,410
+1217,Material de Informatica,Detalhe,100131217,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,407,Material de Informatica,411
+1218,Bens de Pequeno Valor,Detalhe,100131218,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,408,Bens de Pequeno Valor,412
+1219,Servicos Profissionais Contratados P. Juridica,Detalhe,100131219,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,409,Servicos Profissionais Contratados P. Juridica,413
+1224,Provisao 1/3 sobre Ferias,Detalhe,100131224,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,410,Provisao 1/3 sobre Ferias,414
+1225,Dia em Dobro,Detalhe,100131225,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,411,Dia em Dobro,415
+1226,Hora Extra 50%,Detalhe,100131226,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,412,Hora Extra 50%,416
+1227,DSR sobre Adicionais,Detalhe,100131227,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,413,DSR sobre Adicionais,417
+1228,Decimo Terceiro Prop. Demissao,Detalhe,100131228,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,414,Decimo Terceiro Prop. Demissao,418
+1229,INSS Terceiros,Detalhe,100131229,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,415,INSS Terceiros,419
+1230,INSS Acidente de Trabalho,Detalhe,100131230,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,416,INSS Acidente de Trabalho,420
+1233,Premio,Detalhe,100131233,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,417,Premio,421
+1236,Adicional 1/3 Ferias,Detalhe,100131236,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,418,Adicional 1/3 Ferias,422
+1237,Trienio,Detalhe,100131237,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,419,Trienio,423
+1238,Adicional de Insalubridade,Detalhe,100131238,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,420,Adicional de Insalubridade,424
+1239,Adicional Noturno,Detalhe,100131239,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,421,Adicional Noturno,425
+1240,Adicional de Periculosidade,Detalhe,100131240,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,422,Adicional de Periculosidade,426
+1241,Insuficiencia de Saldo,Detalhe,100131241,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,423,Insuficiencia de Saldo,427
+1251,Verbas Indenizatorias,Detalhe,100131251,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,424,Verbas Indenizatorias,428
+1252,Provisao 13° Salarios,Detalhe,100131252,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,425,Provisao 13° Salarios,429
+1253,Salario Quitacao Demissao,Detalhe,100131253,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,426,Salario Quitacao Demissao,430
+1254,Transporte de Funcionarios,Detalhe,100131254,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,427,Transporte de Funcionarios,431
+1255,Alimentacao do Trabalhador,Detalhe,100131255,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,428,Alimentacao do Trabalhador,432
+1259,Amostra Gratis,Detalhe,100131259,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,429,Amostra Gratis,433
+1286,Seguro de Vida Funcionarios,Detalhe,100131286,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,430,Seguro de Vida Funcionarios,434
+1308,INSS sobre 13º Salario,Detalhe,100131308,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,431,INSS sobre 13º Salario,435
+1309,Pensao Alimenticia,Detalhe,100131309,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,432,Pensao Alimenticia,436
+1354,Decimo Terceiro Prop. Ped. Demissao,Detalhe,100131354,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,433,Decimo Terceiro Prop. Ped. Demissao,437
+1355,Salario Quitacao Ped. Demissao,Detalhe,100131355,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,434,Salario Quitacao Ped. Demissao,438
+1365,Vale Transporte,Detalhe,100131365,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,435,Vale Transporte,439
+1370,Bolsa Estagio,Detalhe,100131370,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,436,Bolsa Estagio,440
+1381,Despesa com Assistencia Medica/Odontologica/ExamesobreFarmacia,Detalhe,100131381,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,437,Despesa com Assistencia Medica/Odontologica/ExamesobreFarmacia,441
+1390,Rateio CSC - CLT,Detalhe,100131390,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,438,Rateio CSC - CLT,442
+1428,Ferias em Dobro,Detalhe,100131428,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,439,Ferias em Dobro,443
+1429,1/3 de Ferias em Dobro,Detalhe,100131429,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,440,1/3 de Ferias em Dobro,444
+1430,Cestas de Natal,Detalhe,100131430,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,441,Cestas de Natal,445
+1441,Provisao FGTS sobre Ferias e 1/3 de Ferias,Detalhe,100131441,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,442,Provisao FGTS sobre Ferias e 1/3 de Ferias,446
+1444,Provisao INSS sobre Ferias e 1/3 de Ferias,Detalhe,100131444,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,443,Provisao INSS sobre Ferias e 1/3 de Ferias,447
+1446,Aluguel,Detalhe,100131446,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,444,Aluguel,448
+1451,Taxas,Detalhe,100131451,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,445,Taxas,449
+1460,Ferias Proporcionais,Detalhe,100131460,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,446,Ferias Proporcionais,450
+1461,1/3 Ferias Proporcionais,Detalhe,100131461,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,447,1/3 Ferias Proporcionais,451
+1466,Vale Combustivel,Detalhe,100131466,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,448,Vale Combustivel,452
+1467,Indenizacao Art 480 CLT,Detalhe,100131467,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,449,Indenizacao Art 480 CLT,453
+1468,Desconto EPI CL 9 º CCT,Detalhe,100131468,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,450,Desconto EPI CL 9 º CCT,454
+1473,Plano Funerario,Detalhe,100131473,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,451,Plano Funerario,455
+1476,Pedagio e Avarias,Detalhe,100131476,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,452,Pedagio e Avarias,456
+1479,"Maquinas, Moveis e Utensilios",Detalhe,100131479,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,453,"Maquinas, Moveis e Utensilios",457
+1488,Acordo Trabalhista,Detalhe,100131488,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,454,Acordo Trabalhista,458
+1496,Multa FGTS,Detalhe,100131496,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,455,Multa FGTS,459
+1499,Provisao FGTS sobre 13° Salario,Detalhe,100131499,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,456,Provisao FGTS sobre 13° Salario,460
+1502,Material de Higienizacao e Limpeza,Detalhe,100131502,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,457,Material de Higienizacao e Limpeza,461
+1505,Material de Copa e Cozinha,Detalhe,100131505,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,458,Material de Copa e Cozinha,462
+1518,Manutencao Eletrica,Detalhe,100131518,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,459,Manutencao Eletrica,463
+1519,Manutencao Hidraulica,Detalhe,100131519,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,460,Manutencao Hidraulica,464
+1520,INSS Desoneracao,Detalhe,100131520,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,461,INSS Desoneracao,465
+1521,1/12 de 13º Indenizado Aviso Previo,Detalhe,100131521,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,462,1/12 de 13º Indenizado Aviso Previo,466
+1524,Indenizacao Artigo 479 - CLT,Detalhe,100131524,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,463,Indenizacao Artigo 479 - CLT,467
+1526,Contribuicao Sindical / Patronal / Conselho,Detalhe,100131526,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,464,Contribuicao Sindical / Patronal / Conselho,468
+1528,Servico de Armazenagem,Detalhe,100131528,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,465,Servico de Armazenagem,469
+1554,Lubrificante de Maquina,Detalhe,100131554,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,466,Lubrificante de Maquina,470
+1555,Gas - Amonia,Detalhe,100131555,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,467,Gas - Amonia,471
+1557,Amortizacao Direito de uso,Detalhe,100131557,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,468,Amortizacao Direito de uso,472
+1558,Amortizacoes,Detalhe,100131558,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,469,Amortizacoes,473
+1567,Material de Embalagem,Detalhe,100131567,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,470,Material de Embalagem,474
+1569,Manutencao de Maquinas e Equipamentos,Detalhe,100131569,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,471,Manutencao de Maquinas e Equipamentos,475
+1581,Lavagem de Veiculos,Detalhe,100131581,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,472,Lavagem de Veiculos,476
+1583,Fretes e Carretos,Detalhe,100131583,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,473,Fretes e Carretos,477
+1587,Provisao INSS sobre 13º Salario,Detalhe,100131587,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,474,Provisao INSS sobre 13º Salario,478
+1595,"Viagens, Estadias e Refeicao entre Empresas",Detalhe,100131595,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,475,"Viagens, Estadias e Refeicao entre Empresas",479
+1598,"Viagens, Estadias e Refeicao entre Empresas",Detalhe,100131598,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,476,"Viagens, Estadias e Refeicao entre Empresas",480
+1603,Rateio CSC - PJs,Detalhe,100131603,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,477,Rateio CSC - PJs,481
+1632,Cesta Basica,Detalhe,100131632,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,478,Cesta Basica,482
+1633,Frango Beneficio Funcionario,Detalhe,100131633,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,479,Frango Beneficio Funcionario,483
+1634,Kit Verdura/Caixa de Leite,Detalhe,100131634,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,480,Kit Verdura/Caixa de Leite,484
+1635,PRV,Detalhe,100131635,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,481,PRV,485
+1636,PPR,Detalhe,100131636,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,482,PPR,486
+1637,Salario Familia,Detalhe,100131637,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,483,Salario Familia,487
+1638,Gratificacao de Funcao,Detalhe,100131638,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,484,Gratificacao de Funcao,488
+1639,Assiduidade,Detalhe,100131639,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,485,Assiduidade,489
+1646,Aviso Previo Descontado na Rescisao,Detalhe,100131646,-1,6,DESPESAS OPERACIONAIS,8,Despesas ComerciaisobreLogisticasobreExpedicao,486,Aviso Previo Descontado na Rescisao,490
+1018,Multas de Transito,Detalhe,100161018,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,487,Multas de Transito,491
+1019,Previdencia Privada Banco do Brasil,Detalhe,100161019,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,488,Previdencia Privada Banco do Brasil,492
+1020,Previdencia Privada C.E.F.,Detalhe,100161020,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,489,Previdencia Privada C.E.F.,493
+1040,Patrocinio e Doacoes,Detalhe,100161040,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,490,Patrocinio e Doacoes,494
+1041,Despesas nao Dedutiveis,Detalhe,100161041,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,491,Despesas nao Dedutiveis,495
+1066,Despesa com Viagem,Detalhe,100161066,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,492,Despesa com Viagem,496
+1120,MultasobreInfracoes Fiscais,Detalhe,100161120,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,493,MultasobreInfracoes Fiscais,497
+1162,DAE GTA Integrados,Detalhe,100161162,-1,7,OUTRAS DESP NAO OPERACIONAIS,9,Despesas nao Dedutiveis,494,DAE GTA Integrados,498
+1203,Credito INSS Verbas Indenizatorias,Detalhe,100211203,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,495,Credito INSS Verbas Indenizatorias,499
+1208,Ganhos e Perdas de Capital,Detalhe,100211208,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,496,Ganhos e Perdas de Capital,500
+1213,Receitas Operacionais,Detalhe,100211213,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,497,Receitas Operacionais,501
+1216,Bonificacoes Recebidas,Detalhe,100211216,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,498,Bonificacoes Recebidas,502
+1256,Credito PIS,Detalhe,100211256,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,499,Credito PIS,503
+1257,Credito COFINS,Detalhe,100211257,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,500,Credito COFINS,504
+1258,Venda de Sucata,Detalhe,100211258,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,501,Venda de Sucata,505
+1293,Credito de CSRF,Detalhe,100211293,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,502,Credito de CSRF,506
+1294,Credito de IRRF,Detalhe,100211294,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,503,Credito de IRRF,507
+1319,Revenda de Sal Moido,Detalhe,100211319,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,504,Revenda de Sal Moido,508
+1334,Revenda de Soja,Detalhe,100211334,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,505,Revenda de Soja,509
+1335,Revenda de Quirela,Detalhe,100211335,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,506,Revenda de Quirela,510
+1340,Revenda de Materia Prima,Detalhe,100211340,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,507,Revenda de Materia Prima,511
+1353,Prestacao de Servicos de Secagem de Milho,Detalhe,100211353,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,508,Prestacao de Servicos de Secagem de Milho,512
+1384,Credito de PIS e COFINS,Detalhe,100211384,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,509,Credito de PIS e COFINS,513
+1438,Indenizacoes de Seguros Recebidas,Detalhe,100211438,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,510,Indenizacoes de Seguros Recebidas,514
+1513,Ganho Secagem de Milho,Detalhe,100211513,1,9,OUTRAS RECEITAS OPERACIONAIS,10,Outras Receitas Operacionais,511,Ganho Secagem de Milho,515
+1433,Provisao Perda ICMS,Detalhe,100331433,-1,9,OUTRAS RECEITAS OPERACIONAIS,11,Outras Despesas Operacionais,512,Provisao Perda ICMS,516
+1437,Despesas Operacionais,Detalhe,100331437,-1,9,OUTRAS RECEITAS OPERACIONAIS,11,Outras Despesas Operacionais,513,Despesas Operacionais,517
+1506,Provisoes Processos Ambientais,Detalhe,100331506,-1,9,OUTRAS RECEITAS OPERACIONAIS,11,Outras Despesas Operacionais,514,Provisoes Processos Ambientais,518
+1507,Provisoes Processos Civeis,Detalhe,100331507,-1,9,OUTRAS RECEITAS OPERACIONAIS,11,Outras Despesas Operacionais,515,Provisoes Processos Civeis,519
+1508,Provisoes Processos Trabalhistas,Detalhe,100331508,-1,9,OUTRAS RECEITAS OPERACIONAIS,11,Outras Despesas Operacionais,516,Provisoes Processos Trabalhistas,520
+1510,Despesa de IRPJ,Detalhe,100331510,-1,9,OUTRAS RECEITAS OPERACIONAIS,11,Outras Despesas Operacionais,517,Despesa de IRPJ,521
+1511,Despesa de CSLL,Detalhe,100331511,-1,9,OUTRAS RECEITAS OPERACIONAIS,11,Outras Despesas Operacionais,518,Despesa de CSLL,522
+,(=)LUCRO OPERACIONAL LIQUIDO (EBIT),Subtotal,10022,1,10,LUCRO OPERACIONAL LIQUIDO (EBIT),,,,,523
+340,Juros,Detalhe,100290340,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,519,Juros,524
+341,Despesas Bancarias,Detalhe,100290341,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,520,Despesas Bancarias,525
+342,Descontos Concedidos,Detalhe,100290342,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,521,Descontos Concedidos,526
+344,Variacoes Monetarias,Detalhe,100290344,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,522,Variacoes Monetarias,527
+345,JurosobreMulta de Emprestimos e Financiamentos,Detalhe,100290345,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,523,JurosobreMulta de Emprestimos e Financiamentos,528
+346,Tarifas de Cobranca de Titulos,Detalhe,100290346,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,524,Tarifas de Cobranca de Titulos,529
+974,Perdas no Recebimento de Creditos,Detalhe,100290974,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,525,Perdas no Recebimento de Creditos,530
+1061,Bonificacoes Concedidas,Detalhe,100291061,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,526,Bonificacoes Concedidas,531
+1079,Amostra Gratis,Detalhe,100291079,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,527,Amostra Gratis,532
+1166,Provisao JurosobreMulta Sobre Tributos,Detalhe,100291166,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,528,Provisao JurosobreMulta Sobre Tributos,533
+1177,Seguro Prestamista,Detalhe,100291177,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,529,Seguro Prestamista,534
+1189,Outras Despesas Financeiras,Detalhe,100291189,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,530,Outras Despesas Financeiras,535
+1289,Despesa com Duplicatas Descontadas,Detalhe,100291289,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,531,Despesa com Duplicatas Descontadas,536
+1313,Perdas com Acordos de Fornecedores,Detalhe,100291313,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,532,Perdas com Acordos de Fornecedores,537
+1417,Despesa com IOF,Detalhe,100291417,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,533,Despesa com IOF,538
+1547,Juros sobre Direito de uso Arrendameto Mercantil,Detalhe,100291547,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,534,Juros sobre Direito de uso Arrendameto Mercantil,539
+1566,JurosobreEncargos Sobre FGTS,Detalhe,100291566,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,535,JurosobreEncargos Sobre FGTS,540
+1568,Provisao JurosobreMulta de Emprestimos e Financimentos,Detalhe,100291568,-1,11,OUTRAS RECEITAS/DESPESAS,12,Despesas Financeiras,536,Provisao JurosobreMulta de Emprestimos e Financimentos,541
+333,Juros Recebidos,Detalhe,100300333,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,537,Juros Recebidos,542
+334,Descontos Obtidos,Detalhe,100300334,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,538,Descontos Obtidos,543
+336,Rendas de Aplicacoes Financeiras,Detalhe,100300336,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,539,Rendas de Aplicacoes Financeiras,544
+343,Variacoes Monetarias,Detalhe,100300343,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,540,Variacoes Monetarias,545
+979,Indenizacoes de Seguro,Detalhe,100300979,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,541,Indenizacoes de Seguro,546
+1043,Ganhos e Perdas de Capital,Detalhe,100301043,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,542,Ganhos e Perdas de Capital,547
+1049,Doacoes e Bonificacoes,Detalhe,100301049,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,543,Doacoes e Bonificacoes,548
+1060,Venda de Ativo Imobilizado,Detalhe,100301060,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,544,Venda de Ativo Imobilizado,549
+1064,Creditos INSS Verbas Indenizatorias,Detalhe,100301064,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,545,Creditos INSS Verbas Indenizatorias,550
+1088,Outras Receitas Financeiras,Detalhe,100301088,1,11,OUTRAS RECEITAS/DESPESAS,13,Receitas Financeiras,546,Outras Receitas Financeiras,551
+,(=)RESULTADO ANTES IR/CSLL,Subtotal,10024,1,12,RESULTADO ANTES IR/CSLL,,,,,552
+1266,Despesa com CSLL,Detalhe,100311266,-1,13,PROVISOES P/CONTR SOCIAL E IRPJ,14,Provisao p/ CSLL,547,Despesa com CSLL,553
+1265,Despesas com IRPJ,Detalhe,100321265,-1,13,PROVISOES P/CONTR SOCIAL E IRPJ,15,Provisao p/ IRPJ,548,Despesas com IRPJ,554
+,(=)LUCRO LIQUIDO EXERCICIO,Subtotal,10027,1,14,LUCRO LIQUIDO EXERCICIO,,,,,555

@@ -1,0 +1,563 @@
+Conta;Classificação;C5;01/03/2025;01/04/2025;01/05/2025;01/06/2025;01/07/2025;01/08/2025;01/09/2025;01/10/2025;01/11/2025;01/12/2025;01/01/2025;01/02/2025
+131;Receita Bruta de Vendas;131 - Vendas de Produtos Fabricacao Propria; 19.830.132 ; 20.853.511 ; 22.434.496 ; 21.630.590 ; 24.974.565 ; 22.894.791 ; 25.129.387 ; 26.847.986 ; 24.396.820 ; 22.334.391 ; 16.739.601 ; 17.063.851 
+135;Receita Bruta de Vendas;135 - Vendas de Sub-Produtos FFO; 699.822 ; 724.430 ; 721.503 ; 659.910 ; 774.538 ; 745.019 ; 839.774 ; 931.673 ; 794.667 ; 738.525 ; 767.960 ; 752.947 
+184;Receita Bruta de Vendas;184 - Venda de Sucatas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+288;Deduções de vendas;288 - Devolucoes de Vendas;-98.657 ;-103.749 ;-111.614 ;-107.615 ;-124.252 ;-113.904 ;-125.022 ;-133.572 ;-121.377 ;-111.116 ;-281.583 ;-362.775 
+870;Custos fixos;870 - INSS;-114.894 ;-232.778 ;-253.102 ;-243.506 ;-274.269 ;-261.969 ;-272.165 ;-288.013 ;-276.068 ;-111.233 ;-144.407 ;-132.941 
+875;Despesas Administrativas fixas;875 - INSS;-15.866 ;-29.814 ;-32.717 ;-31.347 ;-35.741 ;-33.984 ;-35.441 ;-37.705 ;-35.998 ;-32.777 ;-23.810 ;-16.942 
+1274;Receita Bruta de Vendas;1274 - Venda de Produtos para Revenda; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; 362.972 ; 484.034 
+1413;Receita Bruta de Vendas;1413 - Venda de Residuos Industriais; 22.403 ; 23.444 ; 24.560 ; 23.444 ; 26.793 ; 24.560 ; 25.676 ; 26.381 ; 23.655 ; 21.984 ; 16.295 ; 21.841 
+1414;Despesas Comerciais / Logistica / Expedição variáveis;1414 - Perda no Recebimento de Credito; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1606;Receita Bruta de Vendas;1606 - Venda de Frango Vivo; 621.292 ; 851.064 ; 2.899.291 ; 1.989.638 ; 4.138.972 ; 4.022.388 ; 3.608.537 ; 4.719.865 ; 5.038.007 ; 3.073.629 ; 1.879.131 ; 988.004 
+1616;Receita Bruta de Vendas;1616 - Receita Remessa em Doacao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1666;Receita Bruta de Vendas;1666 - Venda de Adubo Organico; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1772;Receita Bruta de Vendas;1772 - Venda de Quirela de Milho; 11.443 ; 11.974 ; 12.544 ; 11.974 ; 13.685 ; 12.544 ; 13.114 ; 13.474 ; 12.082 ; 11.228 ; 9.015 ; 17.987 
+1913;Custos variáveis;1913 - Ajuste Inventario; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-72.379 ;-24.093 
+1979;Deduções de vendas;1979 - Descontos s/ Vendas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1980;Deduções de vendas;1980 - Descontos Incondicionais s/ Vendas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2065;Despesas Comerciais / Logistica/ Expedição fixas;2065 - INSS;-5.435 ;-47.280 ;-53.087 ;-50.345 ;-59.135 ;-55.620 ;-58.534 ;-63.061 ;-59.649 ;-53.206 ;-17.520 ;-19.460 
+2071;Despesas Comerciais / Logistica/ Expedição fixas;2071 - Encargos s/ Provisao de Ferias; -   ;-373 ;-373 ;-373 ;-373 ;-373 ;-373 ;-373 ;-373 ;-373 ;-1.713 ;-373 
+2072;Despesas Comerciais / Logistica/ Expedição fixas;2072 - Encargos s/ Provisao de 13° Salario; -   ;-2.759 ;-2.759 ;-2.759 ;-2.759 ;-2.759 ;-2.759 ;-2.759 ;-2.759 ;-2.759 ;-2.605 ;-2.759 
+2114;Despesas Comerciais / Logistica / Expedição variáveis;2114 - Provisao para Creditos de Liquidacao Duvidosa;-13.789 ;-12.835 ;-14.379 ;-16.335 ;-17.615 ;-17.291 ;-18.006 ;-19.196 ;-21.073 ;-15.381 ;;
+2210;Deduções de vendas;2211 - Devolucoes Frango Vivo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-25.319 
+2247;Receita Bruta de Vendas;2247 - Revenda de Produtos;;;;;;;;;;;;
+112;Outras Receitas/Despesas Financeiras;112 - Variacoes Monetarias Ativas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+113;Outras Receitas/Despesas Financeiras;113 - Descontos Obtidos; 7.002 ; 7.424 ; 8.623 ; 8.036 ; 9.891 ; 9.155 ; 9.788 ; 10.754 ; 10.003 ; 8.652 ; 7.437 ; 7.679 
+114;Outras Receitas/Despesas Financeiras;114 - Juros Recebidos; 3.796 ; 4.025 ; 4.675 ; 4.357 ; 5.363 ; 4.963 ; 5.307 ; 5.831 ; 5.423 ; 4.691 ; 7.775 ; 5.217 
+117;Juros;117 - Variacoes Monetarias Passivas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+118;Juros;118 - Descontos Concedidos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-1.111 ;-765 
+119;Juros;119 - Juros;-338.882 ;-343.268 ;-343.268 ;-343.268 ;-343.268 ;-343.268 ;-343.268 ;-343.268 ;-343.268 ;-343.268 ;-339.007 ;-331.207 
+140;Outras Receitas/Despesas Operacionais;140 - Resultado na Alienacao de Imobilizado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+171;Juros;171 - Juros / Multa de Emprestimos e Financiamentos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+172;Despesas Financeiras Tributárias;172 - Despesas c/ IOF;-1.732 ;-1.837 ;-2.134 ;-1.988 ;-2.447 ;-2.265 ;-2.422 ;-2.661 ;-2.475 ;-2.141 ;-2.096 ;-2.758 
+173;Despesas Financeiras Bancárias;173 - Despesas Bancarias;-12.192 ;-12.350 ;-12.350 ;-12.350 ;-12.350 ;-12.350 ;-12.350 ;-12.350 ;-12.350 ;-12.350 ;-17.126 ;-14.237 
+196;Despesas Financeiras FIDC;196 - Juros s/ Desconto de Duplicatas;-130.819 ;-124.847 ;-128.898 ;-105.105 ;-110.886 ;-85.522 ;-73.153 ;-60.280 ;-37.378 ;-16.166 ;-115.482 ;-100.111 
+366;Outras Receitas/Despesas Operacionais;366 - Baixa de Ativo Imobilizado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+373;Outras Receitas/Despesas Financeiras;373 - Rendimentos s/ Aplicacao Financeiras; 7.925 ; 22.275 ; 41.985 ; 54.141 ; 85.119 ; 95.884 ; 120.809 ; 152.825 ; 160.833 ; 155.288 ; 9.788 ; 5.871 
+397;Impostos sobre vendas;397 - ICMS ST s/ Vendas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+820;Custos variáveis;820 - Frango Vivo Compra; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-191.948 
+821;Custos variáveis;821 - Gas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+822;Custos variáveis;822 - Lenha;-73.720 ;-77.144 ;-80.818 ;-77.144 ;-88.165 ;-80.818 ;-84.491 ;-86.809 ;-77.840 ;-72.341 ;-157.461 ;-68.927 
+824;Custos variáveis;824 - Material de Embalagem;-368.723 ;-382.712 ;-400.936 ;-382.712 ;-437.385 ;-400.936 ;-419.161 ;-430.661 ;-386.166 ;-358.884 ;-350.823 ;-325.733 
+826;Custos variáveis;826 - Materia Prima; -   ;-50.025 ;-52.040 ;-49.995 ;-57.468 ;-52.819 ;-56.235 ;-60.055 ;-53.449 ;-49.649 ; -   ;-1.898 
+832;Custos variáveis;832 - Mercadoria Sinistrada; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+834;Custos variáveis;834 - Ingredientes para Industrializacao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+837;Custos fixos;837 - Salarios;-666.891 ;-651.463 ;-651.463 ;-651.463 ;-651.463 ;-651.463 ;-651.463 ;-651.463 ;-651.463 ;-651.463 ;-511.838 ;-541.587 
+838;Custos fixos;838 - Ferias; -   ;-50.892 ;-50.892 ;-50.892 ;-50.892 ;-50.892 ;-50.892 ;-50.892 ;-50.892 ;-50.892 ;-42.416 ;-30.217 
+839;Custos fixos;839 - 13° Salario; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-2.030 ;-2.759 
+840;Custos fixos;840 - Indenizacoes Trabalhistas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+845;Custos fixos;845 - Rescisao Contratual;-10.154 ;-9.919 ;-9.919 ;-9.919 ;-9.919 ;-9.919 ;-9.919 ;-9.919 ;-9.919 ;-9.919 ;-36.185 ;-19.453 
+847;Custos fixos;847 - Pensao Alimenticia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+848;Despesas Administrativas fixas;848 - Salarios;-94.212 ;-72.709 ;-72.709 ;-72.709 ;-72.709 ;-72.709 ;-72.709 ;-72.709 ;-72.709 ;-72.709 ;-71.171 ;-58.501 
+849;Despesas Administrativas fixas;849 - Ferias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-9.742 ;-8.901 
+850;Despesas Administrativas fixas;850 - 13° Salario; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-1.653 ;-1.156 
+851;Despesas Administrativas fixas;851 - Indenizacoes Trabalhistas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+854;Despesas Administrativas fixas;854 - Ferias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+856;Despesas Administrativas fixas;856 - Rescisao Contratual; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-14.165 ;-5.168 
+858;Despesas Administrativas fixas;858 - Pensao Alimenticia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+871;Custos fixos;871 - FGTS;-74.692 ;-72.964 ;-72.964 ;-72.964 ;-72.964 ;-72.964 ;-72.964 ;-72.964 ;-72.964 ;-72.964 ;-57.831 ;-53.132 
+874;Custos fixos;874 - Contribuicao Sindical; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+876;Despesas Administrativas fixas;876 - FGTS;-10.552 ;-8.143 ;-8.143 ;-8.143 ;-8.143 ;-8.143 ;-8.143 ;-8.143 ;-8.143 ;-8.143 ;-9.524 ;-7.012 
+879;Despesas Administrativas fixas;879 - Contribuicao Sindical; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+887;Custos variáveis;887 - Manutencoes e Reparacoes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+889;Custos variáveis;889 - Suporte Tecnico Informatica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+893;Custos variáveis;893 - Servico Carga e Descarga; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+894;Despesas Administrativas fixas;894 - Honorarios Advocaticios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-700 ;-8.000 
+895;Despesas Administrativas fixas;895 - Servicos Profissionais Contratados P. Juridica;-279.311 ;-282.926 ;-282.926 ;-282.926 ;-282.926 ;-282.926 ;-282.926 ;-282.926 ;-282.926 ;-282.926 ;-22.897 ;-2.462 
+896;Despesas Administrativas fixas;896 - Monitoramento e Manutencao Sistema de Seguranca; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+898;Despesas Administrativas fixas;898 - Suporte Tecnico Informatica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+900;Despesas Administrativas fixas;900 - Servico Consultoria e Assessoria;-310.400 ;-52.222 ;-52.222 ;-52.222 ;-52.222 ;-52.222 ;-52.222 ;-52.222 ;-52.222 ;-52.222 ;-5.500 ;-45.796 
+901;Despesas Administrativas fixas;901 - Comissao Representantes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+902;Despesas Administrativas fixas;902 - Servico Carga e Descarga; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+912;Custos variáveis;912 - Manutencao Mecanica;-112.636 ;-117.867 ;-123.480 ;-117.867 ;-134.706 ;-123.480 ;-129.093 ;-132.635 ;-118.931 ;-110.529 ;-131.656 ;-116.985 
+913;Custos fixos;913 - Manutencao e Conservacao de Benfeitorias;-2.649 ;-2.772 ;-2.904 ;-2.772 ;-3.168 ;-2.904 ;-3.036 ;-3.120 ;-2.797 ;-2.600 ;-33.410 ;-945 
+914;Custos variáveis;914 - Manutencoes Graxaria; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+915;Custos variáveis;915 - Combustiveis e Lubrificantes de Maquinas;-3.852 ;-4.031 ;-4.223 ;-4.031 ;-4.606 ;-4.223 ;-4.414 ;-4.536 ;-4.067 ;-3.780 ;-13.475 ;-4.469 
+917;Custos variáveis;917 - Manutencao Eletrica;-44.859 ;-46.943 ;-49.178 ;-46.943 ;-53.649 ;-49.178 ;-51.414 ;-52.824 ;-47.366 ;-44.020 ;-40.359 ;-29.970 
+918;Custos variáveis;918 - Manutencao Civil; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+919;Custos variáveis;919 - Manutencao Sala de Maquinas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+920;Custos fixos;920 - Manutencao Civil;-23.817 ;-24.923 ;-26.110 ;-24.923 ;-28.483 ;-26.110 ;-27.296 ;-28.045 ;-25.148 ;-23.371 ;-10.438 ;-30.016 
+921;Custos variáveis;921 - Manutencao ETE; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+922;Custos variáveis;922 - Manutencao Caldeira; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+923;Custos variáveis;923 - Manutencao ETA; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+924;Custos variáveis;924 - Manutencao da Estrutura e Equipamentos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+930;Despesas Administrativas fixas;930 - Manutencao Eletrica;-345 ;-361 ;-378 ;-361 ;-413 ;-378 ;-395 ;-406 ;-364 ;-339 ;-1.319 ;-69 
+933;Despesas Administrativas fixas;933 - Manutencao Civil;-632 ;-661 ;-693 ;-661 ;-756 ;-693 ;-724 ;-744 ;-667 ;-620 ;-1.550 ;-2.668 
+937;Despesas Administrativas fixas;937 - Manutencao Mecanica;-38 ;-40 ;-42 ;-40 ;-45 ;-42 ;-43 ;-45 ;-40 ;-37 ;-1.853 ;-14 
+951;Depreciações e Amortizações;951 - Depreciacoes;-100.595 ;-96.762 ;-96.762 ;-96.679 ;-96.537 ;-96.537 ;-96.537 ;-96.506 ;-96.352 ;-96.347 ;-101.446 ;-102.158 
+953;Depreciações e Amortizações;953 - Depreciacoes;-8.018 ;-8.018 ;-8.018 ;-8.018 ;-8.018 ;-8.018 ;-7.853 ;-5.219 ;-5.117 ;-5.117 ;-10.189 ;-10.341 
+957;Custos variáveis;957 - Energia Eletrica;-314.346 ;-328.947 ;-344.611 ;-328.947 ;-375.939 ;-344.611 ;-360.275 ;-370.160 ;-331.915 ;-308.466 ;-306.895 ;-343.314 
+959;Custos fixos;959 - Comunicacoes (Telefone, Correio e Internet);-232 ;-242 ;-254 ;-242 ;-277 ;-254 ;-265 ;-273 ;-245 ;-227 ;-693 ;-2.249 
+960;Custos variáveis;960 - Agua e Saneamento;-4.574 ;-4.786 ;-5.014 ;-4.786 ;-5.470 ;-5.014 ;-5.242 ;-5.386 ;-4.830 ;-4.488 ;-9.665 ;-13.522 
+961;Despesas Administrativas fixas;961 - Energia Eletrica;-1.167 ;-901 ;-901 ;-901 ;-901 ;-901 ;-901 ;-901 ;-901 ;-901 ;-57 ;-66 
+963;Despesas Administrativas fixas;963 - Comunicacoes (Telefone, Correio e Internet);-5.551 ;-5.809 ;-6.086 ;-5.809 ;-6.639 ;-6.086 ;-6.362 ;-6.537 ;-5.861 ;-5.447 ;-8.685 ;-6.758 
+964;Despesas Administrativas fixas;964 - Agua e Saneamento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+969;Custos fixos;969 - Despesas Indedutiveis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+972;Custos fixos;972 - Impostos e Taxas;-7.208 ;-7.542 ;-7.902 ;-7.542 ;-8.620 ;-7.902 ;-8.261 ;-8.487 ;-7.610 ;-7.073 ;-170 ;-2.783 
+973;Custos fixos;973 - ICMS; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+974;Custos fixos;974 - Contribuicao Sindical; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+975;Custos fixos;975 - Multas e Juros; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+977;Custos fixos;977 - Taxa de Incendio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+979;Custos variáveis;979 - Funrural; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+982;Custos fixos;982 - IRPJ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+983;Custos fixos;983 - Contribuicao Social s/ Lucro; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+984;Custos fixos;984 - ITR; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+987;Custos fixos;987 - Imposto de Renda; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+988;Despesas Administrativas fixas;988 - Despesas Indedutiveis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+991;Despesas Administrativas fixas;991 - Impostos Taxas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+992;Despesas Administrativas fixas;992 - ICMS; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+993;Despesas Administrativas fixas;993 - Contribuicao Sindical / Patronal / Conselho; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+994;Despesas Administrativas fixas;994 - Multas e Juros; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+996;Despesas Administrativas fixas;996 - Taxa de Incendio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+998;Despesas Administrativas fixas;998 - Funrural; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1001;Despesas Administrativas fixas;1001 - IRPJ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1002;Despesas Administrativas fixas;1002 - Contr.Social s/o Lucro; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1003;Despesas Administrativas fixas;1003 - ITR; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1026;Custos variáveis;1026 - Combustiveis e Lubrificantes;-45.134 ;-47.230 ;-49.479 ;-47.230 ;-53.977 ;-49.479 ;-51.728 ;-53.147 ;-47.656 ;-44.289 ;-54.532 ;-33.722 
+1027;Custos fixos;1027 - Manutencao de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1028;Custos fixos;1028 - Pneus e Camaras; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1029;Custos fixos;1029 - Seguro de Veiculos;-2.025 ;-2.119 ;-2.220 ;-2.119 ;-2.422 ;-2.220 ;-2.321 ;-2.385 ;-2.138 ;-1.987 ;-380 ;-615 
+1030;Custos fixos;1030 - IPVA, Seguro Obrigatorio e Licenciamento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-41 ;-8.078 
+1031;Custos fixos;1031 - Multas de Transito; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1032;Custos variáveis;1032 - Pedagios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-312 ;-239 
+1036;Custos fixos;1036 - Despesas c/Locacao de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1037;Custos fixos;1037 - Pesagem de Insumos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1038;Despesas Administrativas fixas;1038 - Combustiveis e Lubrificantes;-2.602 ;-2.723 ;-2.853 ;-2.723 ;-3.112 ;-2.853 ;-2.982 ;-3.064 ;-2.748 ;-2.554 ;-3.332 ;-5.559 
+1039;Despesas Administrativas fixas;1039 - Manutencao de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1040;Despesas Administrativas fixas;1040 - Pneus e Camaras; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1041;Despesas Administrativas fixas;1041 - Seguro de Veiculos;-1.084 ;-1.134 ;-1.188 ;-1.134 ;-1.296 ;-1.188 ;-1.242 ;-1.277 ;-1.145 ;-1.064 ;-937 ;-702 
+1042;Despesas Administrativas fixas;1042 - IPVA, Seguro Obrigatorio e Licenciamento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-16.004 
+1043;Despesas Não Dedutíveis fixas;1043 - Multas de Transito; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1044;Despesas Administrativas fixas;1044 - Pedagios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-57 ;-32 
+1048;Despesas Administrativas fixas;1048 - Despesas c/Locacao de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1062;Custos fixos;1062 - Aluguel de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1063;Custos fixos;1063 - Alugueis e Locacoes;-52.998 ;-55.460 ;-58.101 ;-55.460 ;-63.382 ;-58.101 ;-60.741 ;-62.408 ;-55.960 ;-52.007 ;-26.534 ;-26.420 
+1064;Custos fixos;1064 - Refeicao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1065;Custos variáveis;1065 - Doacoes e Brindes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1066;Custos fixos;1066 - Seguros; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-288 
+1067;Custos fixos;1067 - Correios e Malotes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1068;Custos fixos;1068 - Jornais, Revistas e Periodicos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1069;Custos variáveis;1069 - Despesas com Analises; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1070;Custos fixos;1070 - Material de Seguranca; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1071;Custos variáveis;1071 - Bens de Consumo Duraveis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1072;Custos variáveis;1072 - Material de Escritorio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1073;Custos variáveis;1073 - Fretes e Carretos;-6.213 ;-6.501 ;-6.811 ;-6.501 ;-7.430 ;-6.811 ;-7.120 ;-7.316 ;-6.560 ;-6.096 ;-2.593 ;-4.418 
+1074;Custos fixos;1074 - Material de Consumo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1075;Custos variáveis;1075 - Fretes de Frango Vivo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1076;Custos fixos;1076 - Arrendamento Mercantil Leasing; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1077;Custos fixos;1077 - Farmacia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1078;Custos fixos;1078 - Propaganda e Publicidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1079;Custos variáveis;1079 - Despesas c/ Viagens, Estadias e Refeicoes;-10.008 ;-10.473 ;-10.972 ;-10.473 ;-11.969 ;-10.972 ;-11.470 ;-11.785 ;-10.567 ;-9.821 ;-5.860 ;-1.689 
+1081;Custos fixos;1081 - Mensalidades e Anuidades; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1082;Custos fixos;1082 - Despesas com Transporte de Pessoal; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1083;Custos fixos;1083 - Material de Expediente; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1086;Custos fixos;1086 - Despesas com Cartorio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1088;Custos variáveis;1088 - Treinamentos, Cursos e Eventos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1089;Custos fixos;1089 - Lanches; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1090;Custos fixos;1090 - Despesas com Eventos e Feiras; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1092;Custos fixos;1092 - Uniformes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1093;Custos variáveis;1093 - Locacao de Cacambas, Maquinas e Equipamentos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1094;Custos fixos;1094 - Material de Limpeza e Higiene; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1095;Custos fixos;1095 - Refeitorio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1096;Custos fixos;1096 - Confraternizacoes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1097;Custos variáveis;1097 - Manutencao de Informatica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1098;Custos variáveis;1098 - Amonia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1099;Custos fixos;1099 - Seguro de Vida p/Funcionarios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1101;Custos fixos;1101 - Lavanderia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1102;Custos fixos;1102 - Controle de Qualidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1107;Despesas Administrativas fixas;1107 - Aluguel de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1109;Despesas Administrativas fixas;1109 - Refeicao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1110;Despesas Administrativas fixas;1110 - Brindes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1111;Despesas Administrativas fixas;1111 - Seguros;-3.182 ;-3.330 ;-3.488 ;-3.330 ;-3.805 ;-3.488 ;-3.647 ;-3.747 ;-3.360 ;-3.122 ;-2.787 ;-2.499 
+1112;Despesas Administrativas fixas;1112 - Correios e Malotes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1113;Despesas Administrativas fixas;1113 - Jornais, Revistas e Periodicos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1114;Despesas Administrativas fixas;1114 - Despesas com Analises; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1115;Despesas Administrativas fixas;1115 - Equipamento de Protecao Individual - EPI; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1117;Despesas Administrativas fixas;1117 - Material de Escritorio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1118;Despesas Administrativas fixas;1118 - Fretes e Carretos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-1.044 
+1119;Despesas Administrativas fixas;1119 - Material de Consumo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1120;Despesas Administrativas fixas;1120 - Fretes Pessoa Fisica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1121;Despesas Administrativas fixas;1121 - Alugueis e Locacoes;-6.782 ;-7.097 ;-7.435 ;-7.097 ;-8.111 ;-7.435 ;-7.773 ;-7.987 ;-7.161 ;-6.655 ;-7.932 ; -   
+1122;Despesas Administrativas fixas;1122 - Farmacia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1123;Despesas Administrativas fixas;1123 - Propaganda e Publicidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1124;Despesas Administrativas fixas;1124 - Despesas de Veiculos Administrativos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1126;Despesas Administrativas fixas;1126 - Mensalidades e Anuidades; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1131;Despesas Administrativas fixas;1131 - Despesas com Cartorio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1133;Despesas Administrativas fixas;1133 - Treinamentos, Cursos e Eventos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1134;Despesas Administrativas fixas;1134 - Despesas c/ Viagens, Estadias e Refeicoes;-31.050 ;-32.493 ;-34.040 ;-32.493 ;-37.134 ;-34.040 ;-35.587 ;-36.563 ;-32.786 ;-30.470 ;-40.460 ; 31.524 
+1135;Despesas Administrativas fixas;1135 - Despesas com Eventos e Feiras; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1137;Despesas Administrativas fixas;1137 - Uniformes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1139;Despesas Administrativas fixas;1139 - Material de Limpeza e Higiene; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1141;Despesas Administrativas fixas;1141 - Confraternizacoes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1142;Despesas Administrativas fixas;1142 - Material de Informatica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1143;Despesas Administrativas fixas;1143 - Amonia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1149;Despesas Administrativas fixas;1149 - Seguro Imoveis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1197;Custos variáveis;1197 - Gastos com Producao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1199;Custos variáveis;1199 - Variacao do Valor da Racao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1200;Custos variáveis;1200 - Rateio de Custo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1201;Custos variáveis;1201 - Transferencia de Custo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1202;Custos variáveis;1202 - Variacao do Estoque Produto Acabado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1203;Custos variáveis;1203 - Gastos com Manut. Producao Avicola; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1227;Custos variáveis;1227 - Embalagens Primarias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1228;Custos variáveis;1228 - Embalagens Secundarias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1229;Custos variáveis;1229 - Fita Datadora; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1230;Custos variáveis;1230 - Grampo para Seloclip; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1275;Impostos sobre vendas;1275 - ICMS s/ Vendas;-54.948 ;-57.222 ;-58.736 ;-54.899 ;-63.971 ;-60.323 ;-67.175 ;-73.348 ;-64.135 ;-59.267 ;-56.291 ;-140.581 
+1276;Impostos sobre vendas;1276 - Desoneracao da Folha; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1279;Despesas Financeiras Tributárias;1279 - IRRF s/ Aplicacao Financeira; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-84 ;-1.733 
+1281;Outras Receitas/Despesas Operacionais;1281 - Amostra / Brindes/Bonificacao;-5.109 ;-5.346 ;-5.601 ;-5.346 ;-6.110 ;-5.601 ;-5.856 ;-6.016 ;-5.395 ;-5.014 ; -   ; -   
+1285;Despesas Administrativas fixas;1285 - Comissao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1294;Despesas Administrativas fixas;1294 - Medicina no Trabalho; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1295;Despesas Administrativas fixas;1295 - Mensalidade Unimed; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1307;Despesas Administrativas fixas;1307 - Seguro Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1308;Custos fixos;1308 - Seguro Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1310;Custos fixos;1310 - Aluguel de Maquinas e Equipamentos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1311;Custos fixos;1311 - Medicina no Trabalho; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1312;Despesas Administrativas fixas;1312 - Gratificacoes;-17.963 ;-13.863 ;-13.863 ;-13.863 ;-13.863 ;-13.863 ;-13.863 ;-13.863 ;-13.863 ;-13.863 ;-15.536 ;-7.149 
+1313;Despesas Administrativas fixas;1313 - Descanso Semanal Remunerado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1314;Custos fixos;1314 - Alimentacao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1315;Despesas Administrativas fixas;1315 - Alimentacao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1316;Despesas Administrativas fixas;1316 - Plano de Saude; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1317;Custos fixos;1317 - Plano de Saude; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1318;Custos fixos;1318 - Periculosidade;-2.493 ;-2.436 ;-2.436 ;-2.436 ;-2.436 ;-2.436 ;-2.436 ;-2.436 ;-2.436 ;-2.436 ;-1.700 ;-1.304 
+1319;Despesas Administrativas fixas;1319 - Periculosidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1320;Custos fixos;1320 - Adicional Noturno;-5.203 ;-5.082 ;-5.082 ;-5.082 ;-5.082 ;-5.082 ;-5.082 ;-5.082 ;-5.082 ;-5.082 ;-4.552 ;-6.077 
+1321;Despesas Administrativas fixas;1321 - Adicional Noturno;-357 ;-276 ;-276 ;-276 ;-276 ;-276 ;-276 ;-276 ;-276 ;-276 ;-870 ;-742 
+1322;Custos fixos;1322 - Hora Extra;-1.092 ;-1.067 ;-1.067 ;-1.067 ;-1.067 ;-1.067 ;-1.067 ;-1.067 ;-1.067 ;-1.067 ;-55.374 ;-2.180 
+1323;Custos fixos;1323 - DSR s/ Hora Extra;-1.420 ;-1.387 ;-1.387 ;-1.387 ;-1.387 ;-1.387 ;-1.387 ;-1.387 ;-1.387 ;-1.387 ;-11.524 ;-1.376 
+1324;Despesas Administrativas fixas;1324 - Hora Extra; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-2.095 ; -   
+1325;Despesas Administrativas fixas;1325 - DSR Hora Extra; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-570 ;-124 
+1326;Custos fixos;1326 - Descanso Semanal Remunerado;-3.837 ;-3.748 ;-3.748 ;-3.748 ;-3.748 ;-3.748 ;-3.748 ;-3.748 ;-3.748 ;-3.748 ;-2.001 ;-1.739 
+1327;Custos fixos;1327 - Gratificacoes;-24.251 ;-23.804 ;-23.804 ;-23.804 ;-23.804 ;-23.804 ;-23.804 ;-23.804 ;-23.804 ;-23.804 ;-23.689 ;-24.557 
+1328;Custos fixos;1328 - Ferias Proporcionais;-18.504 ;-18.235 ;-18.235 ;-18.235 ;-18.235 ;-18.235 ;-18.235 ;-18.235 ;-18.235 ;-18.235 ;-30.366 ;-9.488 
+1329;Custos fixos;1329 - 1/3 Ferias; -   ;-16.964 ;-16.964 ;-16.964 ;-16.964 ;-16.964 ;-16.964 ;-16.964 ;-16.964 ; -   ;-24.260 ;-13.235 
+1330;Custos fixos;1330 - Aviso Previo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1331;Custos fixos;1331 - Saldo Salario; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1332;Despesas Administrativas fixas;1332 - Ferias Proporcionais; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-20.279 ;-12.457 
+1333;Despesas Administrativas fixas;1333 - 1/3 Ferias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-10.007 ;-7.119 
+1334;Despesas Administrativas fixas;1334 - Aviso Previo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1335;Despesas Administrativas fixas;1335 - Saldo Salario; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1336;Custos fixos;1336 - Adicional Noturno; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1338;Despesas Administrativas fixas;1338 - Contribuicao de Terceiros;-5.931 ;-4.651 ;-4.651 ;-4.651 ;-4.651 ;-4.651 ;-4.651 ;-4.651 ;-4.651 ;-4.651 ;-6.905 ;-4.913 
+1339;Despesas Administrativas fixas;1339 - Seguro Acidente do Trabalho - RAT;-2.373 ;-1.860 ;-1.860 ;-1.860 ;-1.860 ;-1.860 ;-1.860 ;-1.860 ;-1.860 ;-1.860 ;-4.203 ;-3.055 
+1340;Custos fixos;1340 - Seguro Acidente do Trabalho - RAT;-17.101 ;-16.806 ;-16.806 ;-16.806 ;-16.806 ;-16.806 ;-16.806 ;-16.806 ;-16.806 ;-16.806 ;-26.120 ;-24.166 
+1341;Custos fixos;1341 - Contribuicao de Terceiros;-42.753 ;-42.015 ;-42.015 ;-42.015 ;-42.015 ;-42.015 ;-42.015 ;-42.015 ;-42.015 ;-42.015 ;-41.878 ;-38.552 
+1344;Custos fixos;1344 - Equipamento de Protecao Individual - EPI; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1345;Custos variáveis;1345 - Manutencao Hidraulica;-3.415 ;-3.574 ;-3.744 ;-3.574 ;-4.084 ;-3.744 ;-3.914 ;-4.021 ;-3.606 ;-3.351 ;-14.133 ;-9.587 
+1346;Despesas Financeiras Tributárias;1346 - Outras Despesas Financeiras;-1.689 ;-1.791 ;-2.080 ;-1.938 ;-2.385 ;-2.208 ;-2.361 ;-2.594 ;-2.412 ;-2.087 ;-2.319 ; -   
+1347;Despesas Administrativas fixas;1347 - IPTU; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1348;Custos fixos;1348 - IPTU; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1349;Custos variáveis;1349 - Servicos Contratados; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1350;Despesas Administrativas fixas;1350 - Despesas com Factoring; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1351;Custos fixos;1351 - IRF Prestador de Servicos - 1708; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1352;Custos fixos;1352 - CSRF - 5952; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1353;Custos fixos;1353 - IRRF s/ Folha - 0561; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1354;Despesas Administrativas fixas;1354 - IRRF Prestador de Servicos - 1708; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1355;Despesas Administrativas fixas;1355 - CSRF - 5952; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1356;Despesas Administrativas fixas;1356 - IRF s/ Folha - 0561; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1358;Custos fixos;1358 - 13° Salario Indenizado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-1.117 ; -   
+1359;Custos fixos;1359 - Aviso Previo Indenizado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-7.876 ; -   
+1361;Despesas Administrativas fixas;1361 - Manutencao e Conservacao de Benfeitorias;-3.096 ;-3.240 ;-3.394 ;-3.240 ;-3.703 ;-3.394 ;-3.549 ;-3.646 ;-3.269 ;-3.038 ;-38.193 ;-11.976 
+1362;Despesas Administrativas fixas;1362 - Despesas com Advogados; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1363;Despesas Administrativas fixas;1363 - Diferencial de Aliquota;-6.183 ;-6.470 ;-6.778 ;-6.470 ;-7.395 ;-6.778 ;-7.086 ;-7.281 ;-6.529 ;-6.067 ;-6.483 ;-4.253 
+1364;Impostos sobre vendas;1364 - ( - ) ICMS - Credito Presumido; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1365;Custos variáveis;1365 - ( - ) Encerramento Custos de Producao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1366;Custos variáveis;1366 - CPV - Custo Produto Vendido; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1367;Custos variáveis;1367 - Ferramentas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1377;Custos fixos;1377 - Hora Extra 100%; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1378;Despesas Administrativas fixas;1378 - Salario Maternidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1379;Despesas Administrativas fixas;1379 - Convenio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1380;Custos fixos;1380 - Salario Maternidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1381;Custos fixos;1381 - Convenio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1383;Custos variáveis;1383 - ( - ) Encerramento Custos de Producao; 15.882.300 ; 16.935.080 ; 17.620.441 ; 16.966.251 ; 19.273.718 ; 17.865.559 ; 18.853.801 ; 19.724.561 ; 18.144.417 ; 16.454.723 ; 16.609.267 ; 14.171.510 
+1384;Custos variáveis;1384 - Hospedagem; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1388;Custos fixos;1388 - Cesta Basica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1389;Custos fixos;1389 - Despesas com Vestiarios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1392;Despesas Comerciais / Logistica / Expedição variáveis;1392 - Descontos Concedidos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1393;Despesas Comerciais / Logistica/ Expedição fixas;1393 - Bonificacao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1394;Despesas Comerciais / Logistica / Expedição variáveis;1394 - Servicos de Fretes - Entrega;-7.252 ;-7.588 ;-7.950 ;-7.588 ;-8.672 ;-7.950 ;-8.311 ;-8.539 ;-7.657 ;-7.116 ; -   ; -   
+1399;Outras Receitas/Despesas Operacionais;1399 - Recuperacao de Despesa; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1404;Despesas Administrativas fixas;1404 - Retirada Pro-Labores; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1406;Despesas Administrativas fixas;1406 - 13° Salario Indenizado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1407;Despesas Administrativas fixas;1407 - Aviso Previo Indenizado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1409;Outras Receitas/Despesas Operacionais;1399 - Recuperacao de Despesa; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1410;Despesas Comerciais / Logistica / Expedição variáveis;1410 - Despesas c/ Viagens e Estadias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1411;Custos fixos;1411 - Lubrificante p/ Manutencao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1412;Despesas Comerciais / Logistica/ Expedição fixas;1412 - Despesa com Certidoes (Clientes); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1415;Custos fixos;1415 - Provisao p/ Ferias;-51.782 ;-21.243 ;-21.243 ;-21.243 ;-21.243 ;-21.243 ;-21.243 ;-21.243 ;-21.243 ;-21.243 ; 2.774 ;-11.969 
+1416;Custos fixos;1416 - Provisao p/ 13º Salario;-70.612 ;-69.398 ;-69.398 ;-69.398 ;-69.398 ;-69.398 ;-69.398 ;-69.398 ;-69.398 ;-69.398 ;-57.706 ;-53.128 
+1417;Despesas Administrativas fixas;1417 - Provisao p/ Ferias;-2.690 ;-2.076 ;-2.076 ;-2.076 ;-2.076 ;-2.076 ;-2.076 ;-2.076 ;-2.076 ;-2.076 ; 23.364 ; 13.358 
+1418;Despesas Administrativas fixas;1418 - Provisao p/ 13° Salario;-9.974 ;-7.698 ;-7.698 ;-7.698 ;-7.698 ;-7.698 ;-7.698 ;-7.698 ;-7.698 ;-7.698 ;-7.828 ;-5.293 
+1419;Custos fixos;1419 - Encargos s/ Provisao de Ferias;-10.460 ;-4.291 ;-4.291 ;-4.291 ;-4.291 ;-4.291 ;-4.291 ;-4.291 ;-4.291 ;-4.291 ;-7.446 ;-4.501 
+1420;Custos fixos;1420 - Encargos s/ Provisao de 13° Salario;-14.264 ;-14.018 ;-14.018 ;-14.018 ;-14.018 ;-14.018 ;-14.018 ;-14.018 ;-14.018 ;-14.018 ;-21.609 ;-19.889 
+1421;Despesas Administrativas fixas;1421 - Encargos s/ Provisao de Ferias;-543 ;-419 ;-419 ;-419 ;-419 ;-419 ;-419 ;-419 ;-419 ;-419 ; 6.801 ; 5.006 
+1422;Despesas Administrativas fixas;1422 - Encargos s/ Provisao de 13° Salario;-2.015 ;-1.555 ;-1.555 ;-1.555 ;-1.555 ;-1.555 ;-1.555 ;-1.555 ;-1.555 ;-1.555 ;-2.928 ;-1.980 
+1423;Impostos sobre vendas;1423 - PIS s/ Vendas;-12.679 ;-13.126 ;-13.119 ;-12.111 ;-14.287 ;-13.670 ;-15.284 ;-16.824 ;-14.438 ;-13.454 ;-13.061 ;-14.717 
+1424;Impostos sobre vendas;1424 - COFINS s/ Vendas;-58.399 ;-60.457 ;-60.426 ;-55.786 ;-65.806 ;-62.965 ;-70.399 ;-77.492 ;-66.504 ;-61.972 ;-74.090 ;-67.787 
+1427;Custos fixos;1427 - Alimentacao do Trabalhador;-92.855 ;-90.889 ;-90.889 ;-90.889 ;-90.889 ;-90.889 ;-90.889 ;-90.889 ;-90.889 ;-90.889 ;-74.554 ;-93.109 
+1428;Despesas Administrativas fixas;1428 - Alimentacao do Trabalhador;-23.068 ;-17.803 ;-17.803 ;-17.803 ;-17.803 ;-17.803 ;-17.803 ;-17.803 ;-17.803 ;-17.803 ;-30.535 ;-48.830 
+1434;Outras Receitas/Despesas Operacionais;1399 - Recuperacao de Despesa; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1435;Despesas Administrativas fixas;1435 - Ferramentas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1436;Custos variáveis;1436 - Utensilios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1441;Despesas Administrativas fixas;1441 - Manutencao Hidraulica;-48 ;-51 ;-53 ;-51 ;-58 ;-53 ;-55 ;-57 ;-51 ;-48 ;-1.856 ;-451 
+1444;Custos variáveis;1444 - Veneno; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1445;Despesas Administrativas fixas;1445 - Veneno; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1446;Custos fixos;1446 - Granja Canela; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1447;Custos fixos;1447 - Granja Morrinhos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1448;Custos fixos;1448 - Fabrica de Racao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1458;Outras Receitas/Despesas Financeiras;1458 - Atualizacao Monetaria; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1462;Provisão IR/CSLL;1462 - IRPJ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1463;Provisão IR/CSLL;1463 - CSLL; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1467;Custos variáveis;1467 - Medicamentos G.; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1475;Outras Receitas/Despesas Operacionais;1399 - Recuperacao de Despesa; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1481;Despesas Administrativas fixas;1481 - Marcas e Patentes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1497;Custos variáveis;1497 - Pinto para Criacao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1505;Custos variáveis;1505 - Racao Wisium Pre-Inicial; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1506;Custos variáveis;1506 - Racao Wisium Inicial; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1507;Custos variáveis;1507 - Racao Wisium Crescimento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1508;Custos variáveis;1508 - Maravalha; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1510;Custos variáveis;1510 - Acerto com Integrado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1521;Custos variáveis;1521 - Casquinha de Arroz; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1522;Despesas Financeiras Tributárias;1522 - IOF s/Aplicacao Financeira; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1532;Outras Receitas/Despesas Financeiras;1532 - Multas de Parcelamentos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1533;Juros;1533 - Juros / Multa sobre Tributos;-11.304 ;-11.987 ;-13.923 ;-12.975 ;-15.970 ;-14.780 ;-15.803 ;-17.363 ;-16.150 ;-13.970 ;-1.764 ;-3.470 
+1538;Despesas Administrativas fixas;1538 - Material e Manutencao de Informatica;-1.937 ;-2.027 ;-2.124 ;-2.027 ;-2.317 ;-2.124 ;-2.221 ;-2.281 ;-2.046 ;-1.901 ;-1.976 ;-695 
+1539;Custos variáveis;1539 - Racao Wisium Final; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1540;Custos variáveis;1540 - Racao Fatec Pre-Inicial; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1541;Custos variáveis;1541 - Racao Fatec Crescimento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1542;Custos variáveis;1542 - Racao Fatec Final; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1543;Custos variáveis;1543 - Adsorvente T5X; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1544;Custos variáveis;1544 - Calcario Calcitico; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1545;Custos variáveis;1545 - Bicarbonato de Sodio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1546;Custos variáveis;1546 - Racao Wisium Crescimento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1547;Custos variáveis;1547 - Farinha de Carne; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1551;Custos variáveis;1551 - Carvao Vegetal; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1574;Custos fixos;1574 - Insalubridade;-1.614 ;-1.576 ;-1.576 ;-1.576 ;-1.576 ;-1.576 ;-1.576 ;-1.576 ;-1.576 ;-1.576 ;-607 ;-607 
+1589;Outras Receitas/Despesas Operacionais;1589 - Aluguel de Imovel; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1590;Outras Receitas/Despesas Financeiras;1590 - Seguros (Equipamento); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1597;Custos variáveis;1597 - Manutencao Veiculos Corretiva;-12.973 ;-13.575 ;-14.222 ;-13.575 ;-15.515 ;-14.222 ;-14.868 ;-15.276 ;-13.698 ;-12.730 ;-645 ;-2.385 
+1598;Custos fixos;1598 - Manutencao Veiculos Preventiva;-26.327 ;-27.550 ;-28.862 ;-27.550 ;-31.486 ;-28.862 ;-30.174 ;-31.002 ;-27.799 ;-25.835 ;-32.176 ;-8.278 
+1607;Custos variáveis;1607 - Combustivel Fabrica Graneleiros; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1608;Outras Receitas/Despesas Financeiras;1608 - Seguros de Vida; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1609;Despesas Financeiras Tributárias;1609 - Multas Pagas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1610;Custos fixos;1610 - Irrigacao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1611;Custos fixos;1611 - Insalubridade 30%; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1612;Despesas Administrativas fixas;1612 - Desconto DSR s/ Faltas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1613;Custos fixos;1613 - Bonificacao (Abono); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1614;Custos fixos;1614 - Comissao;-17.370 ;-16.969 ;-16.969 ;-16.969 ;-16.969 ;-16.969 ;-16.969 ;-16.969 ;-16.969 ;-16.969 ;-10.405 ;-10.431 
+1615;Custos fixos;1615 - DRS s/Comissao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1617;Custos fixos;1617 - DSR s/ Adicional Noturno; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1618;Despesas Administrativas fixas;1618 - DSR s/ Adicional Noturno; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1619;Custos variáveis;1619 - Lavagem de Veiculo (Ducha); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1621;Despesas Administrativas fixas;1621 - Material de Expediente; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1623;Despesas Administrativas fixas;1623 - Lavagem de Veiculo (Ducha); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1627;Custos variáveis;1627 - Fabrica Embutidos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1628;Despesas Administrativas fixas;1628 - 1/3 Ferias (Rescisao); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1644;Outras Receitas/Despesas Operacionais;1644 - Receita Aviso Previo Descontado( Funcionario); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1646;Outras Receitas/Despesas Operacionais;1646 - Receitas Eventuais; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1651;Custos variáveis;1651 - Cloracao (Produtos Quimicos); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1652;Despesas Administrativas fixas;1652 - Manutencao Veiculo Corretiva; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1653;Despesas Administrativas fixas;1653 - Manutencao Veiculo Preventiva;-405 ;-424 ;-444 ;-424 ;-484 ;-444 ;-464 ;-477 ;-428 ;-397 ; -   ; -   
+1654;Custos fixos;1654 - Manutencao de Combate ao Incendio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1657;Despesas Administrativas fixas;1657 - Bens de Consumo Duraveis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1659;Custos variáveis;1659 - Tratamento de Gas ( Filtro Biologico); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1660;Despesas Financeiras Bancárias;1660 - Seguros Prestamista;-3.049 ;-3.233 ;-3.755 ;-3.499 ;-4.307 ;-3.986 ;-4.262 ;-4.683 ;-4.355 ;-3.767 ;-2.616 ;-2.616 
+1661;Custos variáveis;1661 - Fertilizantes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1665;Despesas Administrativas fixas;1665 - Ferias Indenizadas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1669;Despesas Financeiras Tributárias;1669 - Multas Fiscais; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1680;Custos fixos;1680 - Rastreamento de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1689;Custos variáveis;1689 - Frango Vivo Integracao;-10.886.749 ;-11.755.440 ;-12.046.706 ;-11.651.766 ;-13.250.617 ;-12.165.722 ;-13.045.990 ;-13.665.093 ;-12.438.908 ;-11.350.629 ;-11.688.037 ;-9.445.742 
+1691;Despesas Administrativas fixas;1691 - Manutencao de Combate a Incendio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1701;Custos variáveis;1701 - Servico Profissionais Contratados P. Juridica;-130.622 ;-136.690 ;-143.199 ;-136.690 ;-156.217 ;-143.199 ;-149.708 ;-153.815 ;-137.923 ;-128.179 ;-19.104 ;-10.436 
+1720;Despesas Administrativas fixas;1720 - Custas Processuais;-2.991 ;-3.130 ;-3.279 ;-3.130 ;-3.578 ;-3.279 ;-3.429 ;-3.523 ;-3.159 ;-2.936 ;-66 ;-1.384 
+1725;Despesas Administrativas fixas;1725 - Licenca Ambiental; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1726;Outras Receitas/Despesas Operacionais;1726 - Receita Sob Restituicao Federal; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1738;Custos variáveis;1738 - Apanha de Frango; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1742;Despesas Administrativas fixas;1742 - Receita Distrib.Lucros Financeiros; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1745;Outras Receitas/Despesas Financeiras;1745 - Ressarcimento Comercial; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1750;Custos variáveis;1750 - Manutencao Rebobinagem Motores;-6.941 ;-7.263 ;-7.609 ;-7.263 ;-8.301 ;-7.609 ;-7.955 ;-8.173 ;-7.329 ;-6.811 ;-5.461 ;-8.517 
+1755;Despesas Administrativas fixas;1755 - Custas de Protesto; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1756;Custos variáveis;1756 - Taxa IMA; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1757;Outras Receitas/Despesas Financeiras;1757 - Despesas com Consorcios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1758;Custos fixos;1758 - Taxa Fundesa; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1782;Custos variáveis;1782 - Custo de Quirela de Milho; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1783;Custos variáveis;1783 - Perda de Graos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1809;Outras Receitas/Despesas Operacionais;1399 - Recuperacao de Despesa; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1813;Despesas Não Dedutíveis fixas;1813 - Despesa Extradjudicial Transporte; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1817;Outras Receitas/Despesas Operacionais;1399 - Recuperacao de Despesa; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1891;Custos variáveis;1891 - Despesa Plataforma /Sal; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1903;Custos variáveis;1903 - Perda de Embalagens; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1904;Custos fixos;1904 - Premiacao;-148.254 ;-149.746 ;-149.746 ;-149.746 ;-149.746 ;-149.746 ;-149.746 ;-149.746 ;-149.746 ;-149.746 ;-79.428 ;-94.188 
+1905;Despesas Administrativas fixas;1905 - Premiacao;-6.094 ;-6.173 ;-6.173 ;-6.173 ;-6.173 ;-6.173 ;-6.173 ;-6.173 ;-6.173 ;-6.173 ;-4.836 ;-5.161 
+1911;Despesas Comerciais / Logistica / Expedição variáveis;1911 - Transporte de Prod. Acabado; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1912;Despesas Administrativas fixas;1912 - Hospedagem; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1919;Custos variáveis;1919 - Material e Manutencao de Informatica;-322 ;-337 ;-354 ;-337 ;-386 ;-354 ;-370 ;-380 ;-341 ;-316 ;-12 ;-128 
+1920;Despesas Administrativas fixas;1920 - Despesas c/ Viagens e Estadias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1922;Custos variáveis;1922 - Aves Industrializadas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1923;Custos variáveis;1923 - Aves para Abate; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1924;Custos variáveis;1924 - Revenda de Insumos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1925;Custos fixos;1925 - Servico de Consultoria e Acessoria;-186.010 ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-53.225 ;-82.304 
+1926;Custos variáveis;1926 - Sub Produtos do Abate; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1927;Despesas Não Dedutíveis fixas;1927 - Despesas Indedutiveis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1928;Custos fixos;1928 - Cesta Basica Funcionarios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1933;Custos variáveis;1933 - CPV - Aves Industrializadas;-15.882.300 ;-16.935.080 ;-17.620.441 ;-16.966.251 ;-19.273.718 ;-17.865.559 ;-18.853.801 ;-19.724.561 ;-18.144.417 ;-16.454.723 ;-14.797.986 ;-13.260.130 
+1934;Custos variáveis;1934 - CPV - Aves para Abate; -   ;-852.191 ;-2.903.155 ;-1.992.273 ;-4.144.421 ;-4.027.670 ;-3.613.188 ;-4.725.808 ;-5.044.241 ;-3.077.530 ; -   ;-1.014.037 
+1935;Custos variáveis;1935 - CPV - Revenda de Insumos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1936;Custos variáveis;1936 - CPV - Sub Produtos de Abate; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-184.838 ;-235.678 
+1981;Custos variáveis;1981 - Material Intermediario;-75.075 ;-79.503 ;-83.289 ;-79.503 ;-90.861 ;-83.289 ;-87.075 ;-89.464 ;-80.221 ;-74.553 ;-13.909 ;-23.906 
+1982;Custos variáveis;1982 - Servico Pega de Frango;-132.068 ;-151.454 ;-180.493 ;-163.719 ;-206.929 ;-192.013 ;-193.666 ;-211.696 ;-197.309 ;-167.735 ;-156.389 ;-136.271 
+1983;Custos variáveis;1983 - Amonia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1984;Custos variáveis;1984 - Frete Frango Vivo;-164.528 ;-171.689 ;-179.865 ;-171.689 ;-196.216 ;-179.865 ;-188.040 ;-193.197 ;-173.239 ;-160.998 ;-220.516 ;-202.651 
+1985;Custos variáveis;1985 - Remuneracao Integrado;-1.135.036 ;-1.181.243 ;-1.407.731 ;-1.276.901 ;-1.613.908 ;-1.497.577 ;-1.510.470 ;-1.651.091 ;-1.538.883 ;-1.308.223 ;-808.558 ;-700.392 
+1986;Custos fixos;1986 - Bolsa Estagio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+1987;Custos fixos;1987 - Transporte de Pessoal;-80.760 ;-79.074 ;-79.074 ;-79.074 ;-79.074 ;-79.074 ;-79.074 ;-79.074 ;-79.074 ;-79.074 ;-81.597 ;-71.886 
+1989;Custos fixos;1989 - Seguro de Vida Funcionarios;-1.319 ;-1.289 ;-1.289 ;-1.289 ;-1.289 ;-1.289 ;-1.289 ;-1.289 ;-1.289 ;-1.289 ;-1.047 ; -   
+1990;Custos fixos;1990 - Medicina do Trabalho;-71.871 ;-69.571 ;-69.571 ;-69.571 ;-69.571 ;-69.571 ;-69.571 ;-69.571 ;-69.571 ;-69.571 ;-15.388 ;-15.504 
+1991;Custos fixos;1991 - Uniformes e Equipamento de Protecao Individual - EPI;-16.706 ;-16.319 ;-16.319 ;-16.319 ;-16.319 ;-16.319 ;-16.319 ;-16.319 ;-16.319 ;-16.319 ;-24.399 ;-18.598 
+1992;Custos fixos;1992 - Multa FGTS; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-7.903 ;-386 
+1993;Custos fixos;1993 - Analise Laboratoriais;-9.416 ;-9.853 ;-10.322 ;-9.853 ;-11.261 ;-10.322 ;-10.792 ;-11.088 ;-9.942 ;-9.240 ;-11.406 ;-33.117 
+1994;Custos fixos;1994 - Mensalidades e Anuidades;-740 ;-774 ;-811 ;-774 ;-885 ;-811 ;-848 ;-871 ;-781 ;-726 ;-2.269 ;-4.077 
+1995;Custos variáveis;1995 - Transporte de Racao;-185.068 ;-201.365 ;-239.974 ;-217.672 ;-275.120 ;-255.290 ;-257.488 ;-281.880 ;-262.723 ;-223.344 ;-87.665 ;-102.893 
+1996;Custos fixos;1996 - Material de Expediente;-17.807 ;-17.395 ;-17.395 ;-17.395 ;-17.395 ;-17.395 ;-17.395 ;-17.395 ;-17.395 ;-17.395 ;-7.734 ;-9.220 
+1997;Depreciações e Amortizações;1997 - Amortizacoes;-458 ;-458 ;-458 ;-458 ;-458 ;-458 ;-458 ;-458 ;-458 ;-458 ; -   ; -   
+1999;Custos fixos;1999 - Servico de Cartorio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2000;Custos variáveis;2000 - Produtos de Tratamento de Agua; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2001;Custos fixos;2001 - Material de Higienizacao e Limpeza;-32.588 ;-34.101 ;-35.725 ;-34.101 ;-38.973 ;-35.725 ;-37.349 ;-38.374 ;-34.409 ;-31.978 ;-30.188 ;-47.674 
+2002;Custos fixos;2002 - Material de Escritorio;-1.096 ;-1.147 ;-1.202 ;-1.147 ;-1.311 ;-1.202 ;-1.257 ;-1.291 ;-1.158 ;-1.076 ;-1.942 ;-2.255 
+2003;Custos variáveis;2003 - Taxa IMA;-20.762 ;-21.727 ;-22.761 ;-21.727 ;-24.831 ;-22.761 ;-23.796 ;-24.449 ;-21.923 ;-20.374 ;-22.938 ;-21.804 
+2004;Custos fixos;2004 - Taxa Fundesa;-2.400 ;-2.511 ;-2.631 ;-2.511 ;-2.870 ;-2.631 ;-2.750 ;-2.826 ;-2.534 ;-2.355 ;-3.798 ;-5.018 
+2005;Custos fixos;2005 - Perda por Avaria, Roubo ou Deterioracao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-77 ;-60 
+2006;Despesas Administrativas fixas;2006 - Bolsa Estagio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2007;Despesas Administrativas fixas;2007 - Transporte de Pessoal;-155 ;-119 ;-119 ;-119 ;-119 ;-119 ;-119 ;-119 ;-119 ;-119 ; -   ;-76 
+2009;Despesas Administrativas fixas;2009 - Seguro de Vida Funcionarios; -   ;-1.047 ;-1.047 ;-1.047 ;-1.047 ;-1.047 ;-1.047 ;-1.047 ;-1.047 ;-1.047 ; -   ;-1.047 
+2010;Despesas Administrativas fixas;2010 - Medicina do Trabalho;-6.553 ;-4.993 ;-4.993 ;-4.993 ;-4.993 ;-4.993 ;-4.993 ;-4.993 ;-4.993 ;-4.993 ; -   ; -   
+2011;Despesas Administrativas fixas;2011 - Uniformes e Equipamento de Protecao Individual - EPI;-1.002 ;-773 ;-773 ;-773 ;-773 ;-773 ;-773 ;-773 ;-773 ;-773 ;-531 ;-458 
+2012;Despesas Administrativas fixas;2012 - Multa FGTS; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2013;Despesas Administrativas fixas;2013 - Mensalidades e Anuidades;-13.279 ;-13.896 ;-14.558 ;-13.896 ;-15.881 ;-14.558 ;-15.219 ;-15.637 ;-14.021 ;-13.031 ;-25.041 ;-22.504 
+2014;Despesas Administrativas fixas;2014 - Servico de Comunicacao e Divulgacao;-119 ;-125 ;-131 ;-125 ;-143 ;-131 ;-137 ;-140 ;-126 ;-117 ; -   ;-28 
+2015;Despesas Administrativas fixas;2015 - Material de Expediente;-1.182 ;-1.237 ;-1.296 ;-1.237 ;-1.414 ;-1.296 ;-1.355 ;-1.392 ;-1.248 ;-1.160 ;-4.970 ;-3.388 
+2016;Depreciações e Amortizações;2016 - Amortizacoes;-21 ;-21 ;-21 ;-21 ;-21 ;-21 ;-21 ;-21 ;-21 ;-21 ; -   ; -   
+2017;Depreciações e Amortizações;2017 - Amortizacoes Direito de Uso; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2018;Despesas Administrativas fixas;2018 - Servico de Cartorio;-797 ;-834 ;-874 ;-834 ;-953 ;-874 ;-913 ;-938 ;-841 ;-782 ; -   ;-662 
+2019;Despesas Administrativas fixas;2019 - Maquinas, Moveis e Utensilios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2020;Despesas Administrativas fixas;2020 - Material de Higienizacao e Limpeza;-2.491 ;-2.606 ;-2.731 ;-2.606 ;-2.979 ;-2.731 ;-2.855 ;-2.933 ;-2.630 ;-2.444 ;-1.009 ;-2.945 
+2021;Despesas Administrativas fixas;2021 - Material de Escritorio;-1.421 ;-1.097 ;-1.097 ;-1.097 ;-1.097 ;-1.097 ;-1.097 ;-1.097 ;-1.097 ;-1.097 ;-585 ;-737 
+2022;Despesas Administrativas fixas;2022 - Multa por Infracoes / Erros; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2023;Despesas Administrativas fixas;2023 - Impostos e Taxas Federais;-743 ;-778 ;-815 ;-778 ;-889 ;-815 ;-852 ;-875 ;-785 ;-729 ;-1.199 ; 41 
+2024;Despesas Administrativas fixas;2024 - Impostos e Taxas Estaduais;-732 ;-766 ;-802 ;-766 ;-875 ;-802 ;-839 ;-862 ;-773 ;-718 ;-13.521 ; -   
+2025;Despesas Administrativas fixas;2025 - Impostos e Taxas Municipais;-4 ;-5 ;-5 ;-5 ;-5 ;-5 ;-5 ;-5 ;-5 ;-4 ;-939 ;-19 
+2026;Despesas Administrativas fixas;2026 - Gastos com PIS; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2027;Despesas Administrativas fixas;2027 - Gastos com COFINS; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2028;Despesas Administrativas fixas;2028 - Acordos Judiciais/Extra Judiciais;-6.703 ;-7.015 ;-7.349 ;-7.015 ;-8.017 ;-7.349 ;-7.683 ;-7.893 ;-7.078 ;-6.578 ; -   ; -   
+2029;Despesas Administrativas fixas;2029 - Perda por Avaria, Roubo ou Deterioracao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-268 ; -   
+2031;Despesas Comerciais / Logistica/ Expedição fixas;2031 - Salarios;-28.555 ;-67.180 ;-67.180 ;-67.180 ;-67.180 ;-67.180 ;-67.180 ;-67.180 ;-67.180 ;-67.180 ;-49.677 ;-51.094 
+2032;Despesas Comerciais / Logistica/ Expedição fixas;2032 - Ferias; -   ;-5.626 ;-5.626 ;-5.626 ;-5.626 ;-5.626 ;-5.626 ;-5.626 ;-5.626 ;-5.626 ;-5.061 ;-5.626 
+2033;Despesas Comerciais / Logistica/ Expedição fixas;2033 - 13° Salario;-3.707 ;-7.761 ;-7.761 ;-7.761 ;-7.761 ;-7.761 ;-7.761 ;-7.761 ;-7.761 ;-7.761 ; -   ;-278 
+2034;Despesas Comerciais / Logistica/ Expedição fixas;2034 - Indenizacoes Trabalhistas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2035;Despesas Comerciais / Logistica/ Expedição fixas;2035 - Rescisao Contratual;-104 ;-244 ;-244 ;-244 ;-244 ;-244 ;-244 ;-244 ;-244 ;-244 ;-742 ;-708 
+2036;Despesas Comerciais / Logistica/ Expedição fixas;2036 - Pensao Alimenticia; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2037;Despesas Comerciais / Logistica / Expedição variáveis;2037 - Comissoes;-11.940 ;-12.661 ;-14.706 ;-13.705 ;-16.868 ;-15.612 ;-16.692 ;-18.340 ;-17.058 ;-14.755 ;-18.419 ;-23.313 
+2038;Despesas Comerciais / Logistica / Expedição variáveis;2038 - Gratificacoes;-3.222 ;-7.581 ;-7.581 ;-7.581 ;-7.581 ;-7.581 ;-7.581 ;-7.581 ;-7.581 ;-7.581 ;-5.115 ;-5.115 
+2039;Despesas Comerciais / Logistica/ Expedição fixas;2039 - Descanso Semanal Remunerado;-2.450 ;-5.763 ;-5.763 ;-5.763 ;-5.763 ;-5.763 ;-5.763 ;-5.763 ;-5.763 ;-5.763 ;-3.542 ;-3.885 
+2040;Despesas Comerciais / Logistica/ Expedição fixas;2040 - Periculosidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2041;Despesas Comerciais / Logistica/ Expedição fixas;2041 - Adicional Noturno;-1.389 ;-3.267 ;-3.267 ;-3.267 ;-3.267 ;-3.267 ;-3.267 ;-3.267 ;-3.267 ;-3.267 ;-2.057 ;-3.075 
+2042;Despesas Comerciais / Logistica/ Expedição fixas;2042 - Hora Extra; -   ;-10 ;-10 ;-10 ;-10 ;-10 ;-10 ;-10 ;-10 ;-10 ;-143 ;-10 
+2043;Despesas Comerciais / Logistica/ Expedição fixas;2043 - DSR Hora Extra;-267 ;-628 ;-628 ;-628 ;-628 ;-628 ;-628 ;-628 ;-628 ;-628 ;-423 ;-514 
+2044;Despesas Comerciais / Logistica/ Expedição fixas;2044 - Ferias Proporcionais;-3.990 ;-9.387 ;-9.387 ;-9.387 ;-9.387 ;-9.387 ;-9.387 ;-9.387 ;-9.387 ;-9.387 ;-127 ;-1.869 
+2045;Despesas Comerciais / Logistica/ Expedição fixas;2045 - 1/3 Ferias;-2.719 ;-5.691 ;-5.691 ;-5.691 ;-5.691 ;-5.691 ;-5.691 ;-5.691 ;-5.691 ;-5.691 ;-1.729 ;-2.498 
+2046;Despesas Comerciais / Logistica/ Expedição fixas;2046 - Aviso Previo; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2047;Despesas Comerciais / Logistica/ Expedição fixas;2047 - Salario Maternidade; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2048;Despesas Comerciais / Logistica/ Expedição fixas;2048 - Convenio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2049;Despesas Comerciais / Logistica/ Expedição fixas;2049 - 13° Salario Indenizado;-363 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ; -   ; -   
+2050;Despesas Comerciais / Logistica/ Expedição fixas;2050 - Aviso Previo Indenizado;-5.223 ;-12.288 ;-12.288 ;-12.288 ;-12.288 ;-12.288 ;-12.288 ;-12.288 ;-12.288 ;-12.288 ; -   ; -   
+2051;Despesas Comerciais / Logistica/ Expedição fixas;2051 - Provisao p/ Ferias; -   ;-999 ;-999 ;-999 ;-999 ;-999 ;-999 ;-999 ;-999 ;-999 ;-1.110 ;-999 
+2052;Despesas Comerciais / Logistica/ Expedição fixas;2052 - Provisao p/ 13° Salario; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-6.973 ;-7.386 
+2053;Despesas Comerciais / Logistica/ Expedição fixas;2053 - Alimentacao do Trabalhador;-9.946 ;-23.399 ;-23.399 ;-23.399 ;-23.399 ;-23.399 ;-23.399 ;-23.399 ;-23.399 ;-23.399 ;-8.632 ;-12.339 
+2054;Despesas Comerciais / Logistica/ Expedição fixas;2054 - Desconto DSR s/ Faltas; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2055;Despesas Comerciais / Logistica/ Expedição fixas;2055 - DSR s/ Adicional Noturno; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2056;Despesas Comerciais / Logistica/ Expedição fixas;2056 - 1/3 Ferias (Rescisao); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2057;Despesas Comerciais / Logistica/ Expedição fixas;2057 - Ferias Indenizadas;-363 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ;-853 ; -   ; -   
+2058;Despesas Comerciais / Logistica/ Expedição fixas;2058 - Premiacao;-8.603 ;-8.714 ;-8.714 ;-8.714 ;-8.714 ;-8.714 ;-8.714 ;-8.714 ;-8.714 ;-8.714 ;-15.228 ;-17.496 
+2059;Despesas Comerciais / Logistica/ Expedição fixas;2059 - Bolsa Estagio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2060;Despesas Comerciais / Logistica/ Expedição fixas;2060 - Transporte de Pessoal; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-3.218 ;-2.471 
+2061;Despesas Comerciais / Logistica/ Expedição fixas;2061 - Seguro de Vida Funcionarios; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2062;Despesas Comerciais / Logistica/ Expedição fixas;2062 - Medicina do Trabalho;-4.836 ;-11.233 ;-11.233 ;-11.233 ;-11.233 ;-11.233 ;-11.233 ;-11.233 ;-11.233 ;-11.233 ; -   ;-72 
+2063;Despesas Comerciais / Logistica/ Expedição fixas;2063 - Uniformes e Equipamento de Protecao Individual - EPI;-337 ;-792 ;-792 ;-792 ;-792 ;-792 ;-792 ;-792 ;-792 ;-792 ;-1.183 ;-6 
+2066;Despesas Comerciais / Logistica/ Expedição fixas;2066 - FGTS;-3.198 ;-7.524 ;-7.524 ;-7.524 ;-7.524 ;-7.524 ;-7.524 ;-7.524 ;-7.524 ;-7.524 ;-7.362 ;-7.784 
+2067;Despesas Comerciais / Logistica/ Expedição fixas;2067 - Multa FGTS; -   ; 1 ; 2 ; 3 ; 4 ; 5 ; 6 ; 7 ; 8 ; 9 ; -   ; -   
+2068;Despesas Comerciais / Logistica/ Expedição fixas;2068 - Contribuicao Sindical; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2069;Despesas Comerciais / Logistica/ Expedição fixas;2069 - Contribuicao de Terceiros;-2.224 ;-4.657 ;-4.657 ;-4.657 ;-4.657 ;-4.657 ;-4.657 ;-4.657 ;-4.657 ;-4.657 ;-5.081 ;-5.643 
+2070;Despesas Comerciais / Logistica/ Expedição fixas;2070 - Seguro Acidente do Trabalho - RAT;-890 ;-1.863 ;-1.863 ;-1.863 ;-1.863 ;-1.863 ;-1.863 ;-1.863 ;-1.863 ;-1.863 ;-3.113 ;-3.458 
+2073;Despesas Comerciais / Logistica / Expedição variáveis;2073 - Servicos Profissionais Contratados P. Juridica;-63.015 ;-81.993 ;-89.901 ;-85.940 ;-100.855 ;-92.687 ;-101.043 ;-108.742 ;-99.426 ;-89.679 ;-12.319 ;-1.700 
+2074;Despesas Comerciais / Logistica/ Expedição fixas;2074 - Servico Consultoria e Assessoria;-73.380 ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-11.138 
+2075;Despesas Comerciais / Logistica/ Expedição fixas;2075 - Servico de Armazenagem; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2076;Despesas Comerciais / Logistica/ Expedição fixas;2076 - Mensalidades e Anuidades;-1.900 ;-1.988 ;-2.083 ;-1.988 ;-2.272 ;-2.083 ;-2.177 ;-2.237 ;-2.006 ;-1.864 ;-3.292 ;-4.392 
+2077;Despesas Comerciais / Logistica / Expedição variáveis;2077 - Comissao Representantes Externos P. Juridica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2078;Despesas Comerciais / Logistica / Expedição variáveis;2078 - Fretes Produto Acabado;-905.620 ;-1.316.216 ;-1.378.893 ;-1.316.216 ;-1.504.247 ;-1.378.893 ;-1.441.570 ;-1.481.121 ;-1.328.094 ;-1.234.267 ;-905.843 ;-865.767 
+2079;Despesas Comerciais / Logistica/ Expedição fixas;2079 - Servico de Publicidade e Propaganda;-20.454 ;-21.404 ;-22.423 ;-21.404 ;-24.462 ;-22.423 ;-23.443 ;-24.086 ;-21.597 ;-20.071 ;-12.250 ;-15.849 
+2081;Despesas Comerciais / Logistica/ Expedição fixas;2081 - Manutencao Mecanica;-7 ;-7 ;-7 ;-7 ;-8 ;-7 ;-8 ;-8 ;-7 ;-7 ; -   ;-73 
+2082;Despesas Comerciais / Logistica/ Expedição fixas;2082 - Manutencao Eletrica; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2083;Despesas Comerciais / Logistica/ Expedição fixas;2083 - Manutencao Civil; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2084;Despesas Comerciais / Logistica/ Expedição fixas;2084 - Manutencao Hidraulica; -   ;-56 ;-56 ;-56 ;-56 ;-56 ;-56 ;-56 ;-56 ;-56 ;-56 ; -   
+2085;Despesas Comerciais / Logistica/ Expedição fixas;2085 - Manutencao e Conservacao de Benfeitorias; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2086;Despesas Comerciais / Logistica/ Expedição fixas;2086 - Material e Manutencao de Informatica;-4 ;-5 ;-5 ;-5 ;-5 ;-5 ;-5 ;-5 ;-5 ;-4 ;-11 ;-843 
+2087;Despesas Comerciais / Logistica/ Expedição fixas;2087 - Material de Expediente;-34 ;-36 ;-38 ;-36 ;-41 ;-38 ;-39 ;-41 ;-36 ;-34 ; 10 ;-10 
+2089;Depreciações e Amortizações;2089 - Depreciacoes; -   ;-5.012 ;-5.012 ;-3.162 ;-3.162 ;-3.162 ;-3.162 ;-3.082 ;-3.082 ;-3.082 ;-5.025 ;-5.025 
+2090;Depreciações e Amortizações;2090 - Amortizacoes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2091;Depreciações e Amortizações;2091 - Amortizacoes Direito de uso; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2093;Despesas Comerciais / Logistica/ Expedição fixas;2093 - Energia Eletrica; -   ;-4.301 ;-4.301 ;-4.301 ;-4.301 ;-4.301 ;-4.301 ;-4.301 ;-4.301 ;-4.301 ;-4.301 ;-4.988 
+2094;Despesas Comerciais / Logistica/ Expedição fixas;2094 - Comunicacoes (Telefone, Correio e Internet); -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2095;Despesas Comerciais / Logistica/ Expedição fixas;2095 - Agua e Saneamento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2096;Despesas Comerciais / Logistica/ Expedição fixas;2096 - Servico de Cartorio; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2097;Despesas Comerciais / Logistica/ Expedição fixas;2097 - Maquinas, Moveis e Utensilios;-129 ;-136 ;-142 ;-136 ;-155 ;-142 ;-148 ;-152 ;-137 ;-127 ;-408 ; -   
+2098;Despesas Comerciais / Logistica/ Expedição fixas;2098 - Material de Escritorio;-966 ;-1.011 ;-1.059 ;-1.011 ;-1.155 ;-1.059 ;-1.107 ;-1.138 ;-1.020 ;-948 ;-893 ; -   
+2100;Despesas Comerciais / Logistica / Expedição variáveis;2100 - Combustiveis e Lubrificantes;-1.881 ;-1.968 ;-2.062 ;-1.968 ;-2.250 ;-2.062 ;-2.156 ;-2.215 ;-1.986 ;-1.846 ;-2.824 ;-1.940 
+2101;Despesas Comerciais / Logistica/ Expedição fixas;2101 - Seguro de Veiculos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-811 ; 1.187 
+2102;Despesas Comerciais / Logistica/ Expedição fixas;2102 - IPVA, Seguro Obrigatorio e Licenciamento; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2103;Despesas Comerciais / Logistica / Expedição variáveis;2103 - Pedagios;-271 ;-284 ;-297 ;-284 ;-324 ;-297 ;-311 ;-319 ;-286 ;-266 ;-199 ;-374 
+2104;Despesas Comerciais / Logistica/ Expedição fixas;2104 - Manutencao Veiculo Preventiva;-1.685 ;-1.764 ;-1.848 ;-1.764 ;-2.016 ;-1.848 ;-1.932 ;-1.985 ;-1.780 ;-1.654 ;-218 ; -   
+2105;Despesas Comerciais / Logistica/ Expedição fixas;2105 - Manutencao Veiculo Corretiva; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2107;Despesas Comerciais / Logistica/ Expedição fixas;2107 - Alugueis e Locacoes;-1.133 ;-1.147 ;-1.147 ;-1.147 ;-1.147 ;-1.147 ;-1.147 ;-1.147 ;-1.147 ;-1.147 ;-835 ;-9.357 
+2108;Despesas Comerciais / Logistica/ Expedição fixas;2108 - Despesas c/ Viagens, Estadias e Refeicoes;-1.178 ;-2.771 ;-2.771 ;-2.771 ;-2.771 ;-2.771 ;-2.771 ;-2.771 ;-2.771 ;-2.771 ; -   ;-333 
+2109;Despesas Comerciais / Logistica/ Expedição fixas;2109 - Treinamentos, Cursos e Eventos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-1.600 
+2110;Despesas Comerciais / Logistica/ Expedição fixas;2110 - Contribuicao Sindical / Patronal / Conselho; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2111;Despesas Comerciais / Logistica/ Expedição fixas;2111 - Seguros; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2112;Despesas Comerciais / Logistica/ Expedição fixas;2112 - Perda por Avaria, Roubo ou Deterioracao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2116;Despesas Não Dedutíveis fixas;2116 - Patrocinio e Doacoes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-5.719 ;-12.218 
+2117;Despesas Não Dedutíveis fixas;2117 - Multas de Transito; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-208 
+2118;Despesas Não Dedutíveis fixas;2118 - Despesas Indedutiveis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2120;Juros;2120 - Juros s/ Direito de uso Arrendamento Mercantil; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2123;Outras Receitas/Despesas Operacionais;2123 - Receita Operacionais; 23.495 ; 24.586 ; 25.757 ; 24.586 ; 28.098 ; 25.757 ; 26.927 ; 27.666 ; 24.808 ; 23.055 ; -   ; 10 
+2124;Outras Receitas/Despesas Operacionais;2124 - Bonificacao recebidas; 12.972 ; 13.575 ; 14.221 ; 13.575 ; 15.514 ; 14.221 ; 14.867 ; 15.275 ; 13.697 ; 12.729 ; 43.791 ; -   
+2125;Outras Receitas/Despesas Operacionais;2125 - Venda de Sucata; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; 6 ; 36 
+2126;Outras Receitas/Despesas Operacionais;2126 - Indenizacao de Seguro; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; 252.175 
+2128;Outras Receitas/Despesas Operacionais;2128 - Ganhos e Perdas de Capital; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2129;Outras Receitas/Despesas Operacionais;2129 - Recuperacao de Recebimentos Prov. Como Perda; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2130;Outras Receitas/Despesas Operacionais;2130 - Alugueis; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2132;Outras Receitas/Despesas Operacionais;2132 - Credito de PIS / COFINS; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2134;Outras Receitas/Despesas Operacionais;2134 - Revenda de Materia Prima; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2135;Outras Receitas/Despesas Operacionais;2135 - Despesas Operacionais; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-134.730 
+2136;Despesas Administrativas fixas;2136 - Brindes;-218 ;-169 ;-169 ;-169 ;-169 ;-169 ;-169 ;-169 ;-169 ;-169 ;-3.119 ;-2.723 
+2149;Custos variáveis;2149 - Variacao de Custo Fabrica Racao; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-543.327 ;-462.074 
+2150;Custos variáveis;2150 - Rateio Producao Avicola; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-32.228 ;-48.968 
+2152;Custos variáveis;2152 - CMV - Revenda de Mercadorias e Insumos;-10.994 ;-11.504 ;-12.052 ;-11.504 ;-13.148 ;-12.052 ;-12.600 ;-12.945 ;-11.608 ;-10.788 ;-335.859 ;-450.564 
+2154;Custos fixos;2154 - Taxa IGAM-Agua; -   ;-4.761 ;-4.761 ;-4.761 ;-4.761 ;-4.761 ;-4.761 ;-4.761 ;-4.761 ;-4.761 ;-4.761 ; -   
+2157;Despesas Comerciais / Logistica/ Expedição fixas;2157 - Material de Higienizacao e Limpeza; -   ;-285 ;-285 ;-285 ;-285 ;-285 ;-285 ;-285 ;-285 ;-285 ;-285 ;-589 
+2159;Despesas Comerciais / Logistica/ Expedição fixas;2159 - Cesta Natal; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2183;Despesas Não Dedutíveis fixas;2183 - Brindes; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   
+2192;Despesas Administrativas fixas;2192 - Treinamentos e Cursos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;;-139 
+2193;Despesas Comerciais / Logistica/ Expedição fixas;2193 - Insalubridade; -   ;-607 ;-607 ;-607 ;-607 ;-607 ;-607 ;-607 ;-607 ;-607 ;-565 ;-607 
+2194;Despesas Comerciais / Logistica/ Expedição fixas;2194 - Frete e Carretos; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;-90 ; 90 
+2195;Custos fixos;2195 - Serviços de Apoio a Gestao;-2.632 ;-162.244 ;-162.244 ;-162.244 ;-162.244 ;-162.244 ;-162.244 ;-162.244 ;-162.244 ;-162.244 ;-125.170 ;-172.314 
+2196;Despesas Administrativas fixas;2196 - Serviços de Apoio a Gestao;-63.573 ;-573.867 ;-573.867 ;-573.867 ;-573.867 ;-573.867 ;-573.867 ;-573.867 ;-573.867 ;-573.867 ;-395.377 ;-511.808 
+2197;Despesas Comerciais / Logistica/ Expedição fixas;2197 - Serviços de Apoio a Gestao;-28.103 ;-205.958 ;-205.958 ;-205.958 ;-205.958 ;-205.958 ;-205.958 ;-205.958 ;-205.958 ;-205.958 ;-84.961 ;-122.836 
+2201;Despesas Administrativas fixas;; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;;
+2213;Custos fixos;; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;;
+2214;Despesas Administrativas fixas;; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ; -   ;;
+2229;Custos variáveis;2229 - PRV;;;;;;;;;;;;
+2235;Despesas Administrativas fixas;2235 - PRV;;;;;;;;;;;;
+2246;Custos variáveis;2246 - Ajuste CPV;;;;;;;;;;;;
+2248;Impostos sobre vendas;2248 - ICMS s/ Revendas;;;;;;;;;;;;
+2249;Impostos sobre vendas;2249 - PIS s/ Revendas;;;;;;;;;;;;
+2250;Impostos sobre vendas;2250 - COFINS s/ Revendas;;;;;;;;;;;;
+2257;Custos fixos;2257 - Maquinas, Moveis e Utensilios;;;;;;;;;;;;

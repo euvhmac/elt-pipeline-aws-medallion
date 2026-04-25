@@ -1,0 +1,270 @@
+﻿version: 2
+
+models:
+  # DIMENSÕES (DIM_)
+  
+  - name: dim_empresas
+    description: "Dimensão de empresas consolidada para a camada gold"
+    columns:
+      - name: id_empresa
+        description: "Identificador único da empresa"
+        tests:
+          - not_null
+          - unique
+      - name: nome_empresa
+        description: "Nome da empresa"
+        tests:
+          - not_null
+
+  - name: dim_clientes
+    description: "Dimensão de clientes consolidada com informações enriquecidas"
+    columns:
+      - name: sk_cliente
+        description: "Chave surrogate única do cliente"
+        tests:
+          - not_null
+          - unique
+      - name: razao_social
+        description: "Razão social do cliente"
+        tests:
+          - not_null
+      - name: nome_fantasia
+        description: "Nome fantasia do cliente"
+      - name: tipo_cliente
+        description: "Tipo de cliente"
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: dim_produtos
+    description: "Dimensão de produtos consolidada"
+    columns:
+      - name: sk_item
+        description: "Chave surrogate única do produto"
+        tests:
+          - not_null
+          - unique
+      - name: descricao_item
+        description: "Descrição do produto"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: dim_condpag
+    description: "Dimensão de condições de pagamento"
+    columns:
+      - name: sk_condicao_pagamento
+        description: "Chave surrogate única da condição de pagamento"
+        tests:
+          - not_null
+          - unique
+      - name: descricao_condicao_pagamento
+        description: "Descrição da condição de pagamento"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: dim_centros_custos
+    description: "Dimensão de centros de custo"
+    columns:
+      - name: sk_centro_custo
+        description: "Chave surrogate única do centro de custo"
+        tests:
+          - not_null
+          - unique
+      - name: descricao_centro_custo
+        description: "Descrição do centro de custo"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: dim_contas_contabeis
+    description: "Dimensão de contas contábeis"
+    columns:
+      - name: sk_conta_contabil
+        description: "Chave surrogate única da conta contábil"
+        tests:
+          - not_null
+          - unique
+      - name: id_conta
+        description: "ID da conta contábil"
+        tests:
+          - not_null
+      - name: descricao_conta
+        description: "Descrição da conta contábil"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  # FATOS (FCT_)
+  
+  - name: fct_vendas
+    description: "Tabela fato de vendas consolidada"
+    columns:
+      - name: sk_venda_item
+        description: "Chave surrogate única da venda item"
+        tests:
+          - not_null
+          - unique
+      - name: data_emissao_pedido
+        description: "Data de emissão do pedido"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: fct_titulo_financeiro
+    description: "Tabela fato de títulos financeiros (contas a receber/pagar)"
+    columns:
+      - name: sk_titulo_financeiro
+        description: "Chave surrogate única do título financeiro"
+        tests:
+          - not_null
+          - unique
+      - name: sk_cliente
+        description: "Chave estrangeira para dimensão de clientes"
+      - name: sk_condicao_pagamento
+        description: "Chave estrangeira para condição de pagamento"
+      - name: data_emissao
+        description: "Data de emissão do título"
+        tests:
+          - not_null
+      - name: data_vencimento
+        description: "Data de vencimento do título"
+        tests:
+          - not_null
+      - name: valor_titulo
+        description: "Valor do título"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: fct_faturamento
+    description: "Tabela fato de faturamento consolidado"
+    columns:
+      - name: sk_faturamento
+        description: "Chave surrogate única do faturamento"
+        tests:
+          - not_null
+          - unique
+      - name: data_emissao
+        description: "Data de emissão do faturamento"
+        tests:
+          - not_null
+      - name: valor_liquido
+        description: "Valor líquido faturado"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: "decimal(18,2)"
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: fct_devolucao
+    description: "Tabela fato de devoluções"
+    columns:
+      - name: sk_devolucao_item
+        description: "Chave surrogate única da devolução"
+        tests:
+          - not_null
+          - unique
+      - name: data_devolucao
+        description: "Data da devolução"
+        tests:
+          - not_null
+      - name: quantidade_devolvida
+        description: "Quantidade devolvida"
+        tests:
+          - not_null
+      - name: valor_devolvido
+        description: "Valor da devolução"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  # RELATÓRIOS CONSOLIDADOS
+  
+  - name: dre_contabil
+    description: "Demonstração do Resultado do Exercício - Contábil"
+    columns:
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+      - name: receita_liquida
+        description: "Receita líquida do período"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: decimal
+
+  - name: dre_gerencial
+    description: "Demonstração do Resultado do Exercício - Gerencial"
+    columns:
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+      - name: receita_bruta
+        description: "Receita bruta do período"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: decimal
+
+  - name: fct_projetos_consolidados
+    description: "Tabela fato de projetos consolidados"
+    columns:
+      - name: id_projeto
+        description: "ID único do projeto"
+        tests:
+          - not_null
+      - name: empresa
+        description: "Empresa de origem"
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"

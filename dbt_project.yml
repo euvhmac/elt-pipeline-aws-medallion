@@ -1,0 +1,61 @@
+# dbt_project.yml
+
+name: 'elt_medallion'
+version: '1.0.0'
+config-version: 2
+
+profile: 'elt_medallion'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  tenants:
+    - id: "unit_01"
+      label: "Unit_01"
+    - id: "unit_02"
+      label: "Unit_02"
+    - id: "unit_03"
+      label: "Unit_03"
+    - id: "unit_04"
+      label: "Unit_04"
+    - id: "unit_05"
+      label: "Unit_05"
+
+models:
+  elt_medallion: # Project name
+    +on_schema_change: "sync_all_columns"   # Global default for all incremental models
+
+    # --- Configuração para a pasta 'models/silver/' ---
+    silver:
+      multi_tenant_dw:
+        +materialized: incremental
+        +schema: silver__multi_tenant_dw
+
+    # --- Configuração para a pasta 'models/gold/' ---
+    gold:
+      multi_tenant_dw:
+        +materialized: incremental
+        +schema: gold__multi_tenant_dw
+
+      # --- Configuração para a subpasta 'models/platinum/multi_tenant_dw/' ---
+
+    platinum:
+      multi_tenant_dw:
+        +materialized: view
+        +schema: platinum__multi_tenant_dw
+
+    seeds:
+        +schema: seeds__multi_tenant_dw
+
+flags:
+  use_materialization_v2: true

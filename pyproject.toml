@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "elt-pipeline-databricks"
+version = "0.1.0"
+description = "Multi-tenant ELT pipeline - Medallion Architecture on Azure Databricks"
+authors = ["Vhmac <euvhmendes@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+dbt-databricks = "^1.10.4"
+sqlfluff = "^3.4.2"
+pre-commit = "^4.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

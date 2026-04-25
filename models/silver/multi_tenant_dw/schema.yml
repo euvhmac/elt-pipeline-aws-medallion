@@ -1,0 +1,406 @@
+﻿
+version: 2
+
+models:
+  - name: silver_dw_ccusto_contabil
+    description: "Tabela unificada de centros de custo contábeis das empresas Unit_01, Unit_02, Unit_04 e the client Prados. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: id_centro_custo
+        description: "Identificador único do centro de custo."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_conta_contabil
+    description: "Tabela unificada de contas contábeis das empresas Unit_01, Unit_02, Unit_04 e the client Prados. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: id_conta
+        description: "Identificador único da conta contábil."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_empresa
+    description: "Tabela unificada de empresas do grupo. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: id_empresa
+        description: "Identificador único da empresa."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_lancamento_origem
+    description: "Tabela unificada de lançamentos contábeis das empresas Unit_01, Unit_02, Unit_04 e the client Prados. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: lancamento_numero
+        description: "Número do lançamento."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_saldo_contabil
+    description: "Tabela unificada de saldos contábeis das empresas Unit_01, Unit_02, Unit_04 e the client Prados. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: id_conta
+        description: "Identificador único da conta contábil."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_unidade
+    description: "Tabela unificada de unidades de negócio das empresas Unit_01, Unit_02, Unit_04 e the client Prados. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: id_unidade
+        description: "Identificador único da unidade."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_clientes
+    description: "Tabela unificada de clientes agregados das empresas Unit_01, Unit_02, Unit_04, Unit_03 Unit_05. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: sk_cliente
+        description: "Chave primária única (surrogate key) da tabela, combinando a empresa e o id_cliente original."
+        tests:
+          - unique
+          - not_null
+      - name: id_cliente
+        description: "Identificador original do cliente na sua origem. Não é único nesta tabela."
+        tests:
+          - not_null
+      - name: nome_fantasia
+        description: "Nome fantasia do cliente."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_cidade
+    description: "Tabela unificada de cidades das empresas Unit_01, Unit_02, Unit_04, Unit_03 Unit_05. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: id_cidade
+        description: "Identificador único da cidade."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_danfe
+    description: "Tabela consolidada de DANFEs de todas as empresas processada na camada silver"
+    columns:
+      - name: sk_danfe
+        description: "Identificador único do DANFE (surrogate key)."
+        tests:
+          - not_null
+          - unique
+      - name: danfe_serie
+        description: "Série do DANFE."
+
+  - name: silver_dw_danfite
+    description: "Tabela consolidada de itens de DANFE (DANFITEs) de todas as empresas, processada na camada silver."
+    columns:
+      - name: sk_danfite
+        description: "Chave primária única (surrogate key) para o item da DANFE (empresa + id_danfe_numint + id_item)."
+        tests:
+          - unique
+      - name: sk_danfe_numero
+        description: "Chave secundária (surrogate key) baseada no número da DANFE."
+        tests:
+          - not_null
+      - name: sk_empresa
+        description: "Chave estrangeira (surrogate key) para a empresa."
+        tests:
+          - not_null
+      - name: sk_filial
+        description: "Chave estrangeira (surrogate key) para a filial."
+        tests:
+          - not_null
+      - name: sk_unidade
+        description: "Chave estrangeira (surrogate key) para a unidade."
+        tests:
+          - not_null
+      - name: id_item
+        description: "Identificador do item."
+        tests:
+          - not_null
+      - name: id_cfop
+        description: "Identificador do CFOP."
+        tests:
+          - not_null
+      - name: id_danfe_numint
+        description: "Identificador numérico interno da DANFE."
+        tests:
+          - not_null
+      - name: data_criacao
+        description: "Data de criação do registro."
+        tests:
+          - not_null
+
+  - name: silver_dw_ramo
+    description: "Tabela consolidada de ramos de atividade de todas as empresas processada na camada silver"
+    columns:
+      - name: sk_ramo
+        description: "Identificador único do ramo de atividade (surrogate key)."
+        tests:
+          - not_null
+          - unique
+      - name: descricao_ramo
+        description: "Descrição do ramo de atividade."
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_rota
+    description: "Tabela consolidada de rotas de todas as empresas processada na camada silver"
+    columns:
+      - name: sk_rota
+        description: "Identificador único da rota (surrogate key)."
+        tests:
+          - not_null
+          - unique
+      - name: descricao_rota
+        description: "Descrição da rota."
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_tipocliente
+    description: "Tabela consolidada de tipos de clientes de todas as empresas processada na camada silver"
+    columns:
+      - name: sk_tipo_cliente
+        description: "Identificador único do tipo de cliente (surrogate key)."
+        tests:
+          - not_null
+          - unique
+      - name: descricao_tipo_cliente
+        description: "Descrição do tipo de cliente."
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_vendedor
+    description: "Tabela consolidada de vendedores de todas as empresas processada na camada silver"
+    columns:
+      - name: sk_vendedor
+        description: "Identificador único do vendedor (surrogate key)."
+        tests:
+          - not_null
+          - unique
+      - name: nome_vendedor
+        description: "Nome do vendedor."
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+
+  - name: silver_dw_projeto_sup
+    description: "Tabela consolidada de projetos SUP de todas as empresas processada na camada silver"
+    columns:
+      - name: id_empresa
+        description: "Identificador único da empresa."
+        tests:
+          - not_null
+      - name: id_unidade
+        description: "Identificador da unidade."
+        tests:
+          - not_null
+      - name: id_projeto
+        description: "Identificador único do projeto."
+        tests:
+          - not_null
+      - name: empresa
+        description: "Nome da empresa de origem dos dados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: "{{ var('tenants') | map(attribute='label') | list }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - empresa
+            - id_empresa
+            - id_projeto
+
+  - name: silver_dw_titulo_fin
+    description: "Tabela consolidada de títulos financeiros de todas as empresas processada na camada silver"
+    columns:
+      - name: sk_titulo_financeiro
+        description: "Identificador único do título financeiro (surrogate key)."
+        tests:
+          - not_null
+          - unique
+
+  - name: silver_dw_areageo
+    description: "Dimensão de áreas geográficas para classificação de produtos."
+    columns:
+      - name: sk_area_geografica
+        description: "Chave primária única (surrogate key) da área geográfica."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_classe
+    description: "Dimensão de classes para classificação de produtos."
+    columns:
+      - name: sk_classe
+        description: "Chave primária única (surrogate key) da classe do produto."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_embalagem
+    description: "Dimensão de embalagens para classificação de produtos."
+    columns:
+      - name: sk_embalagem
+        description: "Chave primária única (surrogate key) da embalagem."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_familia
+    description: "Dimensão de famílias para classificação de produtos."
+    columns:
+      - name: sk_familia
+        description: "Chave primária única (surrogate key) da família do produto."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_grupo
+    description: "Dimensão de grupos para classificação de produtos."
+    columns:
+      - name: sk_grupo
+        description: "Chave primária única (surrogate key) do grupo do produto."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_linha
+    description: "Dimensão de linhas para classificação de produtos."
+    columns:
+      - name: sk_linha
+        description: "Chave primária única (surrogate key) da linha do produto."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_marca_item
+    description: "Dimensão de marcas para classificação de produtos."
+    columns:
+      - name: sk_marca_item
+        description: "Chave primária única (surrogate key) da marca do produto."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_origem
+    description: "Dimensão de origens para classificação de produtos."
+    columns:
+      - name: sk_origem
+        description: "Chave primária única (surrogate key) da origem do produto."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_tipoitem
+    description: "Dimensão de tipos para classificação de produtos."
+    columns:
+      - name: sk_tipo_item
+        description: "Chave primária única (surrogate key) do tipo do produto."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_item
+    description: "Tabela central de produtos, unificada e limpa, com as chaves para todas as suas dimensões."
+    columns:
+      - name: sk_item
+        description: "Chave primária única (surrogate key) do item."
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_dw_devolucao
+    description: "Tabela unificada de devoluções das empresas Unit_01, Unit_02, Unit_04, Unit_03 Unit_05. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: sk_devolucao_item
+        description: "Identificador único da devolução."
+        tests:
+          - not_null
+          - unique
+
+  - name: silver_dw_vendas
+    description: "Tabela unificada de vendas das empresas Unit_01, Unit_02, Unit_04, Unit_03 Unit_05. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: sk_venda_item
+        description: "Identificador único da venda."
+        tests:
+          - not_null
+          - unique
+
+  - name: silver_dw_condpag
+    description: "Tabela unificada de condições de pagamento das empresas Unit_01, Unit_02, Unit_04, Unit_03 Unit_05. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: sk_condicao_pagamento
+        description: "Identificador único da condição de pagamento."
+        tests:
+          - not_null
+          - unique
+
+  - name: silver_dw_filial
+    description: "Tabela unificada de filiais das empresas Unit_01, Unit_02, Unit_04, Unit_03 Unit_05. A coluna 'empresa' identifica a origem dos dados."
+    columns:
+      - name: sk_filial
+        description: "Identificador único da filial."
+        tests:
+          - not_null
+          - unique

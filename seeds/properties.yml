@@ -1,0 +1,22 @@
+version: 2
+
+seeds:
+  - name: orcamento_unit_01
+    config:
+      delimiter: ";"
+
+  - name: orcamento_unit_02
+    config:
+      delimiter: ";"
+
+  - name: ajustes_DRE_unit_01
+    config:
+      delimiter: ";"
+
+  - name: ajustes_DRE_unit_02
+    config:
+      delimiter: ";"
+
+  - name: meta_ajustes_DRE_unit_01
+    config:
+      delimiter: ";"
