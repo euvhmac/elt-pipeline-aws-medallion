@@ -92,6 +92,92 @@ Re-run do mesmo workload produz o mesmo resultado.
 - Geração de dados com seed permite reprodução exata
 - Terraform: `apply` repetido sem efeito quando estado convergiu
 
+### 7. Simplicidade > Complexidade (Anti Over-Engineering)
+**Qualidade não é sinônimo de complexidade.** Este projeto é arquitetonicamente sofisticado por necessidade (multi-tenant, medallion, 4 camadas), mas cada decisão local deve buscar a solução **mais simples que resolva o problema bem**.
+
+**Heurísticas de decisão**:
+- ✅ A solução mais simples que atende o requisito vence (YAGNI — You Aren't Gonna Need It)
+- ✅ Adicionar abstração apenas quando há **3+ usos concretos** ou problema documentado
+- ✅ Documentação traduz complexo em simples (diagramas, exemplos, "por que" antes de "como")
+- ✅ Código auto-explicativo > comentário extenso
+- ❌ Não criar helpers/wrappers para uso único
+- ❌ Não adicionar features "porque pode ser útil depois"
+- ❌ Não generalizar antes do segundo caso de uso aparecer
+- ❌ Não criar camadas de abstração só por "boa prática teórica"
+- ❌ Não escrever 100 linhas quando 20 resolvem com clareza igual
+
+**Quando em dúvida**: escolha a opção que um dev júnior consegue ler e entender em < 5 minutos.
+
+**Documentação segue o mesmo princípio**:
+- Explicar **o porquê** > listar tudo que existe
+- Diagramas e exemplos > prosa longa
+- Quickstart funcional em < 5 comandos
+- Glossário para jargões inevitáveis
+
+> **Regra de ouro**: se você precisa explicar a solução por mais de 2 parágrafos e ela não é arquitetural, provavelmente está over-engineered.
+
+---
+
+## Git Workflow — Gitflow Obrigatório
+
+**Toda mudança de código segue o fluxo abaixo. Nunca commitar direto em `main` ou `develop`.**
+
+```
+┌─────────────────────────────────────────────────────┐
+│  feature/<scope>-<desc>  ←  desenvolvimento ativo   │
+│         ↓                                           │
+│  PR → develop            ←  integração contínua     │
+│         ↓                                           │
+│  PR → main               ←  release (CalVer tag)    │
+└─────────────────────────────────────────────────────┘
+```
+
+### Regras inegociáveis
+
+1. **Toda feature/sprint**: criar branch a partir de `develop`
+   ```bash
+   git checkout develop && git pull
+   git checkout -b feat/sprint-1-fundacao-local
+   ```
+
+2. **Trabalhar e commitar na feature branch** (commits Conventional PT-BR)
+
+3. **Ao concluir**: abrir PR `feature → develop`
+   ```bash
+   git push -u origin feat/sprint-1-fundacao-local
+   gh pr create --base develop --title "feat(...): ..."
+   ```
+
+4. **Após merge em `develop`**: deletar branch local + remota
+
+5. **Release (final de sprint)**: PR `develop → main` com tag CalVer (`2025.05.0`)
+
+### Convenções de branch
+
+| Tipo | Padrão | Exemplo |
+|---|---|---|
+| Feature/Sprint | `feat/<scope>-<desc>` | `feat/sprint-1-fundacao` |
+| Bugfix | `fix/<scope>-<bug>` | `fix/airflow-callback-retry` |
+| Hotfix prod | `hotfix/<scope>` | `hotfix/athena-cutoff` (sai de `main`, volta em `main` + `develop`) |
+| Docs | `docs/<scope>` | `docs/adr-openlineage` |
+| Chore | `chore/<scope>` | `chore/deps-update` |
+
+### Branches protegidas (configurar no GitHub)
+
+- `main`: PR obrigatório, CI verde, sem force push
+- `develop`: PR obrigatório, CI verde
+
+### Exceções (raras)
+
+- Mudança trivial em README/typo: commit direto em `develop` aceito
+- Setup inicial pré-Sprint 1: commits diretos em `main` aceitos (este foi o caso de Sprint 0)
+- A partir de Sprint 1: **gitflow obrigatório sem exceções**
+
+### Achievement Opportunity 🦈
+
+Cada feature mergeada via PR farma **Pull Shark**. Self-merge (projeto solo) farma **YOLO 🤪**.
+Detalhes completos em [commits-prs.instructions.md](instructions/commits-prs.instructions.md).
+
 ---
 
 ## Anti-Patterns Proibidos
@@ -126,11 +212,25 @@ Este repositório **rejeita** os seguintes padrões. Code review deve bloquear:
 
 ### Git / Process
 - ❌ `--no-verify` para bypassar pre-commit
-- ❌ Force push em `main`
+- ❌ Force push em `main` ou `develop`
+- ❌ **Commit direto em `main` ou `develop`** (gitflow obrigatório a partir de Sprint 1)
 - ❌ Commits sem testes (quando código testável)
 - ❌ Merge sem CI verde
 - ❌ Secrets em commits (mesmo deletados depois — histórico fica)
 - ❌ Commit messages em inglês (este repo usa PT-BR)
+
+### Over-Engineering (proibido em qualquer linguagem/camada)
+- ❌ Abstração com 1 único uso (esperar 3+ casos)
+- ❌ Helper/wrapper que só renomeia chamada existente
+- ❌ Configurar feature flag para algo que nunca vai variar
+- ❌ Generic class quando uma função basta
+- ❌ Hierarquia de herança com 1 subclasse
+- ❌ Design pattern aplicado por nome, sem necessidade real
+- ❌ Documentação de 500 linhas para componente de 50 linhas
+- ❌ Abstrair "para o caso de mudar" sem requisito concreto
+- ❌ Comentários óbvios (`# increment counter` em `i += 1`)
+- ❌ Configuração externa para constante que nunca muda
+- ❌ Adicionar dependência pesada para resolver problema trivial
 
 ---
 
@@ -205,3 +305,7 @@ Documentação de produto em [docs/](../docs/) (PROJECT_BLUEPRINT, ARCHITECTURE_
 4. **Justificar trade-offs**: quando há decisão arquitetural, propor ADR
 5. **Cost-aware**: ao adicionar recurso AWS, calcular custo aproximado
 6. **Multi-tenant aware**: nunca esquecer `tenant_id` em modelos/queries novos
+7. **Simplicidade primeiro**: antes de implementar, perguntar "existe forma mais simples?"
+8. **Gitflow obrigatório**: nunca commitar direto em `main`/`develop` (Sprint 1+). Sempre criar feature branch a partir de `develop` e abrir PR ao concluir.
+9. **Documentação simples**: ao escrever docs, traduzir complexo em simples — diagramas + exemplos + "por quê" antes de "como"
+10. **Não over-engineerar**: rejeitar abstrações prematuras, helpers de uso único, configurações desnecessárias

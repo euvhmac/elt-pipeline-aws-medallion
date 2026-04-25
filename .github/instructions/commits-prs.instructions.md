@@ -90,40 +90,160 @@ BREAKING CHANGE: DAGs antigas precisam refactor para @task decorator
 
 ---
 
-## Branches
+## Branches — Gitflow Obrigatório
 
-### Naming
+### Modelo de branching
+
+```
+main      ●────────────●────────────●────────●  (releases, tags CalVer)
+           ╲          ╱ ╲          ╱╲       ╱
+            ╲        ╱   ╲        ╱  ╲hotfix
+develop  ────●──●──●─────●──●──●─────●──●──●  (integração contínua)
+              ╲ ╲ ╲      ╲ ╲ ╲       ╲ ╲ ╲
+               feature branches (efêmeras)
+```
+
+| Branch | Propósito | Origem | Destino |
+|---|---|---|---|
+| `main` | Código em produção / release | — | (recebe de `develop` ou `hotfix/*`) |
+| `develop` | Integração contínua de features | `main` (uma vez) | `main` (via PR de release) |
+| `feat/*` | Desenvolvimento de feature/sprint | `develop` | `develop` (via PR) |
+| `fix/*` | Correção de bug não-urgente | `develop` | `develop` (via PR) |
+| `hotfix/*` | Correção urgente em produção | `main` | `main` E `develop` (cherry-pick) |
+| `docs/*` | Documentação | `develop` | `develop` |
+| `chore/*` | Tarefas de manutenção | `develop` | `develop` |
+
+### Regras inegociáveis (Sprint 1+)
+
+1. ❌ **Nunca commit direto em `main`**
+2. ❌ **Nunca commit direto em `develop`** (exceto typos triviais em README)
+3. ❌ **Nunca force push em `main` ou `develop`**
+4. ✅ **Toda mudança via feature branch + PR**
+5. ✅ **PR exige CI verde** + checklist completo
+6. ✅ **Branches deletadas após merge**
+7. ✅ **Squash merge** (default) para histórico linear
+
+### Fluxo padrão — Feature/Sprint
+
+```bash
+# 1. Atualizar develop
+git checkout develop
+git pull origin develop
+
+# 2. Criar feature branch
+git checkout -b feat/sprint-1-fundacao-local
+
+# 3. Trabalhar (commits frequentes, Conventional Commits PT-BR)
+git add .
+git -c user.name="Vhmac" -c user.email="euvhmendes@gmail.com" commit -m "feat(airflow): adiciona docker-compose com postgres e redis"
+
+# 4. Push e abrir PR
+git push -u origin feat/sprint-1-fundacao-local
+gh pr create --base develop \
+  --title "feat(airflow): fundação local Docker Compose" \
+  --body-file .github/PULL_REQUEST_TEMPLATE.md
+
+# 5. Após aprovação: squash merge via UI ou CLI
+gh pr merge --squash --delete-branch
+
+# 6. Sync local
+git checkout develop
+git pull origin develop
+git branch -d feat/sprint-1-fundacao-local
+```
+
+### Fluxo de Release — `develop → main`
+
+Ao final de cada sprint:
+
+```bash
+# 1. Garantir develop atualizado e CI verde
+git checkout develop && git pull
+
+# 2. Abrir PR de release
+gh pr create --base main --head develop \
+  --title "release(2025.05.0): Sprint 1 — Fundação Local" \
+  --body "Conteúdo da Sprint: ..."
+
+# 3. Após merge: criar tag CalVer
+git checkout main && git pull
+git tag -a 2025.05.0 -m "Sprint 1: Fundação Local Docker Compose"
+git push origin 2025.05.0
+
+# 4. GitHub Release
+gh release create 2025.05.0 \
+  --title "Sprint 1 — Fundação Local" \
+  --notes-file docs/releases/2025.05.0.md
+```
+
+### Fluxo de Hotfix — Bug em produção
+
+```bash
+# 1. Sair de main (não de develop)
+git checkout main && git pull
+git checkout -b hotfix/athena-cutoff-100gb
+
+# 2. Corrigir + commit
+git commit -m "fix(infra): aumenta athena cutoff para 100GB temporariamente"
+
+# 3. PR para main
+gh pr create --base main --title "hotfix(infra): athena cutoff"
+
+# 4. Após merge em main: portar para develop
+git checkout develop && git pull
+git cherry-pick <sha-do-hotfix>
+git push origin develop
+```
+
+### Branches protegidas (configurar no GitHub Settings)
+
+**`main`**:
+- Require PR before merging
+- Require status checks (CI)
+- Require linear history (squash merge)
+- Restrict who can push (admins only)
+- No force push, no deletion
+
+**`develop`**:
+- Require PR before merging
+- Require status checks (CI)
+- No force push, no deletion
+
+### Naming detalhado
 
 | Tipo | Padrão | Exemplo |
 |---|---|---|
-| Feature | `feat/<scope>-<short-desc>` | `feat/dbt-fct-devolucao` |
+| Feature/Sprint | `feat/<scope>-<short-desc>` | `feat/sprint-1-fundacao-local` |
+| Feature menor | `feat/<scope>-<desc>` | `feat/dbt-fct-devolucao` |
 | Fix | `fix/<scope>-<bug>` | `fix/airflow-callback-retry` |
+| Hotfix | `hotfix/<scope>-<bug>` | `hotfix/athena-cutoff-100gb` |
 | Docs | `docs/<scope>` | `docs/adr-openlineage` |
-| Refactor | `refactor/<scope>` | `refactor/generator-extract` |
+| Refactor | `refactor/<scope>` | `refactor/airflow-utils-extract` |
 | Chore | `chore/<scope>` | `chore/deps-update` |
 
-### Lifecycle
+### Lifecycle visual
 
 ```
-main (protected)
- ├── feat/dbt-fct-devolucao  ← work here
- │     ↓
- │   open PR
- │     ↓
- │   CI passes (secrets-scan, dbt-ci)
- │     ↓
- │   review (1 approval ou self-merge solo)
- │     ↓
- │   squash merge
- │
- └── delete branch após merge
+develop ●─────────────────────●───  ← PR merged
+         ╲                   ╱
+          ╲ feat/sprint-1   ╱
+           ●──●──●──●──●──●        ← work happens here
+           │                ╲
+           │                 ╲ deleted after merge
+           └─ created from develop
 ```
 
-### Regras
-- **Nunca commitar direto em `main`** (exceções: `chore` raros e auto-aprovados)
-- **Branches efêmeras**: deletar após merge
-- **Sync regular**: `git rebase main` em features de longa duração
-- **Sem force push** em `main`; permitido `--force-with-lease` em feature branches
+### Regras gerais
+- **Branches efêmeras**: deletar após merge (`gh pr merge --delete-branch`)
+- **Sync regular**: `git rebase develop` em features de longa duração
+- **Sem force push** em `main`/`develop`
+- **`--force-with-lease` permitido** em feature branches próprias
+
+### Exceções aceitas
+
+- Setup pré-Sprint 1 (commits diretos em `main` no Sprint 0): aceito, este foi o caso histórico
+- Typo em README: commit direto em `develop` aceito
+- `main` recebe direto **apenas** de `develop` ou `hotfix/*`
 
 ---
 
@@ -257,12 +377,18 @@ gh release create 2025.05.0 \
 
 - ❌ Commit messages em inglês (este repo usa PT-BR)
 - ❌ `git commit --no-verify` (bypass de hooks)
-- ❌ Force push em `main`
+- ❌ **Commit direto em `main`** (Sprint 1+)
+- ❌ **Commit direto em `develop`** (exceto typos triviais)
+- ❌ **Pular gitflow** (não criar feature branch)
+- ❌ Force push em `main` ou `develop`
 - ❌ Commits gigantes ("WIP everything")
 - ❌ Mensagens vagas (`fix stuff`, `update`, `wip`)
 - ❌ Múltiplos commits "fix typo" em vez de squash
 - ❌ Merge direto sem CI
 - ❌ Tags fora do CalVer (`v1.0.0`, `release-1`)
+- ❌ Branch sem prefixo de tipo (`minha-feature` em vez de `feat/minha-feature`)
+- ❌ PR de feature direto para `main` (deve ser para `develop`)
+- ❌ Hotfix indo só para `main` sem cherry-pick para `develop`
 
 ---
 
