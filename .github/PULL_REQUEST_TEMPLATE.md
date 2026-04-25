@@ -132,6 +132,20 @@ terraform plan -out=tfplan
 Co-authored-by: Nome <email>
 ```
 
+## 📚 Conceitos novos nesta PR
+
+<!-- Modo Mentor: liste 1-3 conceitos novos (AWS, dbt, Iceberg, etc.) que apareceram aqui. Definição em 1 frase. -->
+
+- **Conceito**: definição prática em 1 linha
+
+## 🔗 Como conversa com o resto
+
+<!-- Modo Mentor: 2-4 linhas + mini-diagrama ASCII se ajudar. Quem chama, quem recebe, o que flui. -->
+
+```
+[Componente A] --(o quê passa)--> [novo] --(o quê sai)--> [Componente B]
+```
+
 ## 🦈 Notas para Reviewer
 
 <!-- Áreas que requerem atenção especial, decisões trade-off, contexto adicional. -->
