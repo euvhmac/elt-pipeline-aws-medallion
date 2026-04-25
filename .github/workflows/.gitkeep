@@ -1,0 +1,5 @@
+# Placeholder — workflows serão adicionados na Sprint 7 (CI/CD)
+# Ver docs/CI_CD.md para o design dos 3 workflows planejados:
+#   - secrets-scan.yml (gitleaks em todos PRs)
+#   - dbt-ci.yml (dbt build state:modified+ com defer)
+#   - terraform-ci.yml (fmt + validate + plan + tfsec)

@@ -1,0 +1,145 @@
+name: 🏛️ ADR Proposal
+description: Propor uma decisão arquitetural significativa
+title: "docs(adr): ADR-NNNN — <título da decisão>"
+labels: ["adr", "architecture", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ADRs (Architecture Decision Records) documentam decisões arquiteturais significativas e seu contexto.
+        Use o formato Michael Nygard. Veja exemplos em [docs/adr/](../../docs/adr/).
+
+  - type: input
+    id: title
+    attributes:
+      label: Título da decisão
+      placeholder: "Adotar OpenLineage para data lineage"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Escopo
+      options:
+        - Storage (S3, Iceberg, Delta)
+        - Compute (Athena, EMR, Glue)
+        - Orchestration (Airflow, MWAA, Dagster)
+        - IaC (Terraform, CDK)
+        - Data Modeling (Kimball, Data Vault, OBT)
+        - Quality (Great Expectations, dbt-expectations)
+        - Observability (OpenLineage, Datadog, Grafana)
+        - Security (KMS, IAM, network)
+        - Cost
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: status
+    attributes:
+      label: Status proposto
+      description: Inicial geralmente "Proposed". Após review/decisão, atualizar para Accepted/Rejected/Deprecated/Superseded.
+      placeholder: "Proposed"
+      value: "Proposed"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto
+      description: Qual é o problema? Qual é a situação atual? Por que esta decisão é necessária agora?
+      placeholder: |
+        Atualmente, lineage é manual via dbt docs. Isto não cobre Airflow→S3→Glue→Athena end-to-end.
+        Conforme a plataforma cresce, debugging de regressões fica difícil sem rastreamento automático...
+    validations:
+      required: true
+
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decisão proposta
+      description: O que está sendo proposto? Seja específico.
+      placeholder: "Adotar OpenLineage com Marquez como backend, integrando via Airflow OpenLineage Provider..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+      description: Liste 2-3 alternativas com prós/contras.
+      placeholder: |
+        ### Alternativa 1: DataHub
+        - ✅ Mais features
+        - ❌ Mais complexo, mais infra
+
+        ### Alternativa 2: Atlan (managed)
+        - ✅ Zero ops
+        - ❌ Custo $$$
+
+        ### Alternativa 3: Status quo (dbt docs only)
+        - ✅ Zero esforço
+        - ❌ Não cobre upstream/downstream
+    validations:
+      required: true
+
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequências
+      description: O que muda após esta decisão? Bom e ruim.
+      placeholder: |
+        ### Positivas
+        - Lineage automático Airflow → dbt → Athena
+        - Debugging mais rápido
+
+        ### Negativas
+        - +1 componente para operar (Marquez)
+        - Curva de aprendizado
+        - Custo: ~$5/mês (RDS small)
+
+        ### Neutras
+        - Requer ajustes em todas DAGs (adicionar OpenLineage callback)
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Referências
+      description: Links para docs, RFCs, blogposts, ADRs relacionados
+      placeholder: |
+        - https://openlineage.io
+        - ADR-0001 (Iceberg vs Delta)
+        - https://github.com/MarquezProject/marquez
+
+  - type: dropdown
+    id: cost_impact
+    attributes:
+      label: Impacto de custo
+      options:
+        - "$0 (zero custo adicional)"
+        - "$1-5/mês"
+        - "$5-20/mês"
+        - "$20-100/mês"
+        - "$100+/mês (justificar)"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: Numerei o ADR seguindo a sequência (ver `docs/adr/` para próximo número)
+          required: true
+        - label: Considerei multi-tenancy nas alternativas
+          required: true
+        - label: Considerei impacto de custo
+          required: true
+        - label: Considerei impacto de segurança
+          required: true
+        - label: Após aceitação, criarei PR adicionando o ADR em `docs/adr/`
+          required: true

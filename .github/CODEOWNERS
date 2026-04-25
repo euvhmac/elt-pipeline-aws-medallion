@@ -1,0 +1,28 @@
+# CODEOWNERS — review automático em PRs
+# Sintaxe: <pattern> <owner1> <owner2> ...
+# Docs: https://docs.github.com/en/repositories/managing-your-repositories-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default — owner do repo aprova tudo
+* @euvhmac
+
+# Documentação arquitetural — owner deve revisar
+/docs/                 @euvhmac
+/docs/adr/             @euvhmac
+
+# Infrastructure — high-impact + custo
+/infra/                @euvhmac
+/.github/              @euvhmac
+/.github/workflows/    @euvhmac
+
+# Foundation files
+/.github/copilot-instructions.md  @euvhmac
+/.github/instructions/            @euvhmac
+
+# Security-sensitive
+/lambda/               @euvhmac
+**/secrets/            @euvhmac
+**/.env.example        @euvhmac
+
+# Data contracts
+**/schema.yml          @euvhmac
+**/sources.yml         @euvhmac
