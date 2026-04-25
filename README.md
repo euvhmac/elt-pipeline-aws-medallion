@@ -1,0 +1,203 @@
+# ELT Pipeline AWS — Medallion Architecture
+
+> Plataforma analítica multi-tenant em **AWS** com arquitetura **Medallion** (Bronze → Silver → Gold → Platinum), orquestrada por **Airflow**, transformações em **dbt-athena** sobre **Apache Iceberg**, infra como código em **Terraform**.
+
+[![CI: secrets-scan](https://github.com/euvhmac/elt-pipeline-aws-medallion/actions/workflows/secrets-scan.yml/badge.svg)](https://github.com/euvhmac/elt-pipeline-aws-medallion/actions/workflows/secrets-scan.yml)
+[![CI: dbt](https://github.com/euvhmac/elt-pipeline-aws-medallion/actions/workflows/dbt-ci.yml/badge.svg)](https://github.com/euvhmac/elt-pipeline-aws-medallion/actions/workflows/dbt-ci.yml)
+[![CI: terraform](https://github.com/euvhmac/elt-pipeline-aws-medallion/actions/workflows/terraform-ci.yml/badge.svg)](https://github.com/euvhmac/elt-pipeline-aws-medallion/actions/workflows/terraform-ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![dbt](https://img.shields.io/badge/dbt-1.8+-orange)](https://www.getdbt.com/)
+[![Airflow](https://img.shields.io/badge/Airflow-2.9-017CEE)](https://airflow.apache.org/)
+[![Terraform](https://img.shields.io/badge/Terraform-1.7+-7B42BC)](https://www.terraform.io/)
+[![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20Athena%20%7C%20Glue-FF9900)](https://aws.amazon.com/)
+
+---
+
+## TL;DR
+
+Reconstrução em AWS de uma plataforma analítica multi-tenant originalmente em **Azure Databricks + Delta**. Mantém 100% da lógica de negócio (~55 modelos dbt, 8 datamarts, 5 unidades de negócio) com **redução de custo de ~99%** (~$800/mês → ~$6/mês).
+
+> **Status**: Sprint 0 (documentação inicial) ✅ | Sprint 1 (fundação local) em planejamento
+
+---
+
+## Quickstart
+
+```bash
+# 1. Clone
+git clone https://github.com/euvhmac/elt-pipeline-aws-medallion.git
+cd elt-pipeline-aws-medallion
+
+# 2. Configurar
+cp .env.example .env
+# Edite .env com suas credenciais AWS
+
+# 3. Subir e executar
+make up           # sobe Airflow + Postgres
+make seed         # gera dados sintéticos + upload S3
+make dbt-build    # roda 55 modelos dbt
+```
+
+UI Airflow: http://localhost:8080 (`airflow`/`airflow`)
+
+Detalhes em [docs/RUNBOOK.md](docs/RUNBOOK.md).
+
+---
+
+## Arquitetura
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│            Local: Airflow (Docker Compose)                  │
+│                                                             │
+│   dag_synthetic_source ──► [Airflow Datasets] ──►           │
+│                                          dag_dbt_aws_detailed│
+└─────────────┬─────────────────────────────────────┬─────────┘
+              │                                     │
+              ▼                                     ▼
+       ┌─────────────┐                      ┌──────────────┐
+       │ Data Generator│                    │ dbt-athena   │
+       │ (Python+Faker)│                    │ (~55 models) │
+       └──────┬───────┘                     └──────┬───────┘
+              │                                    │
+              │   AWS Cloud                        │
+              ▼                                    ▼
+       ┌─────────────────────────────────────────────────┐
+       │  S3 (Iceberg) + Glue Catalog + Athena (Trino)   │
+       │                                                 │
+       │   Bronze ──► Silver ──► Gold ──► Platinum       │
+       │   (raw)     (clean)   (star)   (business)       │
+       └─────────────────┬───────────────────────────────┘
+                         │
+                         ▼
+                  ┌──────────────┐
+                  │ SNS → Lambda │
+                  │  → Slack     │
+                  └──────────────┘
+```
+
+Detalhes em [docs/ARCHITECTURE_AWS.md](docs/ARCHITECTURE_AWS.md).
+
+---
+
+## Métricas do Projeto
+
+| Item | Valor |
+|---|---|
+| Modelos dbt | 55 (30 Silver + 16 Gold + 9 Platinum) |
+| Datamarts simulados | 8 (comercial, financeiro, controladoria, logística, suprimentos, corporativo, industrial, contabilidade) |
+| Unidades de negócio | 5 (`unit_01`..`unit_05`) |
+| Tabelas Bronze | 40 (8 × 5 tenants) |
+| Volume sintético/dia | ~550k linhas / ~150 MB |
+| Custo mensal AWS | ~$5-7 |
+| Tempo CI médio | < 5 min |
+| Tempo `make up` → operacional | < 60s |
+
+---
+
+## Stack
+
+- **Storage**: Amazon S3 + Apache Iceberg
+- **Engine SQL**: Amazon Athena (engine v3 / Trino)
+- **Catálogo**: AWS Glue Data Catalog
+- **Transformação**: dbt-athena
+- **Orquestração**: Apache Airflow 2.9 (Docker Compose local)
+- **Ingestão**: Gerador Python sintético (Faker + PyArrow)
+- **IaC**: Terraform 1.7+
+- **CI/CD**: GitHub Actions
+- **Observabilidade**: SNS + Lambda + CloudWatch
+
+Stack completa em [docs/TECHNOLOGIES.md](docs/TECHNOLOGIES.md).
+
+---
+
+## Documentação
+
+A documentação completa está em [`docs/`](docs/):
+
+### Visão geral
+- [Blueprint do Projeto](docs/PROJECT_BLUEPRINT.md) — pitch, métricas, stakeholders
+- [Arquitetura AWS](docs/ARCHITECTURE_AWS.md) — diagramas e fluxos
+- [Migração de Azure](docs/MIGRATION_FROM_AZURE.md) — mapeamento componente-a-componente
+- [Roadmap de Sprints](docs/SPRINT_ROADMAP.md) — 8 sprints com critérios QA + Tech Lead
+
+### Técnico
+- [Stack Tecnológico](docs/TECHNOLOGIES.md)
+- [Modelo de Dados](docs/DATA_MODEL.md) — star schema multi-tenant
+- [Camadas Medallion](docs/MEDALLION_LAYERS.md) — Bronze/Silver/Gold/Platinum
+- [Gerador Sintético](docs/SOURCE_DATA_GENERATOR.md)
+- [CI/CD](docs/CI_CD.md)
+- [Runbook](docs/RUNBOOK.md) — operação e troubleshooting
+- [Estimativa de Custos](docs/COST_ESTIMATE.md)
+
+### Apresentação
+- [Narrativa de Entrevista](docs/INTERVIEW_NARRATIVE.md) — pitches 5/15/30 min
+
+### Decisões Arquiteturais (ADRs)
+- [ADR-0001 — Iceberg vs Delta](docs/adr/0001-iceberg-vs-delta.md)
+- [ADR-0002 — Athena vs EMR](docs/adr/0002-athena-vs-emr.md)
+- [ADR-0003 — Airflow Local vs MWAA](docs/adr/0003-airflow-local-vs-mwaa.md)
+- [ADR-0004 — Dados Sintéticos](docs/adr/0004-synthetic-data.md)
+- [ADR-0005 — Estrutura Monorepo](docs/adr/0005-monorepo-structure.md)
+
+---
+
+## Estrutura do Repositório
+
+```
+elt-pipeline-aws-medallion/
+├── docs/             # Documentação central + ADRs
+├── dbt/              # Modelos dbt (Silver/Gold/Platinum)
+├── airflow/          # DAGs + docker-compose
+├── data-generator/   # Gerador Python (Faker + PyArrow)
+├── infra/            # Terraform (modules + envs)
+├── .github/workflows/# CI/CD
+├── Makefile          # Atalhos UX
+└── README.md
+```
+
+---
+
+## Roadmap
+
+| Sprint | Foco | Status |
+|---|---|---|
+| 0 | Documentação inicial | ✅ Em conclusão |
+| 1 | Fundação local (Docker Compose) | ⬜ |
+| 2 | Infra AWS (Terraform) | ⬜ |
+| 3 | Camada de ingestão (Bronze) | ⬜ |
+| 4 | Transformação (dbt-athena) | ⬜ |
+| 5 | Orquestração (Airflow) | ⬜ |
+| 6 | Observabilidade | ⬜ |
+| 7 | CI/CD & Quality Gates | ⬜ |
+| 8 | Polimento de portfólio | ⬜ |
+
+Detalhes em [docs/SPRINT_ROADMAP.md](docs/SPRINT_ROADMAP.md).
+
+---
+
+## Contribuindo
+
+PRs são bem-vindos. Veja [CONTRIBUTING.md](CONTRIBUTING.md) para o processo.
+
+---
+
+## Licença
+
+MIT — veja [LICENSE](LICENSE).
+
+---
+
+## Autor
+
+**Vhmac** — [@euvhmac](https://github.com/euvhmac)
+
+Engenharia de Dados | Cloud-native analytics | Lakehouse Architecture
+
+---
+
+## Notas
+
+- Este projeto é uma **recriação para portfólio** de uma plataforma corporativa interna (acesso original sob NDA). Toda a lógica foi reimplementada com dados sintéticos.
+- Tenants `unit_01..unit_05` são fictícios; nenhum dado real foi utilizado.
+- Custo mensal validado em conta AWS Free Tier; veja [docs/COST_ESTIMATE.md](docs/COST_ESTIMATE.md).

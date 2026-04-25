@@ -1,0 +1,106 @@
+name: ✨ Feature Request
+description: Sugerir uma nova feature ou melhoria
+title: "feat(<escopo>): <descrição curta em pt-br>"
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por sugerir uma feature! Descreva o problema que ela resolve, não apenas a solução.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Componente alvo
+      options:
+        - dbt (modelos / testes)
+        - Airflow (DAGs / callbacks)
+        - Data Generator (Python)
+        - Terraform / Infra
+        - Lambda (notifications)
+        - CI/CD (GitHub Actions)
+        - Documentação
+        - Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema / Motivação
+      description: Qual problema esta feature resolve? Por que é importante?
+      placeholder: "Atualmente, ao tentar consultar... isso é problemático porque..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solução proposta
+      description: Descreva a feature que você gostaria. Seja específico.
+      placeholder: "Adicionar um novo modelo `dim_calendario` que..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+      description: Outras abordagens que você considerou e por que foram descartadas
+      placeholder: "Considerei usar X, mas..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacto / Benefícios
+      description: Como isso afeta o pipeline? Performance? Qualidade? Custo?
+      placeholder: "Reduz scan time em ~30% através de..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade
+      options:
+        - Baixa (nice to have)
+        - Média (importante mas não urgente)
+        - Alta (bloqueia outros trabalhos)
+        - Crítica (afeta produção)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: needs_adr
+    attributes:
+      label: Esta feature precisa de ADR?
+      description: Mudanças arquiteturais significativas requerem ADR
+      options:
+        - "Não — implementação direta"
+        - "Sim — abrirei ADR proposal separado"
+        - "Não tenho certeza"
+    validations:
+      required: true
+
+  - type: textarea
+    id: cost_impact
+    attributes:
+      label: Impacto de custo AWS estimado
+      description: Se afeta infra/Athena/S3/Lambda. Use a [calculadora AWS](https://calculator.aws/) quando útil.
+      placeholder: "Athena adicional ~$2/mês via..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pré-requisitos
+      options:
+        - label: Verifiquei issues existentes e não há duplicata
+          required: true
+        - label: Considerei o impacto multi-tenant (5 unidades)
+          required: true
+        - label: Considerei o impacto de custo
+          required: true

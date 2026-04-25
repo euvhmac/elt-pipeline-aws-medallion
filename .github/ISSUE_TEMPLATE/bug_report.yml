@@ -1,0 +1,124 @@
+name: 🐛 Bug Report
+description: Reportar um bug ou comportamento inesperado
+title: "fix(<escopo>): <descrição curta em pt-br>"
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar um bug! Por favor, preencha os campos abaixo com o máximo de detalhes possíveis.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Componente afetado
+      description: Qual parte do pipeline?
+      options:
+        - dbt (modelos / testes)
+        - Airflow (DAGs / callbacks)
+        - Data Generator (Python)
+        - Terraform / Infra
+        - Lambda (notifications)
+        - CI/CD (GitHub Actions)
+        - Documentação
+        - Seeds CSV
+        - Outro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Camada Medallion (se aplicável)
+      options:
+        - Bronze
+        - Silver
+        - Gold (dims/facts)
+        - Gold (DRE)
+        - Platinum
+        - N/A
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do bug
+      description: O que aconteceu? Qual foi o comportamento inesperado?
+      placeholder: "Ao executar `dbt build --select fct_vendas`, o modelo falha com..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Como reproduzir
+      description: Passos para reproduzir o comportamento
+      placeholder: |
+        1. Clone o repo
+        2. `cp .env.example .env` e configure
+        3. Execute `make dbt-build`
+        4. Veja o erro em...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+      placeholder: "O modelo deveria construir sem erros e gerar X registros..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Stacktrace / Output
+      description: Cole logs relevantes (use ``` para code blocks). Remova qualquer dado sensível.
+      render: shell
+    validations:
+      required: false
+
+  - type: input
+    id: tenant
+    attributes:
+      label: Tenant afetado (se específico)
+      description: ex. unit_01
+      placeholder: "unit_01"
+    validations:
+      required: false
+
+  - type: input
+    id: env
+    attributes:
+      label: Ambiente
+      description: dev / prd / local
+      placeholder: "dev"
+    validations:
+      required: true
+
+  - type: textarea
+    id: versions
+    attributes:
+      label: Versões
+      description: dbt-core, dbt-athena, Airflow, Terraform, Python
+      placeholder: |
+        - dbt-core: 1.7.10
+        - dbt-athena-community: 1.7.0
+        - Airflow: 2.9.1
+        - Terraform: 1.7.4
+        - Python: 3.11.6
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pré-requisitos
+      options:
+        - label: Verifiquei issues existentes e não há duplicata
+          required: true
+        - label: Removi qualquer dado sensível (PII, secrets, ARNs com account ID) dos logs
+          required: true
+        - label: Tentei reproduzir em ambiente limpo
+          required: false

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentação do projeto
+    url: https://github.com/euvhmac/elt-pipeline-aws-medallion/tree/main/docs
+    about: Consulte a documentação antes de abrir uma issue (PROJECT_BLUEPRINT, ARCHITECTURE_AWS, RUNBOOK, ADRs).
+  - name: 💬 GitHub Discussions
+    url: https://github.com/euvhmac/elt-pipeline-aws-medallion/discussions
+    about: Para dúvidas, ideias gerais e troca de experiência (não bugs).
+  - name: 📖 Runbook (troubleshooting)
+    url: https://github.com/euvhmac/elt-pipeline-aws-medallion/blob/main/docs/RUNBOOK.md
+    about: Guia de troubleshooting comum antes de abrir bug.

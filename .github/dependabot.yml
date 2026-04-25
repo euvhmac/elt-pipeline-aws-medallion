@@ -1,0 +1,134 @@
+version: 2
+
+updates:
+  # Python — data-generator
+  - package-ecosystem: "pip"
+    directory: "/data-generator"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "python"
+    reviewers:
+      - "euvhmac"
+    groups:
+      python-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Python — Airflow
+  - package-ecosystem: "pip"
+    directory: "/airflow"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "airflow"
+    reviewers:
+      - "euvhmac"
+    ignore:
+      # Airflow major bumps requerem migração manual
+      - dependency-name: "apache-airflow"
+        update-types: ["version-update:semver-major"]
+    groups:
+      airflow-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Python — dbt
+  - package-ecosystem: "pip"
+    directory: "/dbt"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "dbt"
+    reviewers:
+      - "euvhmac"
+    ignore:
+      - dependency-name: "dbt-core"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "dbt-athena-community"
+        update-types: ["version-update:semver-major"]
+
+  # Terraform
+  - package-ecosystem: "terraform"
+    directory: "/infra"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(infra)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+    reviewers:
+      - "euvhmac"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci(deps)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    reviewers:
+      - "euvhmac"
+    groups:
+      actions-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Docker
+  - package-ecosystem: "docker"
+    directory: "/airflow"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(docker)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "docker"
+    reviewers:
+      - "euvhmac"
