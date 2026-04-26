@@ -246,3 +246,56 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, expedicao_id]
+
+  - name: silver_dw_centros_custos
+    description: "Cadastro de centros de custo. Dim plana sem hierarquia. Necessario para DRE (PR 8)."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: centro_custo_id
+        tests: [not_null]
+      - name: nm_centro_custo
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, centro_custo_id]
+
+  - name: silver_dw_projetos
+    description: "Cadastro de projetos. FK centro_custo_id -> silver_dw_centros_custos."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: projeto_id
+        tests: [not_null]
+      - name: nm_projeto
+        tests: [not_null]
+      - name: centro_custo_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_centros_custos')
+              field: centro_custo_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, projeto_id]
+
+  - name: silver_dw_orcamento
+    description: "Registros de orcamento por projeto. FKs projeto_id e centro_custo_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: orcamento_id
+        tests: [not_null]
+      - name: projeto_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_projetos')
+              field: projeto_id
+      - name: vlr_orcado
+        tests: [not_null]
+      - name: vlr_realizado
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, orcamento_id]
