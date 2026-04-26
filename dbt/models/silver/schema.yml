@@ -299,3 +299,21 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, orcamento_id]
+
+  - name: silver_dw_titulos_financeiros
+    description: "UNION ALL titulos_pagar + titulos_receber enriquecidos com baixas. DS discriminador tipo_titulo."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: titulo_id
+        tests: [not_null]
+      - name: tipo_titulo
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PAGAR', 'RECEBER']
+      - name: vlr_titulo
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, titulo_id, tipo_titulo]

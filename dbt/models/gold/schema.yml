@@ -276,3 +276,34 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, orcamento_id]
+
+  - name: fct_titulo_financeiro
+    description: "Fato de titulos a pagar/receber. ds_situacao_titulo: LIQUIDADO/VENCIDO/EM_ABERTO. nr_dias_atraso."
+    columns:
+      - name: titulo_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: titulo_id
+        tests: [not_null]
+      - name: tipo_titulo
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PAGAR', 'RECEBER']
+      - name: ds_situacao_titulo
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['LIQUIDADO', 'VENCIDO', 'EM_ABERTO']
+      - name: nr_dias_atraso
+        tests: [not_null]
+      - name: vlr_titulo
+        tests: [not_null]
+      - name: data_id
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, titulo_id, tipo_titulo]
