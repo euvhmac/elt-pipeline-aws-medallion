@@ -11,7 +11,7 @@ from dateutil import parser as date_parser
 
 from .config import TENANTS, all_datamarts
 from .logging_utils import get_logger
-from .orchestrator import generate_all
+from .orchestrator import generate_all, generate_range
 from .schemas import get_schema
 from .writers import hive_partition_path, write_local
 
@@ -36,7 +36,19 @@ def main() -> None:
 @main.command()
 @click.option("--tenants", default="all", help="CSV de tenants ou 'all'.")
 @click.option("--datamarts", default="all", help="CSV de datamarts ou 'all'.")
-@click.option("--date", "date_str", default=None, help="Data logica YYYY-MM-DD (default: hoje).")
+@click.option("--date", "date_str", default=None, help="Data unica YYYY-MM-DD (default: hoje).")
+@click.option(
+    "--start-date",
+    "start_date_str",
+    default=None,
+    help="Inicio do range historico YYYY-MM-DD. Requer --end-date.",
+)
+@click.option(
+    "--end-date",
+    "end_date_str",
+    default=None,
+    help="Fim do range historico YYYY-MM-DD (inclusivo). Requer --start-date.",
+)
 @click.option(
     "--output",
     default="./data-generator/output",
@@ -48,22 +60,61 @@ def generate(
     tenants: str,
     datamarts: str,
     date_str: str | None,
+    start_date_str: str | None,
+    end_date_str: str | None,
     output: str,
     seed: int,
     volume_multiplier: float,
 ) -> None:
-    """Gera dados sinteticos em Parquet."""
+    """Gera dados sinteticos em Parquet (1 dia ou range historico)."""
     tenant_list = _parse_csv_list(tenants, TENANTS, "tenants")
     datamart_list = _parse_csv_list(datamarts, all_datamarts(), "datamarts")
-    base_dt = date_parser.parse(date_str) if date_str else datetime.utcnow()
 
     if output.startswith("s3://"):
         click.echo("ERRO: upload S3 sera implementado na Sprint 3.", err=True)
         sys.exit(2)
 
+    # Modo range historico: --start-date + --end-date
+    if start_date_str or end_date_str:
+        if not (start_date_str and end_date_str):
+            raise click.BadParameter("--start-date e --end-date devem ser usados juntos.")
+        start_dt = date_parser.parse(start_date_str)
+        end_dt = date_parser.parse(end_date_str)
+        _run_range(
+            start_dt=start_dt,
+            end_dt=end_dt,
+            tenant_list=tenant_list,
+            datamart_list=datamart_list,
+            output=output,
+            seed=seed,
+            volume_multiplier=volume_multiplier,
+        )
+        return
+
+    # Modo dia unico (legado / smoke)
+    base_dt = date_parser.parse(date_str) if date_str else datetime.utcnow()
+    _run_single_day(
+        base_dt=base_dt,
+        tenant_list=tenant_list,
+        datamart_list=datamart_list,
+        output=output,
+        seed=seed,
+        volume_multiplier=volume_multiplier,
+    )
+
+
+def _run_single_day(
+    base_dt: datetime,
+    tenant_list: list[str],
+    datamart_list: list[str],
+    output: str,
+    seed: int,
+    volume_multiplier: float,
+) -> None:
     logger.info(
         "geracao_inicio",
         extra={
+            "mode": "single_day",
             "tenants": tenant_list,
             "datamarts": datamart_list,
             "date": base_dt.isoformat(),
@@ -86,6 +137,51 @@ def generate(
     for tenant, tables in data.items():
         for (datamart, table_name), pa_table in tables.items():
             write_local(pa_table, output, datamart, table_name, tenant, base_dt)
+            total_files += 1
+            total_rows += pa_table.num_rows
+
+    logger.info(
+        "geracao_fim",
+        extra={"total_files": total_files, "total_rows": total_rows, "output": output},
+    )
+    click.echo(f"OK: {total_files} arquivos, {total_rows} linhas em {output}")
+
+
+def _run_range(
+    start_dt: datetime,
+    end_dt: datetime,
+    tenant_list: list[str],
+    datamart_list: list[str],
+    output: str,
+    seed: int,
+    volume_multiplier: float,
+) -> None:
+    logger.info(
+        "geracao_inicio",
+        extra={
+            "mode": "range",
+            "tenants": tenant_list,
+            "datamarts": datamart_list,
+            "start_date": start_dt.date().isoformat(),
+            "end_date": end_dt.date().isoformat(),
+            "output": output,
+            "seed": seed,
+            "volume_multiplier": volume_multiplier,
+        },
+    )
+
+    total_files = 0
+    total_rows = 0
+    for tenant, current_dt, tables in generate_range(
+        start_dt=start_dt,
+        end_dt=end_dt,
+        tenants=tenant_list,
+        datamarts=datamart_list,
+        volume_multiplier=volume_multiplier,
+        seed=seed,
+    ):
+        for (datamart, table_name), pa_table in tables.items():
+            write_local(pa_table, output, datamart, table_name, tenant, current_dt)
             total_files += 1
             total_rows += pa_table.num_rows
 

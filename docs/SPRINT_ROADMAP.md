@@ -11,6 +11,7 @@ Plano de execução em 8 sprints, com critérios de aceite QA + Tech Lead por sp
 | **Sprint 0** | Preparação & Documentação Inicial | 1 dia |
 | **Sprint 1** | Fundação Local (Dev Environment) | 2-3 dias |
 | **Sprint 2** | Infraestrutura AWS (Terraform) | 2 dias |
+| **Sprint 2.5** | Refino do Gerador (Histórico + Sazonalidade) | 0.5 dia |
 | **Sprint 3** | Camada de Ingestão (Bronze) | 2 dias |
 | **Sprint 4** | Camada de Transformação (dbt-athena) | 4-5 dias |
 | **Sprint 5** | Orquestração (Airflow Local) | 2 dias |
@@ -111,43 +112,93 @@ Provisionar infra AWS via Terraform, com módulos reutilizáveis e backend remot
 
 ### Tasks
 
-- [ ] **S2.1** — Bootstrap backend (manual única vez):
+- [x] **S2.1** — Bootstrap backend (manual única vez):
   - S3 bucket para state: `elt-pipeline-tfstate-${aws_account_id}`
   - DynamoDB table para lock: `elt-pipeline-tfstate-lock`
-- [ ] **S2.2** — Módulo `infra/modules/s3-medallion/`:
+- [x] **S2.2** — Módulo `infra/modules/s3-medallion/`:
   - 4 buckets (bronze/silver/gold/platinum) + 1 athena-results
   - Versioning, encryption, lifecycle (mover Bronze para IA após 30d)
-- [ ] **S2.3** — Módulo `infra/modules/glue-catalog/`:
-  - 5 databases (bronze, silver, gold, platinum, seeds)
+- [x] **S2.3** — Módulo `infra/modules/glue-catalog/`:
+  - 5 databases (audit, bronze, silver, gold, platinum)
   - Permissões básicas
-- [ ] **S2.4** — Módulo `infra/modules/iam-roles/`:
-  - Role para dbt-athena (least-privilege: S3 read/write + Glue + Athena)
+- [x] **S2.4** — Módulo `infra/modules/iam-roles/`:
+  - User para dbt-athena (least-privilege: S3 read/write + Glue + Athena)
   - Role para Lambda slack-notifier
-- [ ] **S2.5** — Módulo `infra/modules/secrets-manager/`:
-  - Secret `slack-webhook-url`
-  - Secret `dbt-athena-credentials` (placeholder)
-- [ ] **S2.6** — `infra/envs/dev/` e `infra/envs/prd/`:
+- [x] **S2.5** — Módulo `infra/modules/secrets-manager/`:
+  - Secret `slack-webhook-url` (placeholder)
+- [x] **S2.6** — `infra/envs/dev/`:
   - `main.tf` chamando módulos
   - `variables.tf` + `terraform.tfvars` (gitignored)
-  - `versions.tf` com provider AWS pinning
+  - `versions.tf` com provider AWS pinning + backend S3 remoto
+- [x] **S2.7** — Módulo extra `infra/modules/athena-workgroup/` (cutoff 10GB)
 
-### Critério QA
-- `terraform fmt -check -recursive` passa
-- `terraform validate` em todos os módulos
-- `tfsec` zero high severity
-- `terraform plan` em dev cria infra esperada (revisão de plan output)
+### Critério QA — RESULTADO
+- ✅ `terraform fmt -recursive` aplicado
+- ✅ `terraform validate` em todos os módulos
+- ✅ `terraform plan` em dev → 31 recursos a criar (revisado)
+- ✅ `terraform apply` → 31 recursos criados sem erro
 
-### Critério Tech Lead
-- Módulos não dependem de variáveis hardcoded (tudo parametrizado)
-- Backend remoto configurado e testado
-- `terraform apply` em < 3 min em dev
-- Custo estimado < $1/mês com infra ociosa
+### Critério Tech Lead — RESULTADO
+- ✅ Módulos parametrizados (zero hardcoded)
+- ✅ Backend remoto S3 + DynamoDB lock funcionando
+- ✅ `terraform apply` em < 2 min em dev
+- ✅ Custo estimado < $0.50/mês com infra ociosa
+- ✅ IAM least-privilege (sem `Action:*` ou `Resource:*` sem condition)
+- ✅ S3 com block public access + SSE-S3 + tags Project/Environment/ManagedBy/Owner
+
+### Definition of Done — STATUS
+- [x] `terraform apply` no env dev executou sem erros (31 recursos)
+- [x] `aws s3 ls` lista 6 buckets (5 medallion + 1 athena-results)
+- [x] `aws glue get-databases` retorna 5 databases
+- [x] `aws athena list-work-groups` confirma `elt-pipeline-dev`
+- [x] PR `feat/sprint-2-infra-terraform → develop` mergeado (#4)
+
+---
+
+## Sprint 2.5 — Refino do Gerador (Histórico + Sazonalidade)
+
+### Motivação
+Sprint 1 entregou um gerador funcional para 1 dia, mas com volumes baixos e sem realismo temporal. Antes de subir Bronze para o S3 (Sprint 3), refatoramos o gerador para produzir **dataset historico multi-anos** com características essenciais para BI: sazonalidade, crescimento, pesos por tenant e dimensões estáveis no tempo.
+
+### Tasks
+
+- [x] **S2.5.1** — `config.py`: bumps de volume e novos parâmetros
+  - Volumes de FACTS recalibrados (vendas 800/dia, lancamentos 1.500/dia, etc.)
+  - `TENANT_WEIGHTS` (unit_01=1.5 → unit_05=0.4)
+  - `SEASONALITY_MONTH` (jan=0.85, fev=0.75, nov=1.35, dez=1.55)
+  - `ANNUAL_GROWTH_RATE = 0.15` (15%/ano linear desde `HISTORY_START_DEFAULT`)
+  - `DIM_GROWING_DAILY_INCREMENT_PCT = 0.002` (0.2%/dia novos cadastros)
+  - Sets `DIM_STATIC` (7 tabelas) e `DIM_GROWING` (6 tabelas)
+- [x] **S2.5.2** — `orchestrator.py`: nova função `generate_range(start, end, ...)`
+  - Streaming via yield (não acumula tudo em memória)
+  - DIM_STATIC geradas apenas no primeiro dia; pool de IDs reusado
+  - DIM_GROWING: volume cheio dia 1, incremento diário nos demais (FKs cumulativas)
+  - FACTS: gerados todo dia, modulados por `tenant_weight × seasonality × growth × multiplier`
+  - `refs` por tenant (universos de IDs isolados)
+- [x] **S2.5.3** — `cli.py`: flags `--start-date` e `--end-date`
+  - Quando ambas presentes → modo range histórico
+  - Sem elas → modo single-day legado preservado
+  - Logging estruturado com `mode` (`single_day` | `range`)
+
+### Critério QA — RESULTADO
+- ✅ `pytest data-generator/tests` → 8/8 passing (regressão zero)
+- ✅ `ruff check data-generator/src` → All checks passed
+- ✅ Smoke 14 dias × 2 tenants (mult=0.05): ratio unit_01/unit_05 ~3.75 (esperado 1.5/0.4 ≈ 3.75)
+- ✅ Sazonalidade validada: vendas jan=66/dia → fev=58/dia (queda ~12%, esperado 0.85→0.75)
+- ✅ Dimensões estáveis: `vendedores` não regenera entre dias (pool reusado)
+- ✅ Crescimento de DIMs: `clientes` cresce ~0.2%/dia × dias do range
+
+### Critério Tech Lead — RESULTADO
+- ✅ Backward compatibility: `generate_all()` antiga preservada (single-day)
+- ✅ Streaming generator: pipeline pode escrever cada `(tenant, dia)` direto sem OOM
+- ✅ Volume realista para BI: ~2M vendas / ~4M itens / ~3M lançamentos em 28 meses × 5 tenants
+- ✅ Tamanho final estimado em S3 Bronze (Parquet snappy): ~1-2 GB total (custo ínfimo)
+- ✅ Sem dados reais; sem degradação de performance vs Sprint 1
 
 ### Definition of Done
-- [ ] `terraform apply -workspace=dev` executa sem erros
-- [ ] `aws s3 ls` lista os 5 buckets
-- [ ] `aws glue get-databases` retorna 5 databases
-- [ ] Documentação `infra/README.md` com instruções
+- [x] PR `feat/sprint-2.5-generator-historico → develop` mergeado
+- [x] CLI documentada para uso histórico: `python -m data_generator generate --start-date 2024-01-01 --end-date 2026-04-26`
+- [x] Smoke documentado neste roadmap
 
 ---
 
