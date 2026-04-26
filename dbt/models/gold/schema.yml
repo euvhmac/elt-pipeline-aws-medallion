@@ -351,3 +351,53 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, lancamento_id]
+
+  - name: dre_contabil
+    description: "DRE contabil agregada por empresa, centro de custo, tipo conta e competencia."
+    columns:
+      - name: dre_contabil_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: centro_custo_id
+        tests: [not_null]
+      - name: cd_tipo_conta
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ATIVO', 'PASSIVO', 'RECEITA', 'DESPESA']
+      - name: dt_competencia
+        tests: [not_null]
+      - name: vlr_total
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, empresa_id, centro_custo_id, cd_tipo_conta, dt_competencia]
+
+  - name: dre_gerencial
+    description: "DRE gerencial — agrupamento por categoria (RECEITA_BRUTA/DESPESA_OPERACIONAL/...)."
+    columns:
+      - name: dre_gerencial_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: ds_categoria
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['RECEITA_BRUTA', 'DESPESA_OPERACIONAL', 'ATIVO_CIRCULANTE', 'PASSIVO_CIRCULANTE', 'OUTROS']
+      - name: dt_competencia
+        tests: [not_null]
+      - name: vlr_categoria
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, empresa_id, centro_custo_id, ds_categoria, dt_competencia]
