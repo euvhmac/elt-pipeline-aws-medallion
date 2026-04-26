@@ -135,3 +135,36 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, ordem_compra_id]
+
+  - name: dim_empresas
+    description: "Dimensao Kimball type 1 de empresas. Necessaria para DRE (PR 8)."
+    columns:
+      - name: empresa_sk
+        description: "Surrogate key hash(tenant_id, empresa_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: nm_empresa
+        tests: [not_null]
+
+  - name: dim_funcionarios
+    description: "Dimensao Kimball type 1 de funcionarios com nm_departamento desnormalizado."
+    columns:
+      - name: funcionario_sk
+        description: "Surrogate key hash(tenant_id, funcionario_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: funcionario_id
+        tests: [not_null]
+      - name: nm_funcionario
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, funcionario_id]
