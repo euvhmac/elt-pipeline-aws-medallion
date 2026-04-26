@@ -61,6 +61,8 @@ SILVER_MODELS = [
     "silver_dw_centros_custos",
     "silver_dw_projetos",
     "silver_dw_orcamento",
+    # financeiro (Sprint 4.5 — PR 6)
+    "silver_dw_titulos_financeiros",
 ]
 
 GOLD_DIM_MODELS = [
@@ -87,6 +89,8 @@ GOLD_FACT_MODELS = [
     "fct_expedicao",
     # controladoria (Sprint 4.5 — PR 5)
     "fct_orcamento_projetos",
+    # financeiro (Sprint 4.5 — PR 6)
+    "fct_titulo_financeiro",
 ]
 
 DEFAULT_ARGS = {
