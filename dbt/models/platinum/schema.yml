@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: controle_inadimplentes
+    description: "Titulos vencidos nao liquidados. Filtra fct_titulo_financeiro WHERE ds_situacao_titulo='VENCIDO'."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: titulo_id
+        tests: [not_null]
+      - name: tipo_titulo
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PAGAR', 'RECEBER']
+      - name: nr_dias_atraso
+        tests: [not_null]
+      - name: vlr_titulo
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, titulo_id, tipo_titulo]
+
+  - name: dre_contabil_unit_01
+    description: "DRE contabil filtrada para unit_01. Visao BI da unidade 01."
+    columns:
+      - name: tenant_id
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['unit_01']
+      - name: vlr_total
+        tests: [not_null]
+
+  - name: dre_contabil_unit_02
+    description: "DRE contabil filtrada para unit_02. Visao BI da unidade 02."
+    columns:
+      - name: tenant_id
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['unit_02']
+      - name: vlr_total
+        tests: [not_null]
+
+  - name: dre_gerencial_unit_01
+    description: "DRE gerencial filtrada para unit_01."
+    columns:
+      - name: tenant_id
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['unit_01']
+      - name: vlr_categoria
+        tests: [not_null]
+
+  - name: dre_gerencial_unit_02
+    description: "DRE gerencial filtrada para unit_02."
+    columns:
+      - name: tenant_id
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['unit_02']
+      - name: vlr_categoria
+        tests: [not_null]
+
+  - name: dim_produtos_otimizada
+    description: "Subset de dim_produtos sem colunas tecnicas. Otimizada para consumo BI."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: produto_id
+        tests: [not_null]
+      - name: dsc_produto
+        tests: [not_null]
