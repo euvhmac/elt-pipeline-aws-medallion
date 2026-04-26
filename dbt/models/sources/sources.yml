@@ -1,0 +1,48 @@
+version: 2
+
+# Bronze sources — tabelas Glue criadas via Terraform (Sprint 3) com Athena Partition Projection.
+# Schema=bronze_dev no AWS Glue Data Catalog.
+sources:
+  - name: bronze
+    description: "Camada Bronze — Parquet raw multi-tenant em S3, registrado em Glue."
+    database: awsdatacatalog
+    schema: bronze_dev
+    loader: data-generator (Faker + PyArrow)
+    loaded_at_field: cast(date_parse(concat(year, '-', month, '-', day), '%Y-%m-%d-') as timestamp)
+
+    tables:
+      # Datamart Comercial (foco da Sprint 4)
+      - name: clientes
+        description: "Cadastro de clientes por tenant."
+        columns:
+          - name: cliente_id
+            tests: [not_null]
+          - name: tenant_id
+            tests: [not_null]
+      - name: vendedores
+      - name: produtos
+      - name: vendas
+        columns:
+          - name: venda_id
+            tests: [not_null]
+      - name: itens_pedido
+
+      # Demais datamarts (declarados como source — modelos Silver virao em sprints futuras)
+      - name: titulos_pagar
+      - name: titulos_receber
+      - name: baixas
+      - name: centros_custos
+      - name: projetos
+      - name: orcamento
+      - name: filiais
+      - name: transportadoras
+      - name: expedicao
+      - name: fornecedores
+      - name: ordens_compra
+      - name: empresas
+      - name: funcionarios
+      - name: departamentos
+      - name: materias_primas
+      - name: ordens_producao
+      - name: plano_contas
+      - name: lancamentos

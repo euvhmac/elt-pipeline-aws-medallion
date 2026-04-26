@@ -21,15 +21,28 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+vars:
+  tenants: ['unit_01', 'unit_02', 'unit_03', 'unit_04', 'unit_05']
+
 models:
   elt_pipeline:
     +materialized: view
     silver:
-      +schema: silver
+      +schema: silver_dev
       +materialized: incremental
+      +incremental_strategy: merge
+      +table_type: iceberg
+      +on_schema_change: append_new_columns
+      +partitioned_by: ['tenant_id']
     gold:
-      +schema: gold
+      +schema: gold_dev
       +materialized: table
+      +table_type: iceberg
+      +partitioned_by: ['tenant_id']
     platinum:
-      +schema: platinum
-      +materialized: table
+      +schema: platinum_dev
+      +materialized: view
+
+seeds:
+  elt_pipeline:
+    +schema: gold_dev

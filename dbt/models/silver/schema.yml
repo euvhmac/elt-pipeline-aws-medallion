@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: silver_dw_clientes
+    description: "Limpeza + padronizacao do cadastro de clientes."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: cliente_id
+        tests: [not_null]
+      - name: nm_cliente
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, cliente_id]
+
+  - name: silver_dw_vendedores
+    description: "Cadastro de vendedores limpo."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: vendedor_id
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, vendedor_id]
+
+  - name: silver_dw_produtos
+    description: "Catalogo de produtos limpo."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: produto_id
+        tests: [not_null]
+      - name: vlr_preco_unitario
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, produto_id]
+
+  - name: silver_dw_vendas
+    description: "Cabecalho de vendas limpo."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: venda_id
+        tests: [not_null]
+      - name: dt_venda
+        tests: [not_null]
+      - name: cliente_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_clientes')
+              field: cliente_id
+      - name: ds_status
+        tests:
+          - accepted_values:
+              values: ['FATURADA', 'CANCELADA', 'PENDENTE']
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, venda_id]
+
+  - name: silver_dw_itens_pedido
+    description: "Itens de pedido normalizados."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: item_id
+        tests: [not_null]
+      - name: venda_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_vendas')
+              field: venda_id
+      - name: produto_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_produtos')
+              field: produto_id
+      - name: qtd_vendida
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, item_id]
