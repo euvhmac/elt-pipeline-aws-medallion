@@ -479,45 +479,85 @@ Bloquear merges com problemas via GitHub Actions; padronizar lint/format local c
 
 ---
 
-## Sprint 8 — Polimento de Portfólio
+## Sprint 8 — Polimento de Portfólio ✅
 
-### Objetivo
-Tornar o projeto **vendável** em entrevista.
+### Objetivo (executado)
+Tornar o projeto **vendável** em entrevista. Escopo enxuto: focar no que tem ROI alto pra recrutador (README + narrativa + ADRs) e mover GIF/dbt-docs-Pages/LinkedIn pra backlog (custo de setup alto, baixo retorno comparado a outras prioridades).
 
-### Tasks
+### Status: DONE
 
-- [ ] **S8.1** — Completar 5 ADRs:
-  - 0001-iceberg-vs-delta
-  - 0002-athena-vs-emr
-  - 0003-airflow-local-vs-mwaa
-  - 0004-synthetic-data
-  - 0005-monorepo-structure
-- [ ] **S8.2** — Diagrama Excalidraw/Draw.io exportado para PNG em `docs/assets/`
-- [ ] **S8.3** — GIF/screencast (asciinema ou Loom) do pipeline rodando
-- [ ] **S8.4** — `dbt docs` published em GitHub Pages
-- [ ] **S8.5** — `INTERVIEW_NARRATIVE.md` com scripts 5/15/30 min
-- [ ] **S8.6** — `COST_ESTIMATE.md` atualizado com números reais (após primeiras execuções)
-- [ ] **S8.7** — README root reescrito com:
-  - Hero badge stack
-  - Screenshot da arquitetura
-  - Quickstart 3 comandos
-  - Link para `docs/`
-- [ ] **S8.8** — LinkedIn post + tweet de lançamento (opcional)
+### Tasks executadas
 
-### Critério QA
-- Outsider lê README e entende projeto em < 5 min
-- Recrutador técnico consegue rodar localmente seguindo RUNBOOK
-- GIF mostra pipeline executando do começo ao fim
+- [x] **S8.1** — 5 ADRs ja existem e cobrem decisoes-chave:
+  - [0001-iceberg-vs-delta](adr/0001-iceberg-vs-delta.md)
+  - [0002-athena-vs-emr](adr/0002-athena-vs-emr.md)
+  - [0003-airflow-local-vs-mwaa](adr/0003-airflow-local-vs-mwaa.md)
+  - [0004-synthetic-data](adr/0004-synthetic-data.md)
+  - [0005-monorepo-structure](adr/0005-monorepo-structure.md)
+- [x] **S8.5** — `INTERVIEW_NARRATIVE.md` ja contem pitches 5/15/30 min + perguntas dificeis antecipadas + estrutura STAR
+- [x] **S8.6** — `COST_ESTIMATE.md` documentado com breakdown por servico
+- [x] **S8.7** — README root atualizado:
+  - Badges CI status (5 workflows) + Release CalVer
+  - TL;DR honesto sobre estado real (datamart `comercial` completo, demais no backlog)
+  - Tabela de roadmap com todas sprints marcadas DONE
+  - Metricas com numeros reais (entregue vs target final)
+  - Diagrama ASCII de arquitetura
+- [x] Diagrama Mermaid embedado em README/docs (substitui PNG Excalidraw com ROI similar e zero ferramenta externa)
 
-### Critério Tech Lead
-- 5 ADRs cobrem decisões controversas com prós/contras
-- Narrativa de entrevista é coerente e defensável
-- Custo final é transparente (não enganar com "free tier")
+### Tasks deferidas (backlog explicito)
+
+- [ ] **S8.2** — Diagrama Excalidraw exportado PNG (Mermaid no README ja cobre 80%)
+- [ ] **S8.3** — GIF/screencast pipeline executando (precisa execucao real prolongada; faz mais sentido apos Sprint 4.5 com pipeline completo)
+- [ ] **S8.4** — `dbt docs` published em GitHub Pages (precisa workflow + secrets para conectar Athena; alto custo de setup, ROI moderado para portfolio)
+- [ ] **S8.8** — LinkedIn post + tweet de lancamento (manual; fazer apos Sprint 4.5 quando pipeline estiver "completo")
+
+### Decisoes documentadas (anti over-engineering)
+
+1. **Mermaid > PNG Excalidraw**: README com diagrama ASCII + Mermaid renderiza nativo no GitHub. PNG exigiria ferramenta externa, versionar binario, atualizar a cada mudanca. ROI nao justifica.
+2. **GIF deferido para pos-Sprint 4.5**: gravar pipeline com 1 datamart e meio-caminho. Faz sentido depois quando todos 8 datamarts rodam. Recrutador raramente assiste GIF de 3 minutos.
+3. **dbt docs no GitHub Pages deferido**: precisaria workflow rodando `dbt docs generate` com credenciais Athena (custo + setup OIDC). Recrutador clica em ADRs e SQL direto no repo, nao em docs HTML.
+4. **README honesto > README inflado**: TL;DR diz "datamart comercial completo" e nao "55 modelos dbt entregues". Em entrevista, gerente prefere contexto real ao numero impressionante.
+
+### Critério QA — RESULTADO
+- ✅ Outsider le README e entende projeto em < 5 min (TL;DR + diagrama + roadmap visiveis no fold)
+- ✅ Recrutador tecnico segue RUNBOOK pra rodar localmente
+- ⏳ GIF mostrando pipeline E2E: deferido (backlog)
+
+### Critério Tech Lead — RESULTADO
+- ✅ 5 ADRs cobrem decisoes controversas com pros/contras
+- ✅ Narrativa de entrevista tem 3 niveis (5/15/30 min)
+- ✅ Custo transparente (`COST_ESTIMATE.md` com breakdown e premissas)
 
 ### Definition of Done
-- [ ] Repo público em https://github.com/euvhmac/elt-pipeline-aws-medallion
-- [ ] GitHub Pages live com `dbt docs`
-- [ ] Repo aprovado por revisor externo (peer review)
+- [x] Repo publico em https://github.com/euvhmac/elt-pipeline-aws-medallion
+- [x] README com badges + roadmap atualizado + diagrama
+- [x] Release `2026.05.0` publicada (Sprints 5+6+7)
+- [ ] dbt docs no Pages (deferido)
+- [ ] Peer review externo (pos lancamento)
+
+---
+
+## Sprint 4.5 — Backlog: Replicar dbt para 7 datamarts restantes
+
+### Por que existe
+Sprint 4 entregou padrao completo (Silver+Gold+testes+CI) para datamart `comercial`. Os outros 7 (financeiro, controladoria, logistica, suprimentos, corporativo, industrial, contabilidade) sao **replicacao do mesmo padrao** com mudanca de schema/colunas.
+
+### Estimativa
+- ~5 modelos Silver + ~3 modelos Gold por datamart
+- ~7 datamarts restantes
+- Total: ~35 Silver + ~21 Gold = 56 modelos novos
+- Esforco: ~4-6 horas por datamart (8 horas se schema for complexo)
+
+### Quando fazer
+- Apos Sprint 8 (este projeto ja "vendavel" com 1 datamart como prova de conceito)
+- OU quando recrutador pedir explicitamente "mostra outro datamart"
+- OU pra farmar 7 PRs (Pull Shark)
+
+### Depois da Sprint 4.5
+- Refazer GIF E2E (S8.3)
+- Re-publicar dbt docs (S8.4)
+- LinkedIn post de lancamento (S8.8)
+- Sprint 9 (Phase 2): MWAA, streaming, QuickSight, etc.
 
 ---
 
