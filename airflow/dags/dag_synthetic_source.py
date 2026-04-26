@@ -14,8 +14,10 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
+from airflow.datasets import Dataset
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
+from utils.callbacks import task_failure_alert
 
 from airflow import DAG
 
@@ -28,11 +30,15 @@ GLUE_DATABASE = "bronze_dev"
 ATHENA_WORKGROUP = "elt-pipeline-dev"
 ATHENA_OUTPUT = "s3://elt-pipeline-athena-results-dev/"
 
+# Dataset publicado ao concluir o pipeline; consumido por dag_dbt_aws_detailed (Sprint 5)
+BRONZE_DATASET = Dataset(f"s3://{BRONZE_BUCKET}/")
+
 DEFAULT_ARGS = {
     "owner": "vhmac",
     "retries": 1,
     "retry_delay": timedelta(minutes=2),
     "execution_timeout": timedelta(minutes=30),
+    "on_failure_callback": task_failure_alert,
 }
 
 
@@ -114,6 +120,7 @@ with DAG(
     validate_athena = PythonOperator(
         task_id="validate_athena",
         python_callable=_validate_athena,
+        outlets=[BRONZE_DATASET],
     )
 
     generate_and_upload >> validate_athena
