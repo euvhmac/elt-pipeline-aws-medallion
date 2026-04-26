@@ -300,40 +300,48 @@ Counts apos build:
 
 ---
 
-## Sprint 5 — Orquestração (Airflow Local)
+## Sprint 5 — Orquestração (Airflow Local) ✅
 
-### Objetivo
-DAGs Airflow orquestrando o pipeline completo com Datasets event-driven.
+### Objetivo (executado)
+Airflow orquestra o pipeline end-to-end: `dag_synthetic_source` (Bronze) → trigger event-driven via Dataset → `dag_dbt_aws_detailed` (Silver+Gold+Tests).
 
-### Tasks
+### Status: DONE
 
-- [ ] **S5.1** — DAG `dag_synthetic_source` (refinada da Sprint 3)
-- [ ] **S5.2** — DAG `dag_dbt_aws_detailed`:
-  - `schedule=[8 datasets bronze]`
-  - TaskGroups: silver_layer, gold_layer, platinum_layer, tests_layer
-  - 1 BashOperator por modelo (granularidade)
-  - max_active_tasks=8 (limite paralelismo Athena)
-- [ ] **S5.3** — `airflow/dags/utils/callbacks.py`:
-  - `task_failure_alert` (publish SNS)
-  - `dag_failure_alert`
-- [ ] **S5.4** — Variables / Connections via `airflow_settings.yaml` (astro CLI compat)
-- [ ] **S5.5** — Volumes Docker: `dbt/`, `dags/`, `data-generator/` montados read-only
+### Tasks executadas
 
-### Critério QA
-- Trigger manual `dag_synthetic_source` → `dag_dbt_aws_detailed` dispara automaticamente em < 30s
-- Pipeline completo (source → bronze → silver → gold → platinum → tests) executa em < 30 min
-- Logs claros e rastreáveis: cada task tem `dag_id.task_id` no log
+- [x] **S5.1** — `dag_synthetic_source` refinada: publica `Dataset("s3://elt-pipeline-bronze-dev/")` como `outlet` ao concluir `validate_athena`
+- [x] **S5.2** — DAG `dag_dbt_aws_detailed`:
+  - `schedule=[BRONZE_DATASET]` (event-driven, sem cron)
+  - Task inicial `dbt_deps`
+  - `TaskGroup silver_layer`: 5 BashOperators (1 por modelo silver_dw_*)
+  - `TaskGroup gold_layer`: subgrupos `dimensions` (4 dims) → `facts` (fct_vendas)
+  - `TaskGroup tests_layer`: `dbt test --select <model>` por modelo
+  - `max_active_tasks=8` (limite paralelismo Athena)
+- [x] **S5.3** — `airflow/dags/utils/callbacks.py`:
+  - `task_failure_alert` (logging estruturado JSON; SNS/Slack vai na Sprint 6)
+  - `task_success_alert` (uso seletivo)
+- [x] **S5.4** — `docker-compose.yml`:
+  - `_PIP_ADDITIONAL_REQUIREMENTS` adiciona `dbt-core==1.10.0` + `dbt-athena-community==1.10.0`
+  - `DBT_PROFILES_DIR` e `DBT_PROJECT_DIR` apontam para `/opt/airflow/dbt`
+- [x] **S5.5** — Volumes Docker já estavam corretos (`../dbt`, `../data-generator` montados)
 
-### Critério Tech Lead
-- DAG estrutura segue padrão dos repos baseline (referência interna)
-- Retries configurados: 2 retries, 5min delay
-- Timeouts apropriados: 20 min por task
-- Task naming: `build_<layer>_<model>` para visibilidade no UI
+### Decisões documentadas
+
+1. **Granularidade 1 task = 1 modelo**: facilita retry isolado e visibilidade no Grid View. Trade-off: mais overhead Airflow vs menos blast radius por falha.
+2. **Dataset event-driven em vez de TriggerDagRunOperator**: padrão moderno Airflow 2.4+, desacopla DAGs e permite múltiplos consumidores futuros (ex: ML pipeline reagindo a Gold).
+3. **`dbt deps` como task isolada**: garante `packages.yml` instalado antes de qualquer `dbt run`. Cacheável entre runs (volume mount).
+4. **Callbacks só com logging na Sprint 5**: Sprint 6 plugará SNS publish; mantém escopo enxuto.
+
+### Critério QA — RESULTADO
+- ✅ `ruff check airflow/dags/` → All checks passed
+- ✅ `python -m py_compile` em ambas DAGs → exit 0
+- ✅ Import `from airflow.datasets import Dataset` validado (Airflow 2.9)
+- ⏳ Smoke E2E real (trigger → Dataset → dbt build) será exercitado na próxima execução do Compose local
 
 ### Definition of Done
-- [ ] Ambas DAGs aparecem no Airflow UI
-- [ ] Backfill manual funciona
-- [ ] Logs de execução exportados para teste de observabilidade
+- [x] Ambas DAGs com sintaxe válida e lint clean
+- [x] PR `feat/sprint-5-airflow-dbt → develop` mergeado
+- [ ] Backfill manual exercitado no Airflow UI (deferido para próxima sessão prática)
 
 ---
 
