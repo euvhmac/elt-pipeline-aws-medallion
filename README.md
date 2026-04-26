@@ -10,14 +10,15 @@
 [![Airflow](https://img.shields.io/badge/Airflow-2.9-017CEE)](https://airflow.apache.org/)
 [![Terraform](https://img.shields.io/badge/Terraform-1.7+-7B42BC)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20Athena%20%7C%20Glue-FF9900)](https://aws.amazon.com/)
+[![Release](https://img.shields.io/github/v/release/euvhmac/elt-pipeline-aws-medallion?label=release&color=blue)](https://github.com/euvhmac/elt-pipeline-aws-medallion/releases)
 
 ---
 
 ## TL;DR
 
-Reconstrução em AWS de uma plataforma analítica multi-tenant originalmente em **Azure Databricks + Delta**. Mantém 100% da lógica de negócio (~55 modelos dbt, 8 datamarts, 5 unidades de negócio) com **redução de custo de ~99%** (~$800/mês → ~$6/mês).
+Reconstrução em AWS de uma plataforma analítica multi-tenant originalmente em **Azure Databricks + Delta**. Mantém a lógica de negócio do datamart `comercial` (Silver + Gold star schema sobre Iceberg) com **redução de custo de ~99%** projetada (~$800/mês → ~$6/mês).
 
-> **Status**: Sprint 0 (documentação) ✅ | Sprint 1 (fundação local: data-generator + Airflow stack) ✅ | Sprint 2 (infra Terraform) em planejamento
+**Estado atual**: pipeline E2E funcional (sintético → S3/Iceberg → dbt-athena → Slack alerts) com CI/CD verde. Datamart `comercial` completo; demais 7 datamarts no backlog (Sprint 4.5).
 
 ---
 
@@ -84,14 +85,16 @@ Detalhes em [docs/ARCHITECTURE_AWS.md](docs/ARCHITECTURE_AWS.md).
 
 | Item | Valor |
 |---|---|
-| Modelos dbt | 55 (30 Silver + 16 Gold + 9 Platinum) |
-| Datamarts simulados | 8 (comercial, financeiro, controladoria, logística, suprimentos, corporativo, industrial, contabilidade) |
+| Modelos dbt (target final) | 55 (30 Silver + 16 Gold + 9 Platinum) |
+| Modelos dbt (entregues) | 11 (5 Silver + 5 Gold + 1 teste singular) — datamart `comercial` |
+| Datamarts simulados (target) | 8 (comercial, financeiro, controladoria, logística, suprimentos, corporativo, industrial, contabilidade) |
+| Datamarts entregues | 1 (comercial) — padrão replicável para os 7 restantes |
 | Unidades de negócio | 5 (`unit_01`..`unit_05`) |
 | Tabelas Bronze | 40 (8 × 5 tenants) |
 | Volume sintético/dia | ~550k linhas / ~150 MB |
-| Custo mensal AWS | ~$5-7 |
-| Tempo CI médio | < 5 min |
-| Tempo `make up` → operacional | < 60s |
+| Custo mensal AWS estimado | ~$5-7 |
+| CI workflows | 5 (compose-validate, data-generator-tests, dbt-ci, terraform-ci, secrets-scan) |
+| Pull Shark count 🦈 | 11 PRs mergeados |
 
 ---
 
@@ -162,17 +165,19 @@ elt-pipeline-aws-medallion/
 
 | Sprint | Foco | Status |
 |---|---|---|
-| 0 | Documentação inicial | ✅ Em conclusão |
-| 1 | Fundação local (Docker Compose) | ⬜ |
-| 2 | Infra AWS (Terraform) | ⬜ |
-| 3 | Camada de ingestão (Bronze) | ⬜ |
-| 4 | Transformação (dbt-athena) | ⬜ |
-| 5 | Orquestração (Airflow) | ⬜ |
-| 6 | Observabilidade | ⬜ |
-| 7 | CI/CD & Quality Gates | ⬜ |
-| 8 | Polimento de portfólio | ⬜ |
+| 0 | Documentação inicial + ADRs | ✅ |
+| 1 | Fundação local (Docker Compose) | ✅ |
+| 2 | Infra AWS (Terraform) | ✅ |
+| 2.5 | Bootstrap state remoto | ✅ |
+| 3 | Ingestão Bronze (S3 + Glue) | ✅ |
+| 4 | Transformação dbt (Silver+Gold `comercial`) | ✅ |
+| 5 | Airflow orquestrando dbt | ✅ |
+| 6 | Observabilidade (SNS+Lambda+Slack) | ✅ |
+| 7 | CI/CD & Quality Gates | ✅ |
+| 8 | Polimento de portfólio | ✅ |
+| 4.5 | Replicar dbt para 7 datamarts restantes | ⬜ backlog |
 
-Detalhes em [docs/SPRINT_ROADMAP.md](docs/SPRINT_ROADMAP.md).
+Detalhes em [docs/SPRINT_ROADMAP.md](docs/SPRINT_ROADMAP.md). Releases em [Releases](https://github.com/euvhmac/elt-pipeline-aws-medallion/releases) (CalVer `YYYY.MM.PATCH`).
 
 ---
 
