@@ -47,4 +47,3 @@ select = ["E", "F", "W", "I", "N", "B", "UP", "RUF"]
 testpaths = ["data-generator/tests"]
 python_files = ["test_*.py"]
 addopts = "-ra --strict-markers"
-pythonpath = ["data-generator/src"]
