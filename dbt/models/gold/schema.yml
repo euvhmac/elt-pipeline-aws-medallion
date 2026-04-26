@@ -307,3 +307,47 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, titulo_id, tipo_titulo]
+
+  - name: dim_plano_contas
+    description: "Dimensao Iceberg type 1 do plano de contas. OBRIGATORIO para DRE (PR 8)."
+    columns:
+      - name: plano_conta_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: plano_conta_id
+        tests: [not_null]
+      - name: cd_tipo_conta
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ATIVO', 'PASSIVO', 'RECEITA', 'DESPESA']
+
+  - name: fct_lancamentos
+    description: "Fato de lancamentos. vlr_final: CREDITO positivo, DEBITO negativo."
+    columns:
+      - name: lancamento_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: lancamento_id
+        tests: [not_null]
+      - name: plano_conta_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_plano_contas')
+              field: plano_conta_sk
+      - name: data_id
+        tests: [not_null]
+      - name: vlr_lancamento
+        tests: [not_null]
+      - name: vlr_final
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, lancamento_id]
