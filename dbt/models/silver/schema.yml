@@ -118,3 +118,48 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, ordem_compra_id]
+
+  - name: silver_dw_empresas
+    description: "Cadastro de empresas limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: nm_empresa
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, empresa_id]
+
+  - name: silver_dw_departamentos
+    description: "Cadastro de departamentos limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: departamento_id
+        tests: [not_null]
+      - name: nm_departamento
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, departamento_id]
+
+  - name: silver_dw_funcionarios
+    description: "Cadastro de funcionarios limpo. Sem updated_at no Bronze — lookback por created_at. FK departamento_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: funcionario_id
+        tests: [not_null]
+      - name: nm_funcionario
+        tests: [not_null]
+      - name: departamento_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_departamentos')
+              field: departamento_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, funcionario_id]
