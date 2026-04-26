@@ -227,3 +227,52 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, expedicao_id]
+
+  - name: dim_centros_custos
+    description: "Dimensao Kimball type 1 de centros de custo. Dim plana. Necessaria para DRE (PR 8)."
+    columns:
+      - name: centro_custo_sk
+        description: "Surrogate key hash(tenant_id, centro_custo_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: centro_custo_id
+        tests: [not_null]
+      - name: nm_centro_custo
+        tests: [not_null]
+
+  - name: fct_orcamento_projetos
+    description: "Fato de orcamento por projeto. Campo vlr_delta = realizado - orcado."
+    columns:
+      - name: orcamento_sk
+        description: "Surrogate key hash(tenant_id, orcamento_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: orcamento_id
+        tests: [not_null]
+      - name: centro_custo_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_centros_custos')
+              field: centro_custo_sk
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+      - name: vlr_orcado
+        tests: [not_null]
+      - name: vlr_realizado
+        tests: [not_null]
+      - name: vlr_delta
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, orcamento_id]

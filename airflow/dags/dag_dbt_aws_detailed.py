@@ -57,6 +57,10 @@ SILVER_MODELS = [
     "silver_dw_filiais",
     "silver_dw_transportadoras",
     "silver_dw_expedicao",
+    # controladoria (Sprint 4.5 — PR 5)
+    "silver_dw_centros_custos",
+    "silver_dw_projetos",
+    "silver_dw_orcamento",
 ]
 
 GOLD_DIM_MODELS = [
@@ -69,6 +73,8 @@ GOLD_DIM_MODELS = [
     # corporativo (Sprint 4.5 — PR 2)
     "dim_empresas",
     "dim_funcionarios",
+    # controladoria (Sprint 4.5 — PR 5)
+    "dim_centros_custos",
 ]
 
 GOLD_FACT_MODELS = [
@@ -79,6 +85,8 @@ GOLD_FACT_MODELS = [
     "fct_ordens_producao",
     # logistica (Sprint 4.5 — PR 4)
     "fct_expedicao",
+    # controladoria (Sprint 4.5 — PR 5)
+    "fct_orcamento_projetos",
 ]
 
 DEFAULT_ARGS = {
