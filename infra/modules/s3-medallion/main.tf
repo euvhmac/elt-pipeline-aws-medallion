@@ -15,11 +15,11 @@
 
 locals {
   buckets = {
-    bronze          = { versioning = true, lifecycle_ia = true, expiration = 0 }
-    silver          = { versioning = false, lifecycle_ia = false, expiration = 0 }
-    gold            = { versioning = false, lifecycle_ia = false, expiration = 0 }
-    platinum        = { versioning = false, lifecycle_ia = false, expiration = 0 }
-    athena-results  = { versioning = false, lifecycle_ia = false, expiration = var.athena_results_expiration_days }
+    bronze         = { versioning = true, lifecycle_ia = true, expiration = 0 }
+    silver         = { versioning = false, lifecycle_ia = false, expiration = 0 }
+    gold           = { versioning = false, lifecycle_ia = false, expiration = 0 }
+    platinum       = { versioning = false, lifecycle_ia = false, expiration = 0 }
+    athena-results = { versioning = false, lifecycle_ia = false, expiration = var.athena_results_expiration_days }
   }
 }
 

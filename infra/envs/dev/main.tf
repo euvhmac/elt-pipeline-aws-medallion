@@ -63,3 +63,10 @@ module "athena_workgroup" {
   results_bucket = module.s3_medallion.athena_results_bucket
   tags           = local.base_tags
 }
+
+module "glue_tables_bronze" {
+  source        = "../../modules/glue-tables"
+  database_name = module.glue_catalog.database_names["bronze"]
+  bronze_bucket = module.s3_medallion.bronze_bucket
+  glue_tables   = var.glue_tables
+}

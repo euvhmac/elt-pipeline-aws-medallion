@@ -17,3 +17,7 @@ output "athena_workgroup" {
 output "slack_webhook_secret" {
   value = module.secrets_manager.slack_webhook_secret_name
 }
+
+output "glue_bronze_table_count" {
+  value = module.glue_tables_bronze.table_count
+}
