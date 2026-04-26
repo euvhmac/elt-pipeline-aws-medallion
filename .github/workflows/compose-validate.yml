@@ -1,0 +1,26 @@
+name: compose-validate
+
+on:
+  pull_request:
+    paths:
+      - 'airflow/docker-compose.yml'
+      - '.github/workflows/compose-validate.yml'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'airflow/docker-compose.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cria .env a partir do exemplo
+        run: cp .env.example .env
+
+      - name: Valida sintaxe docker-compose
+        run: docker compose -f airflow/docker-compose.yml --env-file .env config -q
+
+      - name: Resumo
+        run: echo "✓ docker-compose valido"

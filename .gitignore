@@ -198,6 +198,30 @@ cython_debug/
 #  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
 #  refer to https://docs.cursor.com/context/ignore-files
+
+# ---------- elt-pipeline-aws-medallion ----------
+# Airflow runtime
+airflow/logs/
+airflow/plugins/__pycache__/
+# Data generator output
+data-generator/output/
+tmp_output/
+# dbt artifacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/profiles.yml
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.terraform/
+.terraform.lock.hcl
+# AWS
+.aws/credentials
+# Deepeval
+.deepeval/
 .cursorignore
 .cursorindexingignore
 

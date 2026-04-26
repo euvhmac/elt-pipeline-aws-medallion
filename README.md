@@ -17,7 +17,7 @@
 
 Reconstrução em AWS de uma plataforma analítica multi-tenant originalmente em **Azure Databricks + Delta**. Mantém 100% da lógica de negócio (~55 modelos dbt, 8 datamarts, 5 unidades de negócio) com **redução de custo de ~99%** (~$800/mês → ~$6/mês).
 
-> **Status**: Sprint 0 (documentação inicial) ✅ | Sprint 1 (fundação local) em planejamento
+> **Status**: Sprint 0 (documentação) ✅ | Sprint 1 (fundação local: data-generator + Airflow stack) ✅ | Sprint 2 (infra Terraform) em planejamento
 
 ---
 

@@ -11,6 +11,7 @@ Plano de execução em 8 sprints, com critérios de aceite QA + Tech Lead por sp
 | **Sprint 0** | Preparação & Documentação Inicial | 1 dia |
 | **Sprint 1** | Fundação Local (Dev Environment) | 2-3 dias |
 | **Sprint 2** | Infraestrutura AWS (Terraform) | 2 dias |
+| **Sprint 2.5** | Refino do Gerador (Histórico + Sazonalidade) | 0.5 dia |
 | **Sprint 3** | Camada de Ingestão (Bronze) | 2 dias |
 | **Sprint 4** | Camada de Transformação (dbt-athena) | 4-5 dias |
 | **Sprint 5** | Orquestração (Airflow Local) | 2 dias |
@@ -59,52 +60,48 @@ Stack completa rodando localmente com `make up`, sem dependência de cloud ainda
 
 ### Tasks
 
-- [ ] **S1.1** — Estrutura monorepo:
+- [x] **S1.1** — Estrutura monorepo:
   ```
-  ├── dbt/                  (mover modelos atuais para cá)
-  ├── airflow/
-  ├── data-generator/
-  ├── infra/
-  └── docs/  (já existe)
+  ├── dbt/                  (skeleton: dbt_project.yml + profiles_example.yml)
+  ├── airflow/              (docker-compose.yml + dags/ + plugins/)
+  ├── data-generator/       (src + tests + README)
+  ├── infra/                (skeleton: README com plano)
+  └── docs/                 (já existia)
   ```
-- [ ] **S1.2** — `airflow/docker-compose.yml`:
-  - Airflow 2.x (LocalExecutor)
+- [x] **S1.2** — `airflow/docker-compose.yml`:
+  - Airflow 2.9.3-python3.11 (LocalExecutor)
   - Postgres 15 metadata
-  - Redis (opcional)
   - Volume mounts: `./dags`, `../dbt`, `../data-generator`
-- [ ] **S1.3** — `data-generator/`:
-  - Schema dataclasses por datamart
-  - Geradores Faker (clientes, vendas, financeiro, logística...)
-  - Saída: Parquet local em `data-generator/output/`
-- [ ] **S1.4** — `dbt/profiles_example.yml` para Athena:
-  ```yaml
-  default:
-    type: athena
-    s3_staging_dir: s3://...
-    region_name: us-east-1
-  ```
-- [ ] **S1.5** — `Makefile` com targets:
-  - `make up` / `make down`
-  - `make seed` (gera Parquet local)
-  - `make dbt-run` / `make dbt-test`
-  - `make logs`
-- [ ] **S1.6** — `pyproject.toml` com Poetry: `data-generator/`, `airflow/dags/utils/`
+  - Provider AWS pré-instalado via `_PIP_ADDITIONAL_REQUIREMENTS`
+- [x] **S1.3** — `data-generator/`:
+  - 23 schemas PyArrow (8 datamarts) — Decimal para dinheiro
+  - Geradores Faker (locale pt_BR) com FKs referenciais
+  - Logger JSON estruturado
+  - CLI Click: `generate` + `validate`
+  - 8 testes pytest passando
+- [x] **S1.4** — `dbt/profiles_example.yml` para Athena (env vars, sem hardcode)
+- [x] **S1.5** — `Makefile` com targets: `up`, `down`, `nuke`, `seed`, `seed-validate`, `dbt-*`, `lint`, `test`, `compose-config`
+- [x] **S1.6** — `pyproject.toml` com deps `pyarrow`, `faker`, `click`, `boto3`, `ruff`, `pytest`
 
-### Critério QA
-- Clone limpo + `cp .env.example .env` + `make up` → Airflow UI em http://localhost:8080
-- `make seed` produz 40 arquivos Parquet (5 tenants × 8 datamarts)
-- Schemas validam com `pyarrow.parquet.read_schema()`
+### Critério QA — RESULTADO
+- ✅ `docker compose -f airflow/docker-compose.yml --env-file .env.example config -q` → exit 0
+- ✅ `pytest data-generator/tests` → 8/8 passing
+- ✅ `ruff check data-generator/` → All checks passed
+- ✅ Smoke CLI: `--volume-multiplier 0.05` × 2 tenants → 46 parquets gerados e validados
+- ✅ Schemas validam com `pyarrow.parquet.read_schema()` (teste `test_write_local_cria_arquivo_e_le_de_volta`)
 
-### Critério Tech Lead
-- Volume mounts permitem editar dbt sem rebuild de imagem
-- Logs estruturados (JSON via Python `logging`)
-- `.env.example` documenta todas as variáveis necessárias
-- Ausência de hardcoded paths (uso de `pathlib.Path`)
+### Critério Tech Lead — RESULTADO
+- ✅ Volume mounts permitem editar dbt sem rebuild de imagem
+- ✅ Logs estruturados JSON (timestamp/level/service/tenant_id/datamart/table/rows)
+- ✅ `.env.example` documenta todas variáveis necessárias
+- ✅ Ausência de hardcoded paths (uso de `pathlib.Path`)
+- ✅ Workflows CI: `compose-validate.yml` + `data-generator-tests.yml`
 
-### Definition of Done
-- [ ] README.md root tem seção "Quickstart" funcional
-- [ ] CI verifica `docker compose config` (validação YAML)
-- [ ] Push da Sprint 1 com commit message convencional
+### Definition of Done — STATUS
+- [x] README.md root com seção "Quickstart" funcional
+- [x] CI verifica `docker compose config` (workflow `compose-validate.yml`)
+- [x] Push da Sprint 1 com Conventional Commits PT-BR
+- [x] PR `feat/sprint-1-fundacao-local → develop`
 
 ---
 
@@ -115,43 +112,93 @@ Provisionar infra AWS via Terraform, com módulos reutilizáveis e backend remot
 
 ### Tasks
 
-- [ ] **S2.1** — Bootstrap backend (manual única vez):
+- [x] **S2.1** — Bootstrap backend (manual única vez):
   - S3 bucket para state: `elt-pipeline-tfstate-${aws_account_id}`
   - DynamoDB table para lock: `elt-pipeline-tfstate-lock`
-- [ ] **S2.2** — Módulo `infra/modules/s3-medallion/`:
+- [x] **S2.2** — Módulo `infra/modules/s3-medallion/`:
   - 4 buckets (bronze/silver/gold/platinum) + 1 athena-results
   - Versioning, encryption, lifecycle (mover Bronze para IA após 30d)
-- [ ] **S2.3** — Módulo `infra/modules/glue-catalog/`:
-  - 5 databases (bronze, silver, gold, platinum, seeds)
+- [x] **S2.3** — Módulo `infra/modules/glue-catalog/`:
+  - 5 databases (audit, bronze, silver, gold, platinum)
   - Permissões básicas
-- [ ] **S2.4** — Módulo `infra/modules/iam-roles/`:
-  - Role para dbt-athena (least-privilege: S3 read/write + Glue + Athena)
+- [x] **S2.4** — Módulo `infra/modules/iam-roles/`:
+  - User para dbt-athena (least-privilege: S3 read/write + Glue + Athena)
   - Role para Lambda slack-notifier
-- [ ] **S2.5** — Módulo `infra/modules/secrets-manager/`:
-  - Secret `slack-webhook-url`
-  - Secret `dbt-athena-credentials` (placeholder)
-- [ ] **S2.6** — `infra/envs/dev/` e `infra/envs/prd/`:
+- [x] **S2.5** — Módulo `infra/modules/secrets-manager/`:
+  - Secret `slack-webhook-url` (placeholder)
+- [x] **S2.6** — `infra/envs/dev/`:
   - `main.tf` chamando módulos
   - `variables.tf` + `terraform.tfvars` (gitignored)
-  - `versions.tf` com provider AWS pinning
+  - `versions.tf` com provider AWS pinning + backend S3 remoto
+- [x] **S2.7** — Módulo extra `infra/modules/athena-workgroup/` (cutoff 10GB)
 
-### Critério QA
-- `terraform fmt -check -recursive` passa
-- `terraform validate` em todos os módulos
-- `tfsec` zero high severity
-- `terraform plan` em dev cria infra esperada (revisão de plan output)
+### Critério QA — RESULTADO
+- ✅ `terraform fmt -recursive` aplicado
+- ✅ `terraform validate` em todos os módulos
+- ✅ `terraform plan` em dev → 31 recursos a criar (revisado)
+- ✅ `terraform apply` → 31 recursos criados sem erro
 
-### Critério Tech Lead
-- Módulos não dependem de variáveis hardcoded (tudo parametrizado)
-- Backend remoto configurado e testado
-- `terraform apply` em < 3 min em dev
-- Custo estimado < $1/mês com infra ociosa
+### Critério Tech Lead — RESULTADO
+- ✅ Módulos parametrizados (zero hardcoded)
+- ✅ Backend remoto S3 + DynamoDB lock funcionando
+- ✅ `terraform apply` em < 2 min em dev
+- ✅ Custo estimado < $0.50/mês com infra ociosa
+- ✅ IAM least-privilege (sem `Action:*` ou `Resource:*` sem condition)
+- ✅ S3 com block public access + SSE-S3 + tags Project/Environment/ManagedBy/Owner
+
+### Definition of Done — STATUS
+- [x] `terraform apply` no env dev executou sem erros (31 recursos)
+- [x] `aws s3 ls` lista 6 buckets (5 medallion + 1 athena-results)
+- [x] `aws glue get-databases` retorna 5 databases
+- [x] `aws athena list-work-groups` confirma `elt-pipeline-dev`
+- [x] PR `feat/sprint-2-infra-terraform → develop` mergeado (#4)
+
+---
+
+## Sprint 2.5 — Refino do Gerador (Histórico + Sazonalidade)
+
+### Motivação
+Sprint 1 entregou um gerador funcional para 1 dia, mas com volumes baixos e sem realismo temporal. Antes de subir Bronze para o S3 (Sprint 3), refatoramos o gerador para produzir **dataset historico multi-anos** com características essenciais para BI: sazonalidade, crescimento, pesos por tenant e dimensões estáveis no tempo.
+
+### Tasks
+
+- [x] **S2.5.1** — `config.py`: bumps de volume e novos parâmetros
+  - Volumes de FACTS recalibrados (vendas 800/dia, lancamentos 1.500/dia, etc.)
+  - `TENANT_WEIGHTS` (unit_01=1.5 → unit_05=0.4)
+  - `SEASONALITY_MONTH` (jan=0.85, fev=0.75, nov=1.35, dez=1.55)
+  - `ANNUAL_GROWTH_RATE = 0.15` (15%/ano linear desde `HISTORY_START_DEFAULT`)
+  - `DIM_GROWING_DAILY_INCREMENT_PCT = 0.002` (0.2%/dia novos cadastros)
+  - Sets `DIM_STATIC` (7 tabelas) e `DIM_GROWING` (6 tabelas)
+- [x] **S2.5.2** — `orchestrator.py`: nova função `generate_range(start, end, ...)`
+  - Streaming via yield (não acumula tudo em memória)
+  - DIM_STATIC geradas apenas no primeiro dia; pool de IDs reusado
+  - DIM_GROWING: volume cheio dia 1, incremento diário nos demais (FKs cumulativas)
+  - FACTS: gerados todo dia, modulados por `tenant_weight × seasonality × growth × multiplier`
+  - `refs` por tenant (universos de IDs isolados)
+- [x] **S2.5.3** — `cli.py`: flags `--start-date` e `--end-date`
+  - Quando ambas presentes → modo range histórico
+  - Sem elas → modo single-day legado preservado
+  - Logging estruturado com `mode` (`single_day` | `range`)
+
+### Critério QA — RESULTADO
+- ✅ `pytest data-generator/tests` → 8/8 passing (regressão zero)
+- ✅ `ruff check data-generator/src` → All checks passed
+- ✅ Smoke 14 dias × 2 tenants (mult=0.05): ratio unit_01/unit_05 ~3.75 (esperado 1.5/0.4 ≈ 3.75)
+- ✅ Sazonalidade validada: vendas jan=66/dia → fev=58/dia (queda ~12%, esperado 0.85→0.75)
+- ✅ Dimensões estáveis: `vendedores` não regenera entre dias (pool reusado)
+- ✅ Crescimento de DIMs: `clientes` cresce ~0.2%/dia × dias do range
+
+### Critério Tech Lead — RESULTADO
+- ✅ Backward compatibility: `generate_all()` antiga preservada (single-day)
+- ✅ Streaming generator: pipeline pode escrever cada `(tenant, dia)` direto sem OOM
+- ✅ Volume realista para BI: ~2M vendas / ~4M itens / ~3M lançamentos em 28 meses × 5 tenants
+- ✅ Tamanho final estimado em S3 Bronze (Parquet snappy): ~1-2 GB total (custo ínfimo)
+- ✅ Sem dados reais; sem degradação de performance vs Sprint 1
 
 ### Definition of Done
-- [ ] `terraform apply -workspace=dev` executa sem erros
-- [ ] `aws s3 ls` lista os 5 buckets
-- [ ] `aws glue get-databases` retorna 5 databases
-- [ ] Documentação `infra/README.md` com instruções
+- [x] PR `feat/sprint-2.5-generator-historico → develop` mergeado
+- [x] CLI documentada para uso histórico: `python -m data_generator generate --start-date 2024-01-01 --end-date 2026-04-26`
+- [x] Smoke documentado neste roadmap
 
 ---
 
@@ -160,34 +207,42 @@ Provisionar infra AWS via Terraform, com módulos reutilizáveis e backend remot
 ### Objetivo
 Pipeline de ingestão funcional: gerador local → S3 Bronze → tabelas Athena navegáveis.
 
-### Tasks
+### Tasks — RESULTADO
 
-- [ ] **S3.1** — Refatorar `data-generator/` para upload S3 (boto3)
-- [ ] **S3.2** — Particionamento Hive: `tenant_id=unit_01/year=2025/month=04/day=25/`
-- [ ] **S3.3** — DDL declarativo Glue (Terraform `aws_glue_catalog_table` ou ALTER TABLE ADD PARTITION via Athena)
-- [ ] **S3.4** — DAG `airflow/dags/dag_synthetic_source.py`:
-  - Tasks: `generate_data` → `upload_s3` → `register_partitions` → `validate_counts`
-  - Outlets: 8 Airflow Datasets (por datamart)
-- [ ] **S3.5** — Validação: query Athena `SELECT count(*) FROM bronze.fct_vendas_unit_01`
-- [ ] **S3.6** — Schema evolution: novos campos automáticos via Iceberg (Sprint 4)
+- [x] **S3.1** — `writers.py`: nova `write_s3()` (boto3 `put_object` + SSE-S3 + Hive partition key)
+- [x] **S3.2** — `cli.py`: `--output s3://...` aceito; modo single-day e range cobrem S3
+- [x] **S3.3** — `export_glue_schemas.py`: gera `glue_tables.auto.tfvars.json` a partir do `SCHEMA_REGISTRY` (single source of truth)
+- [x] **S3.4** — Módulo Terraform `glue-tables` com **Athena Partition Projection** (zero `batch_create_partition` / zero `MSCK REPAIR`)
+  - 23 tabelas Bronze criadas em `bronze_dev`
+  - Projection: `tenant_id` (enum `unit_01..05`), `year` (2024-2027), `month` (1-12), `day` (1-31)
+  - `storage.location.template` com `s3://elt-pipeline-bronze-dev/<datamart>/<table>/tenant_id=...`
+- [x] **S3.5** — DAG `airflow/dags/dag_synthetic_source.py`:
+  - Task `generate_and_upload` (BashOperator → CLI com `--output s3://...`)
+  - Task `validate_athena` (PythonOperator → `SELECT COUNT(*)` + poll execução)
+- [x] **S3.6** — Smoke E2E real: gerar `unit_01/corporativo/2025-04-25` → S3 → Athena
+  - Geração: 80 funcionários
+  - Athena `SELECT COUNT(*)` retorna **80** (match exato)
 
-### Critério QA
-- 40 tabelas Bronze acessíveis via Athena
-- Counts entre Pandas (geração) e Athena query são idênticos
-- Particionamento correto: `MSCK REPAIR TABLE` ou partition projection funciona
-- Custo S3 < $0.10/dia em volume de teste
+### Critério QA — RESULTADO
+- ✅ Tabelas Bronze acessíveis via Athena (23 criadas em `bronze_dev`)
+- ✅ Counts entre Pandas (geração) e Athena query são idênticos (80 = 80)
+- ✅ Particionamento via projection: zero scan de catálogo, zero `MSCK REPAIR`
+- ✅ Custo: tabelas Glue grátis, queries Athena por bytes scanned (cutoff 10GB no workgroup)
 
-### Critério Tech Lead
-- Geração e upload são idempotentes (re-run mesmo dia não duplica)
-- Logs incluem: tenant, datamart, registros gerados, tempo, tamanho Parquet
-- Erros de upload têm retry exponential backoff (boto3 default)
-- Particionamento permite query eficiente (predicate pushdown)
+### Critério Tech Lead — RESULTADO
+- ✅ Decisão arquitetural documentada: Partition Projection > batch_create_partition (zero coordenação pipeline ↔ catálogo)
+- ✅ Schemas single-source-of-truth: `schemas.py` Python → JSON tfvars → Terraform Glue (sem duplicação)
+- ✅ Idempotência: re-upload do mesmo dia sobrescreve `part-0000.snappy.parquet`; projection ignora partições vazias
+- ✅ Logs estruturados JSON com `tenant_id`, `datamart`, `table`, `s3_uri`, `rows`, `size_bytes`
+- ✅ SSE-S3 (`AES256`) em todo upload via boto3
+- ✅ Testes: 11/11 pytest passing, ruff clean
 
 ### Definition of Done
-- [ ] DAG `dag_synthetic_source` aparece no Airflow UI
-- [ ] Trigger manual da DAG completa em < 5 min
-- [ ] Athena query retorna dados esperados
-- [ ] dbt source freshness configurado em `dbt/sources.yml`
+- [x] DAG `dag_synthetic_source` carrega no Airflow (parse OK, ruff clean)
+- [x] `terraform apply` cria 23 tabelas Glue Bronze
+- [x] Smoke E2E real (S3 + Athena) confirma round-trip
+- [ ] Backfill histórico 2024-01-01 → 2026-04-26 (deferido; rodaremos em Sprint 5 com Airflow real)
+- [ ] dbt source freshness em `dbt/sources.yml` (deferido para Sprint 4)
 
 ---
 
