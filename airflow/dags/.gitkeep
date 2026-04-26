@@ -1,0 +1,3 @@
+# DAGs Airflow
+
+Pasta destino das DAGs do projeto. Será preenchida nas Sprints 3 (`dag_synthetic_source`) e 5 (`dag_dbt_aws_detailed`).

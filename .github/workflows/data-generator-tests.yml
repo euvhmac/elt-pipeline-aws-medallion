@@ -1,0 +1,57 @@
+name: data-generator-tests
+
+on:
+  pull_request:
+    paths:
+      - 'data-generator/**'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+      - '.github/workflows/data-generator-tests.yml'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'data-generator/**'
+      - 'pyproject.toml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instala Poetry
+        run: pipx install poetry==1.8.3
+
+      - name: Cache poetry
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pypoetry
+          key: poetry-${{ hashFiles('pyproject.toml') }}
+
+      - name: Instala dependencias
+        run: poetry install --no-interaction --no-ansi
+
+      - name: Lint (ruff)
+        run: poetry run ruff check data-generator/src
+
+      - name: Testes (pytest)
+        run: poetry run pytest data-generator/tests -v
+
+      - name: Smoke test do CLI (volume reduzido)
+        run: |
+          poetry run python -m data_generator generate \
+            --tenants unit_01 \
+            --datamarts corporativo \
+            --date 2025-04-25 \
+            --output ./tmp_output \
+            --volume-multiplier 0.01 \
+            --seed 42
+          poetry run python -m data_generator validate \
+            --tenants unit_01 \
+            --datamarts corporativo \
+            --date 2025-04-25 \
+            --output ./tmp_output

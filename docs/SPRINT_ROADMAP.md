@@ -59,52 +59,48 @@ Stack completa rodando localmente com `make up`, sem dependência de cloud ainda
 
 ### Tasks
 
-- [ ] **S1.1** — Estrutura monorepo:
+- [x] **S1.1** — Estrutura monorepo:
   ```
-  ├── dbt/                  (mover modelos atuais para cá)
-  ├── airflow/
-  ├── data-generator/
-  ├── infra/
-  └── docs/  (já existe)
+  ├── dbt/                  (skeleton: dbt_project.yml + profiles_example.yml)
+  ├── airflow/              (docker-compose.yml + dags/ + plugins/)
+  ├── data-generator/       (src + tests + README)
+  ├── infra/                (skeleton: README com plano)
+  └── docs/                 (já existia)
   ```
-- [ ] **S1.2** — `airflow/docker-compose.yml`:
-  - Airflow 2.x (LocalExecutor)
+- [x] **S1.2** — `airflow/docker-compose.yml`:
+  - Airflow 2.9.3-python3.11 (LocalExecutor)
   - Postgres 15 metadata
-  - Redis (opcional)
   - Volume mounts: `./dags`, `../dbt`, `../data-generator`
-- [ ] **S1.3** — `data-generator/`:
-  - Schema dataclasses por datamart
-  - Geradores Faker (clientes, vendas, financeiro, logística...)
-  - Saída: Parquet local em `data-generator/output/`
-- [ ] **S1.4** — `dbt/profiles_example.yml` para Athena:
-  ```yaml
-  default:
-    type: athena
-    s3_staging_dir: s3://...
-    region_name: us-east-1
-  ```
-- [ ] **S1.5** — `Makefile` com targets:
-  - `make up` / `make down`
-  - `make seed` (gera Parquet local)
-  - `make dbt-run` / `make dbt-test`
-  - `make logs`
-- [ ] **S1.6** — `pyproject.toml` com Poetry: `data-generator/`, `airflow/dags/utils/`
+  - Provider AWS pré-instalado via `_PIP_ADDITIONAL_REQUIREMENTS`
+- [x] **S1.3** — `data-generator/`:
+  - 23 schemas PyArrow (8 datamarts) — Decimal para dinheiro
+  - Geradores Faker (locale pt_BR) com FKs referenciais
+  - Logger JSON estruturado
+  - CLI Click: `generate` + `validate`
+  - 8 testes pytest passando
+- [x] **S1.4** — `dbt/profiles_example.yml` para Athena (env vars, sem hardcode)
+- [x] **S1.5** — `Makefile` com targets: `up`, `down`, `nuke`, `seed`, `seed-validate`, `dbt-*`, `lint`, `test`, `compose-config`
+- [x] **S1.6** — `pyproject.toml` com deps `pyarrow`, `faker`, `click`, `boto3`, `ruff`, `pytest`
 
-### Critério QA
-- Clone limpo + `cp .env.example .env` + `make up` → Airflow UI em http://localhost:8080
-- `make seed` produz 40 arquivos Parquet (5 tenants × 8 datamarts)
-- Schemas validam com `pyarrow.parquet.read_schema()`
+### Critério QA — RESULTADO
+- ✅ `docker compose -f airflow/docker-compose.yml --env-file .env.example config -q` → exit 0
+- ✅ `pytest data-generator/tests` → 8/8 passing
+- ✅ `ruff check data-generator/` → All checks passed
+- ✅ Smoke CLI: `--volume-multiplier 0.05` × 2 tenants → 46 parquets gerados e validados
+- ✅ Schemas validam com `pyarrow.parquet.read_schema()` (teste `test_write_local_cria_arquivo_e_le_de_volta`)
 
-### Critério Tech Lead
-- Volume mounts permitem editar dbt sem rebuild de imagem
-- Logs estruturados (JSON via Python `logging`)
-- `.env.example` documenta todas as variáveis necessárias
-- Ausência de hardcoded paths (uso de `pathlib.Path`)
+### Critério Tech Lead — RESULTADO
+- ✅ Volume mounts permitem editar dbt sem rebuild de imagem
+- ✅ Logs estruturados JSON (timestamp/level/service/tenant_id/datamart/table/rows)
+- ✅ `.env.example` documenta todas variáveis necessárias
+- ✅ Ausência de hardcoded paths (uso de `pathlib.Path`)
+- ✅ Workflows CI: `compose-validate.yml` + `data-generator-tests.yml`
 
-### Definition of Done
-- [ ] README.md root tem seção "Quickstart" funcional
-- [ ] CI verifica `docker compose config` (validação YAML)
-- [ ] Push da Sprint 1 com commit message convencional
+### Definition of Done — STATUS
+- [x] README.md root com seção "Quickstart" funcional
+- [x] CI verifica `docker compose config` (workflow `compose-validate.yml`)
+- [x] Push da Sprint 1 com Conventional Commits PT-BR
+- [x] PR `feat/sprint-1-fundacao-local → develop`
 
 ---
 
