@@ -16,6 +16,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: data-generator/src
     steps:
       - uses: actions/checkout@v4
 

@@ -70,3 +70,11 @@ module "glue_tables_bronze" {
   bronze_bucket = module.s3_medallion.bronze_bucket
   glue_tables   = var.glue_tables
 }
+
+module "sns_lambda_slack" {
+  source           = "../../modules/sns-lambda-slack"
+  env              = var.env
+  name_prefix      = var.name_prefix
+  slack_secret_arn = module.secrets_manager.slack_webhook_secret_arn
+  tags             = local.base_tags
+}

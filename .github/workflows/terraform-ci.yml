@@ -1,0 +1,43 @@
+name: terraform-ci
+
+on:
+  pull_request:
+    paths:
+      - 'infra/**'
+      - '.github/workflows/terraform-ci.yml'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'infra/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra/envs/dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
+
+      - name: Terraform fmt check (recursive)
+        run: terraform fmt -check -recursive ../../
+
+      - name: Terraform init (no backend)
+        run: terraform init -backend=false -input=false
+
+      - name: Terraform validate
+        run: terraform validate -no-color
+
+      - name: tfsec
+        uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          working_directory: infra
+          soft_fail: true

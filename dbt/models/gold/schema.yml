@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: dim_calendrio
+    description: "Dimensao tempo gerada via Jinja, 2024-2027. Compartilhada entre tenants."
+    columns:
+      - name: data_id
+        description: "PK no formato YYYYMMDD."
+        tests:
+          - not_null
+          - unique
+      - name: dt_data
+        tests: [not_null]
+
+  - name: dim_clientes
+    description: "Dimensao Kimball type 1 de clientes."
+    columns:
+      - name: cliente_sk
+        description: "Surrogate key hash(tenant_id, cliente_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: cliente_id
+        tests: [not_null]
+
+  - name: dim_produtos
+    description: "Dimensao Kimball type 1 de produtos."
+    columns:
+      - name: produto_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: produto_id
+        tests: [not_null]
+
+  - name: dim_vendedores
+    description: "Dimensao Kimball type 1 de vendedores."
+    columns:
+      - name: vendedor_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: vendedor_id
+        tests: [not_null]
+
+  - name: fct_vendas
+    description: "Fato transacional de vendas. Grao: 1 item de pedido."
+    columns:
+      - name: venda_item_sk
+        description: "Surrogate key do fato."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: item_id
+        tests: [not_null]
+      - name: venda_id
+        tests: [not_null]
+      - name: cliente_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_clientes')
+              field: cliente_sk
+      - name: produto_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_produtos')
+              field: produto_sk
+      - name: vendedor_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_vendedores')
+              field: vendedor_sk
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+      - name: vlr_total
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, item_id]
