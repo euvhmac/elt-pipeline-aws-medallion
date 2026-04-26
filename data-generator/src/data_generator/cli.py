@@ -13,7 +13,7 @@ from .config import TENANTS, all_datamarts
 from .logging_utils import get_logger
 from .orchestrator import generate_all, generate_range
 from .schemas import get_schema
-from .writers import hive_partition_path, write_local
+from .writers import hive_partition_path, write_local, write_s3
 
 logger = get_logger()
 
@@ -52,7 +52,7 @@ def main() -> None:
 @click.option(
     "--output",
     default="./data-generator/output",
-    help="Path local de saida (Sprint 3+ aceitara s3://...).",
+    help="Path local de saida ou s3://bucket/prefix para upload direto.",
 )
 @click.option("--seed", default=42, type=int, help="Seed para reprodutibilidade.")
 @click.option("--volume-multiplier", default=1.0, type=float, help="Multiplicador de volume.")
@@ -69,10 +69,6 @@ def generate(
     """Gera dados sinteticos em Parquet (1 dia ou range historico)."""
     tenant_list = _parse_csv_list(tenants, TENANTS, "tenants")
     datamart_list = _parse_csv_list(datamarts, all_datamarts(), "datamarts")
-
-    if output.startswith("s3://"):
-        click.echo("ERRO: upload S3 sera implementado na Sprint 3.", err=True)
-        sys.exit(2)
 
     # Modo range historico: --start-date + --end-date
     if start_date_str or end_date_str:
@@ -132,11 +128,17 @@ def _run_single_day(
         seed=seed,
     )
 
+    is_s3 = output.startswith("s3://")
+    s3_client = _make_s3_client() if is_s3 else None
+
     total_files = 0
     total_rows = 0
     for tenant, tables in data.items():
         for (datamart, table_name), pa_table in tables.items():
-            write_local(pa_table, output, datamart, table_name, tenant, base_dt)
+            if is_s3:
+                write_s3(pa_table, output, datamart, table_name, tenant, base_dt, s3_client=s3_client)
+            else:
+                write_local(pa_table, output, datamart, table_name, tenant, base_dt)
             total_files += 1
             total_rows += pa_table.num_rows
 
@@ -145,6 +147,12 @@ def _run_single_day(
         extra={"total_files": total_files, "total_rows": total_rows, "output": output},
     )
     click.echo(f"OK: {total_files} arquivos, {total_rows} linhas em {output}")
+
+
+def _make_s3_client():
+    import boto3
+
+    return boto3.client("s3")
 
 
 def _run_range(
@@ -170,6 +178,9 @@ def _run_range(
         },
     )
 
+    is_s3 = output.startswith("s3://")
+    s3_client = _make_s3_client() if is_s3 else None
+
     total_files = 0
     total_rows = 0
     for tenant, current_dt, tables in generate_range(
@@ -181,7 +192,12 @@ def _run_range(
         seed=seed,
     ):
         for (datamart, table_name), pa_table in tables.items():
-            write_local(pa_table, output, datamart, table_name, tenant, current_dt)
+            if is_s3:
+                write_s3(
+                    pa_table, output, datamart, table_name, tenant, current_dt, s3_client=s3_client
+                )
+            else:
+                write_local(pa_table, output, datamart, table_name, tenant, current_dt)
             total_files += 1
             total_rows += pa_table.num_rows
 
