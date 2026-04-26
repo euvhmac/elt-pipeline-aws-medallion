@@ -21,3 +21,12 @@ output "slack_webhook_secret" {
 output "glue_bronze_table_count" {
   value = module.glue_tables_bronze.table_count
 }
+
+output "pipeline_alerts_topic_arn" {
+  value       = module.sns_lambda_slack.sns_topic_arn
+  description = "Setar como PIPELINE_ALERTS_TOPIC_ARN no Airflow para ativar alertas Slack"
+}
+
+output "slack_notifier_lambda" {
+  value = module.sns_lambda_slack.lambda_function_name
+}
