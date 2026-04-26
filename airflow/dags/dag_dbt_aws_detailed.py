@@ -100,6 +100,13 @@ GOLD_FACT_MODELS = [
     "fct_lancamentos",
 ]
 
+# Modelos analíticos DRE (Sprint 4.5 — PR 8)
+# Deps: dim_empresas (PR 2), dim_centros_custos (PR 5), dim_plano_contas (PR 7)
+GOLD_ANALYTIC_MODELS = [
+    "dre_contabil",
+    "dre_gerencial",
+]
+
 DEFAULT_ARGS = {
     "owner": "vhmac",
     "retries": 2,
@@ -150,10 +157,13 @@ with DAG(
         with TaskGroup(group_id="facts") as facts:
             for model in GOLD_FACT_MODELS:
                 _build_task(model)
-        dimensions >> facts
+        with TaskGroup(group_id="analytics") as analytics:
+            for model in GOLD_ANALYTIC_MODELS:
+                _build_task(model)
+        dimensions >> facts >> analytics
 
     with TaskGroup(group_id="tests_layer") as tests_layer:
-        for model in SILVER_MODELS + GOLD_DIM_MODELS + GOLD_FACT_MODELS:
+        for model in SILVER_MODELS + GOLD_DIM_MODELS + GOLD_FACT_MODELS + GOLD_ANALYTIC_MODELS:
             _test_task(model)
 
     dbt_deps >> silver_layer >> gold_layer >> tests_layer
