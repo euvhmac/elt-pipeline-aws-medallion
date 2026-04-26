@@ -32,6 +32,24 @@ jobs:
           pip install --upgrade pip
           pip install dbt-core==1.10.0 dbt-athena-community==1.10.0 sqlfluff==3.2.5 sqlfluff-templater-dbt==3.2.5
 
+      - name: Gera profile dummy para CI (parse nao conecta no Athena)
+        working-directory: dbt
+        run: |
+          cat > profiles.yml <<'EOF'
+          elt_pipeline:
+            target: ci
+            outputs:
+              ci:
+                type: athena
+                s3_staging_dir: s3://ci-dummy/staging/
+                s3_data_dir: s3://ci-dummy/data/
+                region_name: us-east-1
+                database: awsdatacatalog
+                schema: gold_ci
+                work_group: ci-dummy
+                threads: 1
+          EOF
+
       - name: dbt deps
         working-directory: dbt
         run: dbt deps --profiles-dir . --project-dir .
@@ -39,7 +57,6 @@ jobs:
       - name: dbt parse (valida sintaxe + refs)
         working-directory: dbt
         env:
-          # vars dummy: parse nao conecta no Athena
           AWS_REGION: us-east-1
           ATHENA_WORKGROUP: ci-dummy
           S3_BUCKET_ATHENA_RESULTS: ci-dummy
