@@ -168,3 +168,35 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, funcionario_id]
+
+  - name: fct_ordens_producao
+    description: "Fato transacional de ordens de producao. Grao: 1 ordem. Campo calculado nr_dias_producao."
+    columns:
+      - name: ordem_producao_sk
+        description: "Surrogate key hash(tenant_id, ordem_producao_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_producao_id
+        tests: [not_null]
+      - name: produto_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_produtos')
+              field: produto_sk
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+      - name: qt_produzida
+        tests: [not_null]
+      - name: nr_dias_producao
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_producao_id]
