@@ -163,3 +163,37 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, funcionario_id]
+
+  - name: silver_dw_materias_primas
+    description: "Cadastro de materias-primas limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: materia_prima_id
+        tests: [not_null]
+      - name: nm_materia_prima
+        tests: [not_null]
+      - name: vlr_preco_unitario
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, materia_prima_id]
+
+  - name: silver_dw_ordens_producao
+    description: "Ordens de producao limpas. Sem updated_at no Bronze — lookback por created_at. FK produto_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_producao_id
+        tests: [not_null]
+      - name: produto_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_produtos')
+              field: produto_id
+      - name: qt_produzida
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_producao_id]
