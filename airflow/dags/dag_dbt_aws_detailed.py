@@ -107,6 +107,17 @@ GOLD_ANALYTIC_MODELS = [
     "dre_gerencial",
 ]
 
+# Camada Platinum (Sprint 4.5 — PR 9)
+# Deps: fct_titulo_financeiro (PR 6), dre_contabil+dre_gerencial (PR 8)
+PLATINUM_MODELS = [
+    "controle_inadimplentes",
+    "dre_contabil_unit_01",
+    "dre_contabil_unit_02",
+    "dre_gerencial_unit_01",
+    "dre_gerencial_unit_02",
+    "dim_produtos_otimizada",
+]
+
 DEFAULT_ARGS = {
     "owner": "vhmac",
     "retries": 2,
@@ -162,8 +173,12 @@ with DAG(
                 _build_task(model)
         dimensions >> facts >> analytics
 
+    with TaskGroup(group_id="platinum_layer") as platinum_layer:
+        for model in PLATINUM_MODELS:
+            _build_task(model)
+
     with TaskGroup(group_id="tests_layer") as tests_layer:
-        for model in SILVER_MODELS + GOLD_DIM_MODELS + GOLD_FACT_MODELS + GOLD_ANALYTIC_MODELS:
+        for model in SILVER_MODELS + GOLD_DIM_MODELS + GOLD_FACT_MODELS + GOLD_ANALYTIC_MODELS + PLATINUM_MODELS:
             _test_task(model)
 
-    dbt_deps >> silver_layer >> gold_layer >> tests_layer
+    dbt_deps >> silver_layer >> gold_layer >> platinum_layer >> tests_layer
