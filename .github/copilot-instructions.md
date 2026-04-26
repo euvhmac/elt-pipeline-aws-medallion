@@ -39,6 +39,61 @@ Medallion 4-camadas: **Bronze → Silver → Gold → Platinum**
 
 ---
 
+## Contexto de Origem & Mandato de Sanitização
+
+> **Este projeto é uma RECRIAÇÃO PARA PORTFÓLIO de uma plataforma de dados corporativa que existe em produção.** Não é greenfield. Entender essa origem é essencial para o agente entender as restrições e o escopo.
+
+### O que estamos fazendo
+
+**Migrando uma plataforma analítica corporativa real (Azure Databricks → AWS)**, reescrevendo-a do zero como portfólio público. A origem está sob NDA; o destino é público no GitHub e será apresentado em entrevistas técnicas.
+
+| Origem (privada, NDA) | Destino (público, este repo) |
+|---|---|
+| Azure Databricks Unity Catalog | AWS S3 + Iceberg + Athena + Glue |
+| Delta Lake | Apache Iceberg |
+| Spark SQL / Databricks SQL | Trino (Athena engine v3) |
+| Schema-per-tenant físico | Particionamento por `tenant_id` em tabela única |
+| 7 empresas reais do grupo | 5 tenants anonimizados (`unit_01..unit_05`) |
+| IDs corporativos (workspace, warehouse, catalog) | Removidos integralmente |
+| dbt-databricks | dbt-athena-community |
+| Azure DevOps Pipelines | GitHub Actions |
+| Custo ~$800/mês | Alvo $5-7/mês |
+
+### Por que a sanitização é INEGOCIÁVEL
+
+1. **NDA com a empresa de origem** — vazamento de identifiers, nomes de cliente ou IDs de infra é violação contratual
+2. **Repositório público** — qualquer commit fica gravado no histórico do GitHub para sempre (mesmo deletado depois)
+3. **Portfolio público** — será visto por recrutadores; um único nome real vazado quebra a credibilidade do trabalho
+
+### Regras de sanitização
+
+- ❌ **PROIBIDO** mencionar em qualquer arquivo deste repo: nomes reais de empresas/clientes/ERPs, workspace IDs, warehouse IDs, catalogs, schemas internos, emails corporativos
+- ✅ **OBRIGATÓRIO** ao consultar baseline para reescrever um modelo:
+  1. Ler para entender lógica de negócio
+  2. Reescrever do zero, **nunca copiar trecho bruto**
+  3. Substituir tenants pelo mapeamento `unit_01..unit_05`
+  4. Substituir schemas internos por `multi_tenant_dw`
+  5. Rodar regex de auditoria antes do commit
+
+### Onde a baseline está
+
+Os paths locais e o mapeamento completo de anonimização estão registrados em **repo memory privada** (`/memories/repo/baselines.md`) — fora do git, acessível apenas ao agente nesta workstation. Nunca commitar paths das baselines neste repo.
+
+### Escopo do que estamos construindo aqui
+
+Pipeline ELT multi-tenant production-grade em AWS, demonstrando:
+- Arquitetura Medallion (Bronze → Silver → Gold → Platinum)
+- Multi-tenancy via particionamento (não isolamento físico)
+- Iceberg para schema evolution + time travel
+- IaC com Terraform (módulos reutilizáveis)
+- Orquestração event-driven com Airflow Datasets
+- Observabilidade (SNS + Lambda + CloudWatch)
+- CI/CD com GitHub Actions
+- Custo otimizado ($5-7/mês vs $800 original = redução ~99%)
+- Geração sintética de dados (Faker + PyArrow) — **zero dados reais**
+
+---
+
 ## Idioma
 
 - **Respostas e documentação**: Português brasileiro (PT-BR)
