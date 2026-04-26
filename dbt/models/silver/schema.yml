@@ -317,3 +317,43 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, titulo_id, tipo_titulo]
+
+  - name: silver_dw_plano_contas
+    description: "Plano de contas contabil. Dim estatica sem updated_at. OBRIGATORIO para DRE (PR 8)."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: plano_conta_id
+        tests: [not_null]
+      - name: cd_tipo_conta
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ATIVO', 'PASSIVO', 'RECEITA', 'DESPESA']
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, plano_conta_id]
+
+  - name: silver_dw_lancamentos
+    description: "Lancamentos contabeis. FK plano_conta_id -> silver_dw_plano_contas."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: lancamento_id
+        tests: [not_null]
+      - name: plano_conta_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_plano_contas')
+              field: plano_conta_id
+      - name: cd_tipo_lancamento
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['CREDITO', 'DEBITO']
+      - name: vlr_lancamento
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, lancamento_id]
