@@ -1,15 +1,27 @@
-"""Orquestrador: gera todos datamarts/tenants para uma data, retorna dict de PyArrow tables."""
+"""Orquestrador: gera datamarts/tenants para uma data ou range, retorna PyArrow tables."""
 
 from __future__ import annotations
 
 import random
-from datetime import datetime
+from collections.abc import Iterator
+from datetime import datetime, timedelta
 from typing import Any
 
 import pyarrow as pa
 
 from . import generators as gen
-from .config import DATAMART_VOLUMES, TENANTS, all_datamarts
+from .config import (
+    ANNUAL_GROWTH_RATE,
+    DATAMART_VOLUMES,
+    DIM_GROWING,
+    DIM_GROWING_DAILY_INCREMENT_PCT,
+    DIM_STATIC,
+    HISTORY_START_DEFAULT,
+    SEASONALITY_MONTH,
+    TENANT_WEIGHTS,
+    TENANTS,
+    all_datamarts,
+)
 from .logging_utils import get_logger
 from .schemas import get_schema
 
@@ -169,3 +181,166 @@ def generate_all(
         logger.info("tenant_inicio", extra={"tenant_id": tenant})
         result[tenant] = generate_for_tenant(tenant, base_dt, datamarts, volume_multiplier)
     return result
+
+
+# ---------------------------------------------------------------------------
+# Geracao historica (range de datas) com sazonalidade, crescimento e pesos.
+# ---------------------------------------------------------------------------
+
+
+def _years_since(base_dt: datetime, history_start: datetime) -> float:
+    return max(0.0, (base_dt - history_start).days / 365.25)
+
+
+def _fact_volume(
+    table_base: int,
+    tenant: str,
+    base_dt: datetime,
+    history_start: datetime,
+    volume_multiplier: float,
+) -> int:
+    """Volume de FACT no dia: base x tenant_weight x sazonalidade x crescimento x mult."""
+    weight = TENANT_WEIGHTS.get(tenant, 1.0)
+    season = SEASONALITY_MONTH.get(base_dt.month, 1.0)
+    growth = 1.0 + ANNUAL_GROWTH_RATE * _years_since(base_dt, history_start)
+    n = table_base * weight * season * growth * volume_multiplier
+    return max(1, round(n))
+
+
+def _dim_growing_increment(
+    table_base: int, tenant: str, volume_multiplier: float
+) -> int:
+    """Incremento diario de DIM_GROWING (linhas novas/dia)."""
+    weight = TENANT_WEIGHTS.get(tenant, 1.0)
+    n = table_base * weight * DIM_GROWING_DAILY_INCREMENT_PCT * volume_multiplier
+    return max(0, round(n))
+
+
+def _dim_initial_volume(table_base: int, tenant: str, volume_multiplier: float) -> int:
+    """Volume inicial de uma DIM (gerado UMA VEZ no primeiro dia do range)."""
+    weight = TENANT_WEIGHTS.get(tenant, 1.0)
+    return max(1, round(table_base * weight * volume_multiplier))
+
+
+def _generate_day_for_tenant(
+    tenant: str,
+    base_dt: datetime,
+    is_first_day: bool,
+    history_start: datetime,
+    refs: dict[str, list[str]],
+    datamarts: set[str],
+    volume_multiplier: float,
+) -> dict[tuple[str, str], pa.Table]:
+    """Gera 1 dia para 1 tenant. Atualiza `refs` in-place (cumulativo entre dias)."""
+    out: dict[tuple[str, str], pa.Table] = {}
+
+    for datamart, table in GENERATION_ORDER:
+        if datamart not in datamarts:
+            continue
+        base_n = DATAMART_VOLUMES[datamart][table]
+
+        if table in DIM_STATIC:
+            if not is_first_day:
+                continue  # pool de refs ja existe, nao regenera
+            n = _dim_initial_volume(base_n, tenant, volume_multiplier)
+        elif table in DIM_GROWING:
+            if is_first_day:
+                n = _dim_initial_volume(base_n, tenant, volume_multiplier)
+            else:
+                n = _dim_growing_increment(base_n, tenant, volume_multiplier)
+                if n == 0:
+                    continue  # nada novo hoje
+        else:  # FACT
+            n = _fact_volume(base_n, tenant, base_dt, history_start, volume_multiplier)
+
+        cols = _dispatch(datamart, table, tenant, n, base_dt, refs)
+        schema = get_schema(datamart, table)
+        table_obj = pa.table(cols, schema=schema)
+        out[(datamart, table)] = table_obj
+
+        id_col = _id_column_for(table)
+        if id_col in cols:
+            new_ids = list(cols[id_col])
+            if table in DIM_GROWING and not is_first_day:
+                # Acumula IDs novos no pool existente
+                refs[table] = refs.get(table, []) + new_ids
+            else:
+                refs[table] = new_ids
+
+        logger.info(
+            "tabela_gerada",
+            extra={
+                "tenant_id": tenant,
+                "datamart": datamart,
+                "table": table,
+                "rows": n,
+                "date": base_dt.date().isoformat(),
+            },
+        )
+
+    return out
+
+
+def _daterange(start: datetime, end: datetime) -> Iterator[datetime]:
+    cur = start
+    while cur <= end:
+        yield cur
+        cur = cur + timedelta(days=1)
+
+
+def generate_range(
+    start_dt: datetime,
+    end_dt: datetime,
+    tenants: list[str] | None = None,
+    datamarts: list[str] | None = None,
+    volume_multiplier: float = 1.0,
+    seed: int = 42,
+    history_start: datetime | None = None,
+) -> Iterator[tuple[str, datetime, dict[tuple[str, str], pa.Table]]]:
+    """Gera dia-a-dia para o range. Yield: (tenant, date, {(dm, tbl): table}).
+
+    Streaming via yield para nao acumular tudo em memoria. Cada (tenant, dia)
+    pode ser escrito imediatamente pelo consumidor.
+
+    Caracteristicas:
+    - DIM_STATIC: gerada apenas no primeiro dia. Pool reusado nos demais.
+    - DIM_GROWING: volume cheio no dia 1; ~0.2%/dia adicional nos demais.
+    - FACTS: gerados todo dia, modulados por sazonalidade/crescimento/peso-tenant.
+    - `refs` cumulativo entre dias do MESMO tenant garante FKs validas.
+    """
+    if start_dt > end_dt:
+        raise ValueError(f"start_dt ({start_dt}) > end_dt ({end_dt})")
+
+    random.seed(seed)
+    selected_tenants = tenants or TENANTS
+    selected_datamarts = set(datamarts or all_datamarts())
+    hstart = history_start or datetime.fromisoformat(HISTORY_START_DEFAULT)
+
+    # `refs` por tenant — cada tenant tem seu proprio universo de IDs
+    refs_by_tenant: dict[str, dict[str, list[str]]] = {t: {} for t in selected_tenants}
+
+    days = list(_daterange(start_dt, end_dt))
+    logger.info(
+        "range_inicio",
+        extra={
+            "start": start_dt.date().isoformat(),
+            "end": end_dt.date().isoformat(),
+            "days": len(days),
+            "tenants": selected_tenants,
+            "datamarts": sorted(selected_datamarts),
+        },
+    )
+
+    for day_idx, current_dt in enumerate(days):
+        is_first_day = day_idx == 0
+        for tenant in selected_tenants:
+            tables = _generate_day_for_tenant(
+                tenant=tenant,
+                base_dt=current_dt,
+                is_first_day=is_first_day,
+                history_start=hstart,
+                refs=refs_by_tenant[tenant],
+                datamarts=selected_datamarts,
+                volume_multiplier=volume_multiplier,
+            )
+            yield tenant, current_dt, tables
