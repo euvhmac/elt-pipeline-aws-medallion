@@ -347,40 +347,50 @@ Airflow orquestra o pipeline end-to-end: `dag_synthetic_source` (Bronze) → tri
 
 ## Sprint 6 — Observabilidade & Notificações
 
-### Objetivo
-Detectar falhas e ter visibilidade de saúde do pipeline.
+### Objetivo (escopo enxuto)
+Fechar o loop operacional: falhas no Airflow chegam no Slack em < 60s.
+**Não** implementa dashboards CloudWatch nem upload de dbt artifacts (deferido para Sprint 8 / backlog) — foco em ROI alto e narrativa de entrevista clara.
 
 ### Tasks
 
-- [ ] **S6.1** — Terraform: SNS topic `pipeline-alerts`
-- [ ] **S6.2** — Terraform + código: Lambda `slack-notifier`:
-  - Recebe SNS message
-  - Formata Slack Block Kit
-  - POST webhook (URL via Secrets Manager)
-- [ ] **S6.3** — CloudWatch Dashboard:
-  - Athena queries: tempo médio, scan, falhas
-  - S3: tamanho por bucket, custo estimado
-  - Métricas custom: contagem de tasks/dia
-- [ ] **S6.4** — dbt artifacts → S3:
-  - `manifest.json`, `run_results.json` versionados
-  - Parsing futuro para lineage / Datafold-like
-- [ ] **S6.5** — Logs Airflow → CloudWatch (opcional):
-  - Bash com `aws logs put-log-events` no callback
+- [ ] **S6.1** — Módulo Terraform `infra/modules/sns-lambda-slack/`:
+  - `aws_sns_topic` `pipeline-alerts`
+  - `aws_lambda_function` `slack-notifier` (runtime python3.11, inline zip)
+  - `aws_iam_role` Lambda (read Secrets Manager + write CloudWatch Logs)
+  - `aws_sns_topic_subscription` Lambda → SNS
+- [ ] **S6.2** — `lambda/slack_notifier/handler.py`:
+  - Recebe SNS event, lê webhook do Secrets Manager (cache em memória)
+  - Formata Slack Block Kit (DAG, task, exception, log_url)
+  - POST com `urllib` (sem deps externas → zero packaging)
+- [ ] **S6.3** — Wire no `infra/envs/dev/main.tf`:
+  - Chama módulo passando `slack_secret_arn` do `secrets_manager`
+  - Output `sns_topic_arn` para uso no Airflow
+- [ ] **S6.4** — Atualizar `airflow/dags/utils/callbacks.py`:
+  - `task_failure_alert` publica em SNS via `boto3.client("sns").publish(...)`
+  - Tópico ARN via env var `PIPELINE_ALERTS_TOPIC_ARN` (configurada no docker-compose)
+- [ ] **S6.5** — Documentar no RUNBOOK como rotacionar webhook + testar E2E
+
+### Backlog explicito (deferido)
+- CloudWatch Dashboard (`elt-pipeline-overview`)
+- Upload `manifest.json`/`run_results.json` → S3 `dbt-artifacts`
+- Logs Airflow → CloudWatch (logs do container já ficam em `./logs`)
+- Lambda DLQ (justificado: SNS já tem retry; baixo volume)
 
 ### Critério QA
-- Forçar falha (e.g., dbt model com erro) → Slack recebe alerta < 60s
-- CloudWatch Dashboard mostra última execução
-- dbt artifacts queriáveis via Athena (`SELECT * FROM dbt_runs`)
+- `terraform validate` no env dev → success
+- Forçar falha (mock SNS publish) → mensagem chega no Slack < 60s
+- Lambda CloudWatch Log mostra payload SNS recebido + response Slack 200
 
 ### Critério Tech Lead
-- Alerta inclui: DAG ID, task ID, traceback, link para Airflow UI
-- Lambda tem timeout 30s + dead letter queue
-- Custo total observabilidade < $1/mês
+- Alerta inclui: `dag_id`, `task_id`, `try_number`, `exception`, `log_url`
+- Lambda timeout 10s, memória 128 MB (mínimo viável)
+- Custo total observabilidade < $0.50/mês (SNS + Lambda free tier + 1 secret existente)
+- Webhook nunca em variável Terraform / código — apenas Secrets Manager
 
 ### Definition of Done
-- [ ] Falha proposital → mensagem em #data-alerts
-- [ ] Dashboard com nome `elt-pipeline-aws-medallion-${env}`
-- [ ] Documentação `docs/RUNBOOK.md` atualizada com procedimento de troubleshooting
+- [ ] PR `feat/sprint-6-observabilidade → develop` mergeado
+- [ ] `terraform validate` passou (apply opcional, fica para sessão prática)
+- [ ] Callback publica em SNS quando `PIPELINE_ALERTS_TOPIC_ARN` está setado; degrada para apenas-log quando não está
 
 ---
 

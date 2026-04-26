@@ -21,6 +21,8 @@ x-airflow-common: &airflow-common
     # dbt config (Sprint 5: Airflow orquestra dbt build)
     DBT_PROFILES_DIR: /opt/airflow/dbt
     DBT_PROJECT_DIR: /opt/airflow/dbt
+    # Observabilidade (Sprint 6: callback publica em SNS quando setado)
+    PIPELINE_ALERTS_TOPIC_ARN: ${PIPELINE_ALERTS_TOPIC_ARN:-}
     # Pip extras instalados em runtime (apenas dev; prd usa Dockerfile custom)
     _PIP_ADDITIONAL_REQUIREMENTS: "apache-airflow-providers-amazon==8.27.0 dbt-core==1.10.0 dbt-athena-community==1.10.0"
   volumes:
