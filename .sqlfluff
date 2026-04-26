@@ -1,0 +1,32 @@
+[sqlfluff]
+dialect = athena
+templater = jinja
+sql_file_exts = .sql
+max_line_length = 120
+exclude_rules = L031, L034, L036
+runaway_limit = 10
+
+[sqlfluff:indentation]
+tab_space_size = 4
+indent_unit = space
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.identifiers]
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.types]
+extended_capitalisation_policy = lower
+
+[sqlfluff:templater:jinja]
+load_macros_from_path = dbt/macros
+
+[sqlfluff:templater:jinja:context]
+target = {"name": "dev", "schema": "gold_dev", "database": "awsdatacatalog"}
