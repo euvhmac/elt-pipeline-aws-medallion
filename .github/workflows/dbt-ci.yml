@@ -1,0 +1,69 @@
+name: dbt-ci
+
+on:
+  pull_request:
+    paths:
+      - 'dbt/**'
+      - 'pyproject.toml'
+      - '.github/workflows/dbt-ci.yml'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'dbt/**'
+
+jobs:
+  parse-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-dbt-${{ hashFiles('pyproject.toml') }}
+
+      - name: Instala dbt + sqlfluff
+        run: |
+          pip install --upgrade pip
+          pip install dbt-core==1.10.0 dbt-athena-community==1.10.0 sqlfluff==3.2.5 sqlfluff-templater-dbt==3.2.5
+
+      - name: Gera profile dummy para CI (parse nao conecta no Athena)
+        working-directory: dbt
+        run: |
+          cat > profiles.yml <<'EOF'
+          elt_pipeline:
+            target: ci
+            outputs:
+              ci:
+                type: athena
+                s3_staging_dir: s3://ci-dummy/staging/
+                s3_data_dir: s3://ci-dummy/data/
+                region_name: us-east-1
+                database: awsdatacatalog
+                schema: gold_ci
+                work_group: ci-dummy
+                threads: 1
+          EOF
+
+      - name: dbt deps
+        working-directory: dbt
+        run: dbt deps --profiles-dir . --project-dir .
+
+      - name: dbt parse (valida sintaxe + refs)
+        working-directory: dbt
+        env:
+          AWS_REGION: us-east-1
+          ATHENA_WORKGROUP: ci-dummy
+          S3_BUCKET_ATHENA_RESULTS: ci-dummy
+          S3_BUCKET_GOLD: ci-dummy
+        run: dbt parse --profiles-dir . --project-dir .
+
+      - name: sqlfluff lint
+        working-directory: dbt
+        run: sqlfluff lint models/ --dialect athena --templater jinja
+        continue-on-error: true # warn-only por enquanto; promover a hard-fail apos cleanup
