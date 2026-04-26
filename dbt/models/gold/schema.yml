@@ -200,3 +200,30 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, ordem_producao_id]
+
+  - name: fct_expedicao
+    description: "Fato transacional de expedicao. Grao: 1 expedicao. venda_id como degenerate dim."
+    columns:
+      - name: expedicao_sk
+        description: "Surrogate key hash(tenant_id, expedicao_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: expedicao_id
+        tests: [not_null]
+      - name: venda_id
+        tests: [not_null]
+      - name: transportadora_sk
+        tests:
+          - not_null
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, expedicao_id]

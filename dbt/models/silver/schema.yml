@@ -197,3 +197,52 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, ordem_producao_id]
+
+  - name: silver_dw_filiais
+    description: "Cadastro de filiais limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: filial_id
+        tests: [not_null]
+      - name: nm_filial
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, filial_id]
+
+  - name: silver_dw_transportadoras
+    description: "Cadastro de transportadoras limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: transportadora_id
+        tests: [not_null]
+      - name: nm_transportadora
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, transportadora_id]
+
+  - name: silver_dw_expedicao
+    description: "Registros de expedicao limpos. Com updated_at — lookback por updated_at. FKs: transportadora_id, venda_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: expedicao_id
+        tests: [not_null]
+      - name: venda_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_vendas')
+              field: venda_id
+      - name: transportadora_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_transportadoras')
+              field: transportadora_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, expedicao_id]

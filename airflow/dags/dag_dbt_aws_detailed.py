@@ -53,6 +53,10 @@ SILVER_MODELS = [
     # industrial (Sprint 4.5 — PR 3)
     "silver_dw_materias_primas",
     "silver_dw_ordens_producao",
+    # logistica (Sprint 4.5 — PR 4)
+    "silver_dw_filiais",
+    "silver_dw_transportadoras",
+    "silver_dw_expedicao",
 ]
 
 GOLD_DIM_MODELS = [
@@ -73,6 +77,8 @@ GOLD_FACT_MODELS = [
     "fct_ordens_compra",
     # industrial (Sprint 4.5 — PR 3)
     "fct_ordens_producao",
+    # logistica (Sprint 4.5 — PR 4)
+    "fct_expedicao",
 ]
 
 DEFAULT_ARGS = {
