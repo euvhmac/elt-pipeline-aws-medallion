@@ -92,3 +92,46 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, item_id]
+
+  - name: dim_fornecedores
+    description: "Dimensao Kimball type 1 de fornecedores."
+    columns:
+      - name: fornecedor_sk
+        description: "Surrogate key hash(tenant_id, fornecedor_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: fornecedor_id
+        tests: [not_null]
+
+  - name: fct_ordens_compra
+    description: "Fato transacional de ordens de compra. Grao: 1 ordem."
+    columns:
+      - name: ordem_compra_sk
+        description: "Surrogate key do fato."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_compra_id
+        tests: [not_null]
+      - name: fornecedor_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_fornecedores')
+              field: fornecedor_sk
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+      - name: vlr_total
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_compra_id]

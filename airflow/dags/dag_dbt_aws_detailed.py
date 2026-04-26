@@ -43,6 +43,9 @@ SILVER_MODELS = [
     "silver_dw_produtos",
     "silver_dw_vendas",
     "silver_dw_itens_pedido",
+    # suprimentos (Sprint 4.5 — PR 1)
+    "silver_dw_fornecedores",
+    "silver_dw_ordens_compra",
 ]
 
 GOLD_DIM_MODELS = [
@@ -50,10 +53,14 @@ GOLD_DIM_MODELS = [
     "dim_clientes",
     "dim_produtos",
     "dim_vendedores",
+    # suprimentos (Sprint 4.5 — PR 1)
+    "dim_fornecedores",
 ]
 
 GOLD_FACT_MODELS = [
     "fct_vendas",
+    # suprimentos (Sprint 4.5 — PR 1)
+    "fct_ordens_compra",
 ]
 
 DEFAULT_ARGS = {

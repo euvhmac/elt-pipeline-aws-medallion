@@ -86,3 +86,35 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, item_id]
+
+  - name: silver_dw_fornecedores
+    description: "Cadastro de fornecedores limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: fornecedor_id
+        tests: [not_null]
+      - name: nm_fornecedor
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, fornecedor_id]
+
+  - name: silver_dw_ordens_compra
+    description: "Ordens de compra limpas com FK para fornecedores."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_compra_id
+        tests: [not_null]
+      - name: vlr_total
+        tests: [not_null]
+      - name: fornecedor_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_fornecedores')
+              field: fornecedor_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_compra_id]
