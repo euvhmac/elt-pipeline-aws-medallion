@@ -86,3 +86,274 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, item_id]
+
+  - name: silver_dw_fornecedores
+    description: "Cadastro de fornecedores limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: fornecedor_id
+        tests: [not_null]
+      - name: nm_fornecedor
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, fornecedor_id]
+
+  - name: silver_dw_ordens_compra
+    description: "Ordens de compra limpas com FK para fornecedores."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_compra_id
+        tests: [not_null]
+      - name: vlr_total
+        tests: [not_null]
+      - name: fornecedor_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_fornecedores')
+              field: fornecedor_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_compra_id]
+
+  - name: silver_dw_empresas
+    description: "Cadastro de empresas limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: nm_empresa
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, empresa_id]
+
+  - name: silver_dw_departamentos
+    description: "Cadastro de departamentos limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: departamento_id
+        tests: [not_null]
+      - name: nm_departamento
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, departamento_id]
+
+  - name: silver_dw_funcionarios
+    description: "Cadastro de funcionarios limpo. Sem updated_at no Bronze — lookback por created_at. FK departamento_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: funcionario_id
+        tests: [not_null]
+      - name: nm_funcionario
+        tests: [not_null]
+      - name: departamento_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_departamentos')
+              field: departamento_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, funcionario_id]
+
+  - name: silver_dw_materias_primas
+    description: "Cadastro de materias-primas limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: materia_prima_id
+        tests: [not_null]
+      - name: nm_materia_prima
+        tests: [not_null]
+      - name: vlr_preco_unitario
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, materia_prima_id]
+
+  - name: silver_dw_ordens_producao
+    description: "Ordens de producao limpas. Sem updated_at no Bronze — lookback por created_at. FK produto_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_producao_id
+        tests: [not_null]
+      - name: produto_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_produtos')
+              field: produto_id
+      - name: qt_produzida
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_producao_id]
+
+  - name: silver_dw_filiais
+    description: "Cadastro de filiais limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: filial_id
+        tests: [not_null]
+      - name: nm_filial
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, filial_id]
+
+  - name: silver_dw_transportadoras
+    description: "Cadastro de transportadoras limpo. Sem updated_at no Bronze — lookback por created_at."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: transportadora_id
+        tests: [not_null]
+      - name: nm_transportadora
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, transportadora_id]
+
+  - name: silver_dw_expedicao
+    description: "Registros de expedicao limpos. Com updated_at — lookback por updated_at. FKs: transportadora_id, venda_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: expedicao_id
+        tests: [not_null]
+      - name: venda_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_vendas')
+              field: venda_id
+      - name: transportadora_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_transportadoras')
+              field: transportadora_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, expedicao_id]
+
+  - name: silver_dw_centros_custos
+    description: "Cadastro de centros de custo. Dim plana sem hierarquia. Necessario para DRE (PR 8)."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: centro_custo_id
+        tests: [not_null]
+      - name: nm_centro_custo
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, centro_custo_id]
+
+  - name: silver_dw_projetos
+    description: "Cadastro de projetos. FK centro_custo_id -> silver_dw_centros_custos."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: projeto_id
+        tests: [not_null]
+      - name: nm_projeto
+        tests: [not_null]
+      - name: centro_custo_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_centros_custos')
+              field: centro_custo_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, projeto_id]
+
+  - name: silver_dw_orcamento
+    description: "Registros de orcamento por projeto. FKs projeto_id e centro_custo_id."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: orcamento_id
+        tests: [not_null]
+      - name: projeto_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_projetos')
+              field: projeto_id
+      - name: vlr_orcado
+        tests: [not_null]
+      - name: vlr_realizado
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, orcamento_id]
+
+  - name: silver_dw_titulos_financeiros
+    description: "UNION ALL titulos_pagar + titulos_receber enriquecidos com baixas. DS discriminador tipo_titulo."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: titulo_id
+        tests: [not_null]
+      - name: tipo_titulo
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PAGAR', 'RECEBER']
+      - name: vlr_titulo
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, titulo_id, tipo_titulo]
+
+  - name: silver_dw_plano_contas
+    description: "Plano de contas contabil. Dim estatica sem updated_at. OBRIGATORIO para DRE (PR 8)."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: plano_conta_id
+        tests: [not_null]
+      - name: cd_tipo_conta
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ATIVO', 'PASSIVO', 'RECEITA', 'DESPESA']
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, plano_conta_id]
+
+  - name: silver_dw_lancamentos
+    description: "Lancamentos contabeis. FK plano_conta_id -> silver_dw_plano_contas."
+    columns:
+      - name: tenant_id
+        tests: [not_null]
+      - name: lancamento_id
+        tests: [not_null]
+      - name: plano_conta_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_dw_plano_contas')
+              field: plano_conta_id
+      - name: cd_tipo_lancamento
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['CREDITO', 'DEBITO']
+      - name: vlr_lancamento
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, lancamento_id]

@@ -43,6 +43,29 @@ SILVER_MODELS = [
     "silver_dw_produtos",
     "silver_dw_vendas",
     "silver_dw_itens_pedido",
+    # suprimentos (Sprint 4.5 — PR 1)
+    "silver_dw_fornecedores",
+    "silver_dw_ordens_compra",
+    # corporativo (Sprint 4.5 — PR 2)
+    "silver_dw_empresas",
+    "silver_dw_departamentos",
+    "silver_dw_funcionarios",
+    # industrial (Sprint 4.5 — PR 3)
+    "silver_dw_materias_primas",
+    "silver_dw_ordens_producao",
+    # logistica (Sprint 4.5 — PR 4)
+    "silver_dw_filiais",
+    "silver_dw_transportadoras",
+    "silver_dw_expedicao",
+    # controladoria (Sprint 4.5 — PR 5)
+    "silver_dw_centros_custos",
+    "silver_dw_projetos",
+    "silver_dw_orcamento",
+    # financeiro (Sprint 4.5 — PR 6)
+    "silver_dw_titulos_financeiros",
+    # contabilidade (Sprint 4.5 — PR 7)
+    "silver_dw_plano_contas",
+    "silver_dw_lancamentos",
 ]
 
 GOLD_DIM_MODELS = [
@@ -50,10 +73,49 @@ GOLD_DIM_MODELS = [
     "dim_clientes",
     "dim_produtos",
     "dim_vendedores",
+    # suprimentos (Sprint 4.5 — PR 1)
+    "dim_fornecedores",
+    # corporativo (Sprint 4.5 — PR 2)
+    "dim_empresas",
+    "dim_funcionarios",
+    # controladoria (Sprint 4.5 — PR 5)
+    "dim_centros_custos",
+    # contabilidade (Sprint 4.5 — PR 7)
+    "dim_plano_contas",
 ]
 
 GOLD_FACT_MODELS = [
     "fct_vendas",
+    # suprimentos (Sprint 4.5 — PR 1)
+    "fct_ordens_compra",
+    # industrial (Sprint 4.5 — PR 3)
+    "fct_ordens_producao",
+    # logistica (Sprint 4.5 — PR 4)
+    "fct_expedicao",
+    # controladoria (Sprint 4.5 — PR 5)
+    "fct_orcamento_projetos",
+    # financeiro (Sprint 4.5 — PR 6)
+    "fct_titulo_financeiro",
+    # contabilidade (Sprint 4.5 — PR 7)
+    "fct_lancamentos",
+]
+
+# Modelos analíticos DRE (Sprint 4.5 — PR 8)
+# Deps: dim_empresas (PR 2), dim_centros_custos (PR 5), dim_plano_contas (PR 7)
+GOLD_ANALYTIC_MODELS = [
+    "dre_contabil",
+    "dre_gerencial",
+]
+
+# Camada Platinum (Sprint 4.5 — PR 9)
+# Deps: fct_titulo_financeiro (PR 6), dre_contabil+dre_gerencial (PR 8)
+PLATINUM_MODELS = [
+    "controle_inadimplentes",
+    "dre_contabil_unit_01",
+    "dre_contabil_unit_02",
+    "dre_gerencial_unit_01",
+    "dre_gerencial_unit_02",
+    "dim_produtos_otimizada",
 ]
 
 DEFAULT_ARGS = {
@@ -106,10 +168,17 @@ with DAG(
         with TaskGroup(group_id="facts") as facts:
             for model in GOLD_FACT_MODELS:
                 _build_task(model)
-        dimensions >> facts
+        with TaskGroup(group_id="analytics") as analytics:
+            for model in GOLD_ANALYTIC_MODELS:
+                _build_task(model)
+        dimensions >> facts >> analytics
+
+    with TaskGroup(group_id="platinum_layer") as platinum_layer:
+        for model in PLATINUM_MODELS:
+            _build_task(model)
 
     with TaskGroup(group_id="tests_layer") as tests_layer:
-        for model in SILVER_MODELS + GOLD_DIM_MODELS + GOLD_FACT_MODELS:
+        for model in SILVER_MODELS + GOLD_DIM_MODELS + GOLD_FACT_MODELS + GOLD_ANALYTIC_MODELS + PLATINUM_MODELS:
             _test_task(model)
 
-    dbt_deps >> silver_layer >> gold_layer >> tests_layer
+    dbt_deps >> silver_layer >> gold_layer >> platinum_layer >> tests_layer

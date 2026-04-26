@@ -92,3 +92,312 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [tenant_id, item_id]
+
+  - name: dim_fornecedores
+    description: "Dimensao Kimball type 1 de fornecedores."
+    columns:
+      - name: fornecedor_sk
+        description: "Surrogate key hash(tenant_id, fornecedor_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: fornecedor_id
+        tests: [not_null]
+
+  - name: fct_ordens_compra
+    description: "Fato transacional de ordens de compra. Grao: 1 ordem."
+    columns:
+      - name: ordem_compra_sk
+        description: "Surrogate key do fato."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_compra_id
+        tests: [not_null]
+      - name: fornecedor_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_fornecedores')
+              field: fornecedor_sk
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+      - name: vlr_total
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_compra_id]
+
+  - name: dim_empresas
+    description: "Dimensao Kimball type 1 de empresas. Necessaria para DRE (PR 8)."
+    columns:
+      - name: empresa_sk
+        description: "Surrogate key hash(tenant_id, empresa_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: nm_empresa
+        tests: [not_null]
+
+  - name: dim_funcionarios
+    description: "Dimensao Kimball type 1 de funcionarios com nm_departamento desnormalizado."
+    columns:
+      - name: funcionario_sk
+        description: "Surrogate key hash(tenant_id, funcionario_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: funcionario_id
+        tests: [not_null]
+      - name: nm_funcionario
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, funcionario_id]
+
+  - name: fct_ordens_producao
+    description: "Fato transacional de ordens de producao. Grao: 1 ordem. Campo calculado nr_dias_producao."
+    columns:
+      - name: ordem_producao_sk
+        description: "Surrogate key hash(tenant_id, ordem_producao_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: ordem_producao_id
+        tests: [not_null]
+      - name: produto_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_produtos')
+              field: produto_sk
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+      - name: qt_produzida
+        tests: [not_null]
+      - name: nr_dias_producao
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, ordem_producao_id]
+
+  - name: fct_expedicao
+    description: "Fato transacional de expedicao. Grao: 1 expedicao. venda_id como degenerate dim."
+    columns:
+      - name: expedicao_sk
+        description: "Surrogate key hash(tenant_id, expedicao_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: expedicao_id
+        tests: [not_null]
+      - name: venda_id
+        tests: [not_null]
+      - name: transportadora_sk
+        tests:
+          - not_null
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, expedicao_id]
+
+  - name: dim_centros_custos
+    description: "Dimensao Kimball type 1 de centros de custo. Dim plana. Necessaria para DRE (PR 8)."
+    columns:
+      - name: centro_custo_sk
+        description: "Surrogate key hash(tenant_id, centro_custo_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: centro_custo_id
+        tests: [not_null]
+      - name: nm_centro_custo
+        tests: [not_null]
+
+  - name: fct_orcamento_projetos
+    description: "Fato de orcamento por projeto. Campo vlr_delta = realizado - orcado."
+    columns:
+      - name: orcamento_sk
+        description: "Surrogate key hash(tenant_id, orcamento_id)."
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: orcamento_id
+        tests: [not_null]
+      - name: centro_custo_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_centros_custos')
+              field: centro_custo_sk
+      - name: data_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_calendrio')
+              field: data_id
+      - name: vlr_orcado
+        tests: [not_null]
+      - name: vlr_realizado
+        tests: [not_null]
+      - name: vlr_delta
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, orcamento_id]
+
+  - name: fct_titulo_financeiro
+    description: "Fato de titulos a pagar/receber. ds_situacao_titulo: LIQUIDADO/VENCIDO/EM_ABERTO. nr_dias_atraso."
+    columns:
+      - name: titulo_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: titulo_id
+        tests: [not_null]
+      - name: tipo_titulo
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PAGAR', 'RECEBER']
+      - name: ds_situacao_titulo
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['LIQUIDADO', 'VENCIDO', 'EM_ABERTO']
+      - name: nr_dias_atraso
+        tests: [not_null]
+      - name: vlr_titulo
+        tests: [not_null]
+      - name: data_id
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, titulo_id, tipo_titulo]
+
+  - name: dim_plano_contas
+    description: "Dimensao Iceberg type 1 do plano de contas. OBRIGATORIO para DRE (PR 8)."
+    columns:
+      - name: plano_conta_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: plano_conta_id
+        tests: [not_null]
+      - name: cd_tipo_conta
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ATIVO', 'PASSIVO', 'RECEITA', 'DESPESA']
+
+  - name: fct_lancamentos
+    description: "Fato de lancamentos. vlr_final: CREDITO positivo, DEBITO negativo."
+    columns:
+      - name: lancamento_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: lancamento_id
+        tests: [not_null]
+      - name: plano_conta_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_plano_contas')
+              field: plano_conta_sk
+      - name: data_id
+        tests: [not_null]
+      - name: vlr_lancamento
+        tests: [not_null]
+      - name: vlr_final
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, lancamento_id]
+
+  - name: dre_contabil
+    description: "DRE contabil agregada por empresa, centro de custo, tipo conta e competencia."
+    columns:
+      - name: dre_contabil_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: centro_custo_id
+        tests: [not_null]
+      - name: cd_tipo_conta
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ATIVO', 'PASSIVO', 'RECEITA', 'DESPESA']
+      - name: dt_competencia
+        tests: [not_null]
+      - name: vlr_total
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, empresa_id, centro_custo_id, cd_tipo_conta, dt_competencia]
+
+  - name: dre_gerencial
+    description: "DRE gerencial — agrupamento por categoria (RECEITA_BRUTA/DESPESA_OPERACIONAL/...)."
+    columns:
+      - name: dre_gerencial_sk
+        tests:
+          - not_null
+          - unique
+      - name: tenant_id
+        tests: [not_null]
+      - name: empresa_id
+        tests: [not_null]
+      - name: ds_categoria
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['RECEITA_BRUTA', 'DESPESA_OPERACIONAL', 'ATIVO_CIRCULANTE', 'PASSIVO_CIRCULANTE', 'OUTROS']
+      - name: dt_competencia
+        tests: [not_null]
+      - name: vlr_categoria
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [tenant_id, empresa_id, centro_custo_id, ds_categoria, dt_competencia]
