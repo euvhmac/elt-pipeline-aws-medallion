@@ -2,45 +2,48 @@
 
 ## Visão Geral
 
-A camada Gold é modelada como **star schema clássico** (Kimball), com tabelas Fact no centro e Dimensions ao redor. A camada Platinum derivada cria visões de negócio por unidade (DREs, controle de inadimplentes).
+A camada Gold é modelada como **star schema clássico** (Kimball), com tabelas Fact no centro e Dimensions ao redor. A camada Platinum cria visões de negócio por unidade (DREs e controle de inadimplentes).
 
 **Multi-tenant**: todas as tabelas têm coluna `tenant_id` (`unit_01`..`unit_05`) para filtrar/agregar por unidade de negócio.
+
+**Totais**: 21 Silver · 18 Gold (9 dims + 7 facts + 2 DREs) · 6 Platinum = **45 modelos dbt**
 
 ---
 
 ## Camada Gold — Star Schema
 
-### Dimensions (8)
+### Dimensions (9)
 
 | Tabela | Descrição | PK |
 |---|---|---|
 | `dim_calendrio` | Calendário (datas, anos, meses, semanas, trimestres) | `data_id` |
 | `dim_clientes` | Clientes (PJ + PF) com hierarquia geográfica | `cliente_sk` |
 | `dim_produtos` | Produtos (família, grupo, marca, embalagem) | `produto_sk` |
+| `dim_vendedores` | Vendedores com hierarquia regional | `vendedor_sk` |
+| `dim_fornecedores` | Fornecedores por tenant | `fornecedor_sk` |
 | `dim_empresas` | Empresas/filiais por tenant | `empresa_sk` |
-| `dim_centros_custos` | Centros de custo contábil | `cc_sk` |
-| `dim_contas_contabeis` | Plano de contas | `conta_sk` |
-| `dim_condpag` | Condições de pagamento | `condpag_sk` |
-| `dim_vendedor` | Vendedores | `vendedor_sk` |
-| `dim_estrutura_dre_contabil` | Estrutura DRE (linhas e níveis) | `estrutura_dre_sk` |
+| `dim_funcionarios` | Colaboradores por empresa | `funcionario_sk` |
+| `dim_centros_custos` | Centros de custo contábil | `centro_custo_sk` |
+| `dim_plano_contas` | Plano de contas (natureza, tipo) | `plano_conta_sk` |
 
-### Facts (6)
+### Facts (7)
 
 | Tabela | Grão | Métricas principais | FKs |
 |---|---|---|---|
-| `fct_vendas` | 1 linha = 1 item de pedido | quantidade, valor_unit, valor_total, desconto | `cliente_sk`, `produto_sk`, `vendedor_sk`, `empresa_sk`, `data_id` |
-| `fct_faturamento` | 1 linha = 1 item de NF | valor_faturado, base_icms, valor_imposto | `cliente_sk`, `produto_sk`, `empresa_sk`, `data_id` |
-| `fct_devolucao` | 1 linha = 1 devolução | quantidade_devolvida, valor_devolucao, motivo | `cliente_sk`, `produto_sk`, `empresa_sk`, `data_id` |
-| `fct_titulo_financeiro` | 1 linha = 1 título a pagar/receber | valor_titulo, valor_pago, dias_atraso | `cliente_sk`, `condpag_sk`, `empresa_sk`, `data_id` |
-| `fct_lancamentos_origem` | 1 linha = 1 lançamento contábil | valor_lancamento, tipo (D/C) | `conta_sk`, `cc_sk`, `empresa_sk`, `data_id` |
-| `fct_projetos_consolidados` | 1 linha = 1 projeto-mês | orçado, realizado, variação | `cc_sk`, `empresa_sk`, `data_id` |
+| `fct_vendas` | 1 linha = 1 item de pedido | `vlr_unitario`, `vlr_total`, `qtd_vendida` | `cliente_sk`, `produto_sk`, `vendedor_sk`, `empresa_sk`, `data_id` |
+| `fct_ordens_compra` | 1 linha = 1 item de OC | `vlr_unitario`, `vlr_total`, `qtd_solicitada` | `fornecedor_sk`, `empresa_sk`, `data_id` |
+| `fct_ordens_producao` | 1 linha = 1 ordem de produção | `qtd_planejada`, `qtd_produzida`, `vlr_custo` | `empresa_sk`, `data_id` |
+| `fct_expedicao` | 1 linha = 1 entrega | `vlr_frete`, `qtd_volumes`, `nr_dias_entrega` | `empresa_sk`, `data_id` |
+| `fct_orcamento_projetos` | 1 linha = 1 projeto-mês | `vlr_orcado`, `vlr_realizado`, `vlr_delta` | `centro_custo_sk`, `empresa_sk`, `data_id` |
+| `fct_titulo_financeiro` | 1 linha = 1 título financeiro | `vlr_titulo`, `vlr_pago`, `nr_dias_atraso`, `ds_situacao_titulo` | `empresa_sk`, `data_id` |
+| `fct_lancamentos` | 1 linha = 1 lançamento contábil | `vlr_lancamento`, `vlr_final` (±DEBITO/CREDITO) | `plano_conta_sk`, `centro_custo_sk`, `empresa_sk`, `data_id` |
 
-### DRE (2)
+### Analytics / DRE (2)
 
 | Tabela | Descrição |
 |---|---|
-| `dre_contabil` | DRE Contábil consolidado (resultado por linha de estrutura DRE) |
-| `dre_gerencial` | DRE Gerencial (visão de gestão, com ajustes e reclassificações) |
+| `dre_contabil` | DRE Contábil consolidado — agrega `fct_lancamentos` por empresa, centro de custo, tipo de conta e competência |
+| `dre_gerencial` | DRE Gerencial — reclassifica `dre_contabil` em categorias de gestão (RECEITA_BRUTA, DESPESA_OPERACIONAL, ATIVO_CIRCULANTE, etc.) |
 
 ---
 
@@ -48,48 +51,35 @@ A camada Gold é modelada como **star schema clássico** (Kimball), com tabelas 
 
 ```
                         ┌──────────────────┐
-                        │   dim_calendrio  │
+                        │  dim_calendrio   │
                         └────────┬─────────┘
                                  │
-       ┌──────────────────┐      │       ┌──────────────────┐
-       │  dim_clientes    │      │       │   dim_produtos   │
-       └────────┬─────────┘      │       └────────┬─────────┘
-                │                │                │
-                │     ┌──────────┴───────────┐    │
-                └────►│                      │◄───┘
-                      │     fct_vendas       │
-                      │                      │
-       ┌────────────► │                      │ ◄────────────┐
-       │              └──────────────────────┘              │
-       │                                                    │
-┌──────┴───────┐                                    ┌───────┴────────┐
-│ dim_vendedor │                                    │  dim_empresas  │
-└──────────────┘                                    └────────────────┘
+  ┌──────────────────┐           │           ┌──────────────────┐
+  │   dim_clientes   │           │           │   dim_produtos   │
+  └────────┬─────────┘           │           └────────┬─────────┘
+           │           ┌─────────┴──────────┐          │
+           └──────────►│    fct_vendas      │◄─────────┘
+                       │ (grão: 1 item OC)  │
+           ┌──────────►│                    │◄─────────┐
+           │           └────────────────────┘          │
+           │                                           │
+  ┌────────┴──────┐                          ┌─────────┴──────────┐
+  │ dim_vendedores│                          │    dim_empresas    │
+  └───────────────┘                          └────────────────────┘
 ```
 
 ---
 
 ## Camada Platinum — Visões de Negócio
 
-### DREs por Unidade (5 modelos consolidados)
-
-Cada unidade de negócio (`unit_01`..`unit_05`) tem seu próprio DRE Contábil e Gerencial filtrados:
-
-| Modelo | Descrição |
-|---|---|
-| `dre_contabil_unit_01` | DRE Contábil Unidade 01 |
-| `dre_contabil_unit_02` | DRE Contábil Unidade 02 |
-| `dre_gerencial_unit_01` | DRE Gerencial Unidade 01 |
-| `dre_gerencial_unit_02` | DRE Gerencial Unidade 02 |
-| `dim_estrutura_dre_contabil_unit_01` | Estrutura DRE específica Unidade 01 |
-| `dim_estrutura_dre_contabil_unit_02` | Estrutura DRE específica Unidade 02 |
-
-### Outras Visões
-
-| Modelo | Descrição |
-|---|---|
-| `controle_inadimplentes` | Títulos vencidos > 30 dias agregados por cliente/empresa |
-| `dim_produtos_otimizada` | Dimensão de produtos enriquecida com classificação fiscal |
+| Modelo | Derivado de | Descrição |
+|---|---|---|
+| `controle_inadimplentes` | `fct_titulo_financeiro` | Títulos com `ds_situacao_titulo = 'VENCIDO'` — inadimplência por empresa |
+| `dre_contabil_unit_01` | `dre_contabil` | DRE Contábil filtrado para `tenant_id = 'unit_01'` |
+| `dre_contabil_unit_02` | `dre_contabil` | DRE Contábil filtrado para `tenant_id = 'unit_02'` |
+| `dre_gerencial_unit_01` | `dre_gerencial` | DRE Gerencial filtrado para `tenant_id = 'unit_01'` |
+| `dre_gerencial_unit_02` | `dre_gerencial` | DRE Gerencial filtrado para `tenant_id = 'unit_02'` |
+| `dim_produtos_otimizada` | `dim_produtos` | Subconjunto de colunas para consultas de catálogo |
 
 ---
 
@@ -118,7 +108,7 @@ Cada unidade de negócio (`unit_01`..`unit_05`) tem seu próprio DRE Contábil e
 ### Bronze
 - Particionamento por `tenant_id` em S3
 - Path: `s3://...-bronze-${env}/<datamart>/<tabela>/tenant_id=unit_NN/year=.../month=.../day=.../*.parquet`
-- Glue table com partition projection
+- Glue table com partition projection (23 tabelas externas)
 
 ### Silver
 - UNION dos 5 tenants em modelo unificado

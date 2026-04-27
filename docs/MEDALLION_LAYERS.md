@@ -4,10 +4,10 @@ Arquitetura de 4 camadas: **Bronze → Silver → Gold → Platinum**.
 
 | Camada | Storage | Materialização | Total Modelos | Função |
 |---|---|---|---|---|
-| Bronze | S3 (Parquet) | Glue tables externas | 40 (8 datamarts × 5 tenants) | Raw, particionado |
-| Silver | S3 + Iceberg | `incremental` (merge) | 30 | Limpeza, padronização, unificação |
-| Gold | S3 + Iceberg | `incremental` + `table` | 16 | Star schema (8 dims + 6 facts + 2 DREs) |
-| Platinum | S3 + Iceberg | `view` | 9 | Visões de negócio por unidade |
+| Bronze | S3 (Parquet) | Glue tables externas | 23 tabelas (8 datamarts) | Raw, particionado por `tenant_id` + data |
+| Silver | S3 + Iceberg | `incremental` (merge) | **21** | Limpeza, padronização, unificação multi-tenant |
+| Gold | S3 + Iceberg | `incremental` + `table` | **18** (9 dims + 7 facts + 2 DREs) | Star schema Kimball |
+| Platinum | S3 + Iceberg | `incremental` / `table` | **6** | Visões de negócio por unidade |
 
 ---
 
@@ -71,42 +71,31 @@ TBLPROPERTIES (
 
 **Objetivo**: deduplicar, padronizar tipos, normalizar nomes, **unificar 5 tenants em uma única tabela**.
 
-### 30 Modelos Silver
+### 21 Modelos Silver
 
-Inspirados na estrutura original do baseline interno corporativo:
-
-| # | Modelo | Função |
+| Datamart | Modelo | Função |
 |---|---|---|
-| 1 | `silver_dw_areageo` | Áreas geográficas |
-| 2 | `silver_dw_ccusto_contabil` | Centros de custo contábil |
-| 3 | `silver_dw_cidade` | Cidades / municípios |
-| 4 | `silver_dw_classe` | Classes de produto |
-| 5 | `silver_dw_clientes` | Clientes consolidados |
-| 6 | `silver_dw_condpag` | Condições de pagamento |
-| 7 | `silver_dw_conta_contabil` | Plano de contas |
-| 8 | `silver_dw_danfe` | Cabeçalho de NF-e (DANFE) |
-| 9 | `silver_dw_danfite` | Itens de NF-e |
-| 10 | `silver_dw_devolucao` | Devoluções |
-| 11 | `silver_dw_embalagem` | Embalagens |
-| 12 | `silver_dw_empresa` | Empresas / filiais |
-| 13 | `silver_dw_familia` | Famílias de produto |
-| 14 | `silver_dw_filial` | Filiais (granular) |
-| 15 | `silver_dw_grupo` | Grupos de produto |
-| 16 | `silver_dw_item` | Itens / SKUs |
-| 17 | `silver_dw_lancamento_origem` | Lançamentos contábeis origem |
-| 18 | `silver_dw_linha` | Linhas de produto |
-| 19 | `silver_dw_marca` | Marcas |
-| 20 | `silver_dw_motorista` | Motoristas |
-| 21 | `silver_dw_pais` | Países |
-| 22 | `silver_dw_pedido` | Cabeçalho de pedido |
-| 23 | `silver_dw_pedidoit` | Itens de pedido |
-| 24 | `silver_dw_produto` | Produtos consolidados |
-| 25 | `silver_dw_projeto` | Projetos |
-| 26 | `silver_dw_titulo` | Títulos financeiros |
-| 27 | `silver_dw_transportadora` | Transportadoras |
-| 28 | `silver_dw_uf` | Unidades federativas |
-| 29 | `silver_dw_vendedor` | Vendedores |
-| 30 | `silver_dw_venda` | Vendas detalhadas |
+| comercial | `silver_dw_clientes` | Clientes consolidados por tenant |
+| comercial | `silver_dw_vendedores` | Vendedores |
+| comercial | `silver_dw_produtos` | Produtos / SKUs |
+| comercial | `silver_dw_vendas` | Pedidos de venda |
+| comercial | `silver_dw_itens_pedido` | Itens de pedido |
+| suprimentos | `silver_dw_fornecedores` | Fornecedores |
+| suprimentos | `silver_dw_ordens_compra` | Ordens de compra |
+| corporativo | `silver_dw_empresas` | Empresas / filiais |
+| corporativo | `silver_dw_departamentos` | Departamentos |
+| corporativo | `silver_dw_funcionarios` | Colaboradores |
+| industrial | `silver_dw_materias_primas` | Matérias-primas |
+| industrial | `silver_dw_ordens_producao` | Ordens de produção |
+| logistica | `silver_dw_filiais` | Filiais logísticas |
+| logistica | `silver_dw_transportadoras` | Transportadoras |
+| logistica | `silver_dw_expedicao` | Expedições / entregas |
+| controladoria | `silver_dw_centros_custos` | Centros de custo contábil |
+| controladoria | `silver_dw_projetos` | Projetos |
+| controladoria | `silver_dw_orcamento` | Orçamento por projeto |
+| financeiro | `silver_dw_titulos_financeiros` | Títulos a pagar/receber (UNION ALL) |
+| contabilidade | `silver_dw_plano_contas` | Plano de contas |
+| contabilidade | `silver_dw_lancamentos` | Lançamentos contábeis |
 
 ### Padrão de Modelo Silver
 
@@ -163,28 +152,29 @@ SELECT * FROM cleaned
 
 **Objetivo**: modelar dimensions e facts conforme Kimball; chaves substitutas (surrogate keys) para todas as dimensions.
 
-### 16 Modelos Gold
+### 18 Modelos Gold
 
-#### 8 Dimensions
-1. `dim_calendrio` (gerada via macro, sem source)
+#### 9 Dimensions
+1. `dim_calendrio` (gerada via Jinja — 1.461 dias, sem source Bronze)
 2. `dim_clientes`
 3. `dim_produtos`
-4. `dim_empresas`
-5. `dim_centros_custos`
-6. `dim_contas_contabeis`
-7. `dim_condpag`
-8. `dim_vendedor`
-9. `dim_estrutura_dre_contabil`
+4. `dim_vendedores`
+5. `dim_fornecedores`
+6. `dim_empresas`
+7. `dim_funcionarios`
+8. `dim_centros_custos`
+9. `dim_plano_contas`
 
-#### 6 Facts
+#### 7 Facts
 1. `fct_vendas`
-2. `fct_faturamento`
-3. `fct_devolucao`
-4. `fct_titulo_financeiro`
-5. `fct_lancamentos_origem`
-6. `fct_projetos_consolidados`
+2. `fct_ordens_compra`
+3. `fct_ordens_producao`
+4. `fct_expedicao`
+5. `fct_orcamento_projetos`
+6. `fct_titulo_financeiro`
+7. `fct_lancamentos`
 
-#### 2 DREs (consolidados)
+#### 2 DREs (analytics)
 1. `dre_contabil`
 2. `dre_gerencial`
 
@@ -264,21 +254,18 @@ LEFT JOIN calendario cal ON cal.data_completa = v.dt_venda
 
 ## Platinum — Visões de Negócio
 
-**Objetivo**: produzir visões prontas para BI, separadas por unidade de negócio. Materializadas como `view` para zero custo de armazenamento.
+**Objetivo**: produzir visões prontas para BI, separadas por unidade de negócio. Materializadas como Iceberg tables para consultas eficientes com predicate pushdown.
 
-### 9 Modelos Platinum
+### 6 Modelos Platinum
 
-| Modelo | Descrição | Material. |
-|---|---|---|
-| `dre_contabil_unit_01` | DRE Contábil Unidade 01 | view |
-| `dre_contabil_unit_02` | DRE Contábil Unidade 02 | view |
-| `dre_gerencial_unit_01` | DRE Gerencial Unidade 01 | view |
-| `dre_gerencial_unit_02` | DRE Gerencial Unidade 02 | view |
-| `dim_estrutura_dre_contabil_unit_01` | Estrutura DRE específica Unidade 01 | view |
-| `dim_estrutura_dre_contabil_unit_02` | Estrutura DRE específica Unidade 02 | view |
-| `dim_produtos_otimizada` | Produtos enriquecidos (todas as unidades) | table |
-| `controle_inadimplentes` | Inadimplência > 30 dias | table |
-| _(reservado)_ | _(slot para nova visão de negócio)_ | — |
+| Modelo | Derivado de | Descrição | Material. |
+|---|---|---|---|
+| `controle_inadimplentes` | `fct_titulo_financeiro` | Títulos com `ds_situacao_titulo = 'VENCIDO'` | incremental |
+| `dre_contabil_unit_01` | `dre_contabil` | DRE Contábil filtrado `tenant_id = 'unit_01'` | table |
+| `dre_contabil_unit_02` | `dre_contabil` | DRE Contábil filtrado `tenant_id = 'unit_02'` | table |
+| `dre_gerencial_unit_01` | `dre_gerencial` | DRE Gerencial filtrado `tenant_id = 'unit_01'` | table |
+| `dre_gerencial_unit_02` | `dre_gerencial` | DRE Gerencial filtrado `tenant_id = 'unit_02'` | table |
+| `dim_produtos_otimizada` | `dim_produtos` | Subconjunto de colunas para catálogo de produtos | table |
 
 ### Padrão Platinum (View por Unidade)
 

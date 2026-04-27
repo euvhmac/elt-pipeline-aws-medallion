@@ -1,23 +1,26 @@
 # Sprint Roadmap
 
-Plano de execução em 8 sprints, com critérios de aceite QA + Tech Lead por sprint. Cada sprint produz artefatos verificáveis e tem **definition of done** explícito.
+Plano de execução em 9 sprints (+ Sprint 4.5), com critérios de aceite QA + Tech Lead por sprint. Cada sprint produz artefatos verificáveis e tem **definition of done** explícito.
+
+> **Status**: ✅ Todas as sprints concluídas — plataforma completa e operacional.
 
 ---
 
 ## Visão Geral
 
-| Sprint | Foco | Duração estimada |
+| Sprint | Foco | Status |
 |---|---|---|
-| **Sprint 0** | Preparação & Documentação Inicial | 1 dia |
-| **Sprint 1** | Fundação Local (Dev Environment) | 2-3 dias |
-| **Sprint 2** | Infraestrutura AWS (Terraform) | 2 dias |
-| **Sprint 2.5** | Refino do Gerador (Histórico + Sazonalidade) | 0.5 dia |
-| **Sprint 3** | Camada de Ingestão (Bronze) | 2 dias |
-| **Sprint 4** | Camada de Transformação (dbt-athena) | 4-5 dias |
-| **Sprint 5** | Orquestração (Airflow Local) | 2 dias |
-| **Sprint 6** | Observabilidade & Notificações | 2 dias |
-| **Sprint 7** | CI/CD & Quality Gates | 1-2 dias |
-| **Sprint 8** | Polimento de Portfólio | 2 dias |
+| **Sprint 0** | Preparação & Documentação Inicial | ✅ Concluído |
+| **Sprint 1** | Fundação Local (Docker Compose + data-generator) | ✅ Concluído |
+| **Sprint 2** | Infraestrutura AWS (Terraform) | ✅ Concluído |
+| **Sprint 2.5** | Refino do Gerador (Histórico + Sazonalidade) | ✅ Concluído |
+| **Sprint 3** | Camada de Ingestão (Bronze S3 + Glue) | ✅ Concluído |
+| **Sprint 4** | dbt datamart `comercial` (padrão base Silver+Gold) | ✅ Concluído |
+| **Sprint 4.5** | dbt 7 datamarts restantes + DRE + Platinum (36 modelos) | ✅ Concluído |
+| **Sprint 5** | Orquestração event-driven (Airflow Datasets) | ✅ Concluído |
+| **Sprint 6** | Observabilidade & Notificações (SNS → Lambda → Slack) | ✅ Concluído |
+| **Sprint 7** | CI/CD & Quality Gates (GitHub Actions) | ✅ Concluído |
+| **Sprint 8** | Polimento de Portfólio (README + docs + narrativa) | ✅ Concluído |
 
 ---
 
@@ -243,6 +246,53 @@ Pipeline de ingestão funcional: gerador local → S3 Bronze → tabelas Athena 
 - [x] Smoke E2E real (S3 + Athena) confirma round-trip
 - [ ] Backfill histórico 2024-01-01 → 2026-04-26 (deferido; rodaremos em Sprint 5 com Airflow real)
 - [ ] dbt source freshness em `dbt/sources.yml` (deferido para Sprint 4)
+
+---
+
+## Sprint 4.5 — dbt 7 Datamarts Restantes + DRE + Platinum ✅
+
+### Objetivo (executado)
+Replicar o padrão Silver+Gold estabelecido no Sprint 4 para os 7 datamarts restantes, adicionar análises DRE (Demonstração de Resultado) e criar a camada Platinum com visões de negócio por unidade.
+
+### Status: DONE — Release `2026.06.0`, 9 PRs sequenciais (#16–#24)
+
+### Modelos entregues (36 novos)
+
+| PR | Datamart | Modelos Silver | Modelos Gold |
+|---|---|---|---|
+| #16 | suprimentos | `silver_dw_fornecedores`, `silver_dw_ordens_compra` | `dim_fornecedores`, `fct_ordens_compra` |
+| #17 | corporativo | `silver_dw_empresas`, `silver_dw_departamentos`, `silver_dw_funcionarios` | `dim_empresas`, `dim_funcionarios` |
+| #18 | industrial | `silver_dw_materias_primas`, `silver_dw_ordens_producao` | `fct_ordens_producao` |
+| #19 | logistica | `silver_dw_filiais`, `silver_dw_transportadoras`, `silver_dw_expedicao` | `fct_expedicao` |
+| #20 | controladoria | `silver_dw_centros_custos`, `silver_dw_projetos`, `silver_dw_orcamento` | `dim_centros_custos`, `fct_orcamento_projetos` |
+| #21 | financeiro | `silver_dw_titulos_financeiros` (UNION ALL) | `fct_titulo_financeiro` |
+| #22 | contabilidade | `silver_dw_plano_contas`, `silver_dw_lancamentos` | `dim_plano_contas`, `fct_lancamentos` |
+| #23 | DRE cross-gold | — | `dre_contabil`, `dre_gerencial` |
+| #24 | Platinum | — | — | 6 modelos Platinum |
+
+**Platinum (6 modelos)**: `controle_inadimplentes`, `dre_contabil_unit_01`, `dre_contabil_unit_02`, `dre_gerencial_unit_01`, `dre_gerencial_unit_02`, `dim_produtos_otimizada`
+
+### Totais acumulados após Sprint 4.5
+
+| Camada | Modelos |
+|---|---|
+| Silver | 21 |
+| Gold | 18 (9 dims + 7 facts + 2 DREs) |
+| Platinum | 6 |
+| **Total** | **45** |
+
+### Decisões documentadas
+
+1. **1 PR por datamart**: revisão granular, gitflow rigoroso, CI por PR.
+2. **`dbt parse` como gate local**: executado antes de cada PR para validar `manifest.json` sem custo Athena.
+3. **`silver_dw_titulos_financeiros` via UNION ALL**: consolida `titulos_pagar` + `titulos_receber` em modelo único com coluna `tipo_titulo`.
+4. **Platinum como Iceberg views**: isolamento por `tenant_id` sem duplicar storage; queries eficientes com predicate pushdown.
+
+### Definition of Done
+- [x] 9 PRs mergeados via squash em `develop`
+- [x] PR #25 release `develop → main`
+- [x] Tag `2026.06.0` e GitHub Release publicados
+- [x] `dbt parse` com 0 erros antes de cada PR
 
 ---
 
